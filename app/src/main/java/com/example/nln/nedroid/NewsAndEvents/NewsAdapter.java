@@ -64,8 +64,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                clickListener.onClick(v, MyViewHolder.getPosition());
+            public void onClick(View v) {clickListener.onClick(v, MyViewHolder.getPosition());
 //                Toast.makeText(mContext, " Just cliked item at position " + MyViewHolder.getPosition(), Toast.LENGTH_LONG).show();
             }
         });
@@ -76,11 +75,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         News album = albumList.get(position);
-        holder.title.setText(album.getName());
-        holder.name1.setText(album.getName1());
-        // loading album cover using Glide library
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.pic1);
+
+        
+
     }
 
     @Override

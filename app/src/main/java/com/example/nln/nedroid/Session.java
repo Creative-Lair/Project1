@@ -12,6 +12,8 @@ public class Session {
     private static final String PREF_NAME = "NEDroid";
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_USERID = "userid";
+    private static final String KEY_USERNAME = "username";
+
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -45,6 +47,17 @@ public class Session {
 
     public String getUserId(){
         return pref.getString(KEY_USERID, null);
+    }
+
+    public void setUsername(String username){
+        editor.putString(KEY_USERNAME,username);
+        editor.commit();
+
+
+    }
+
+    public String getUsername(){
+        return pref.getString(KEY_USERNAME, "Admin");
     }
 
 }

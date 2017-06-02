@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -14,6 +15,8 @@ public class NandECreate extends AppCompatActivity {
 
     ImageButton imageadd;
 
+    private EditText title, description;
+    final int ACTIVITY_SELECT_IMAGE = 1234;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +26,29 @@ public class NandECreate extends AppCompatActivity {
         setTitle("News and Events");
 
         imageadd = (ImageButton) findViewById(R.id.addimage);
+        title = (EditText) findViewById(R.id.title);
+        description = (EditText) findViewById(R.id.description);
+
     }
 
     public void onClick (View view){
-        if( view == imageadd){
-            Toast pass = Toast.makeText(this, "Add Image...", Toast.LENGTH_SHORT);
-            pass.show();
+
+        int id = view.getId();
+
+        switch (id){
+            case R.id.addimage:
+
+                Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+
+                break;
         }
-        Intent i = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        final int ACTIVITY_SELECT_IMAGE = 1234;
-        startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

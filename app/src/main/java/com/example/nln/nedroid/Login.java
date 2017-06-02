@@ -69,6 +69,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 username = editTextUsername.getText().toString().toLowerCase();
                 password = editTextPassword.getText().toString();
 
+
+                //Student
                 if(username.charAt(0)=='s'){
                     rootRef = firebaseDatabase.getReference().child("Students");
                     rootRef.child(username).addValueEventListener(new ValueEventListener() {
@@ -79,6 +81,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             if(password.equals(student.getPassword())){
                                 session.setLogin(true);
                                 session.setUserId(username);
+                                session.setUsername(student.getName());
                                 Intent i = new Intent(Login.this, FirstNav.class);
                                 startActivity(i);
                                 finish();

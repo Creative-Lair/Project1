@@ -5,44 +5,47 @@ package com.example.nln.nedroid.NewsAndEvents;
  */
 public class News {
 
-    private String name1;
-    private int pic1;
-    private String name;
-    private int thumbnail;
+    private String title;
+    private String description;
+    private String creatorId;
+    private String[] photos;
 
-    public News() {
+    public News(String title, String description, String creatorId, String[] photos) {
+        this.title = title;
+        this.description = description;
+        this.creatorId = creatorId;
+        this.photos = photos;
     }
 
-    public News(int pic1, String name1, String name, int thumbnail) {
-//    public News(String name, int thumbnail) {
-        this.pic1 = pic1;
-        this.name1 = name1;
-        this.name = name;
-        this.thumbnail = thumbnail;
+    public String getTitle() {
+        return title;
     }
 
-    public String getName() {
-        return name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getDescription() {
+        return description;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getName1() {
-        return name1;
+    public String getCreatorId() {
+        return creatorId;
     }
 
-    public void setName1(String name1) {
-        this.name1 = name1;
+    public void setCreatorId(String creatorId) {
+        this.creatorId = creatorId;
     }
 
-    public int getPic1() {
-        return pic1;
+    public String[] getPhotos() {
+        return photos;
     }
 
+    public void setPhotos(String[] photos) {
+        this.photos = photos;
+    }
 }

@@ -24,6 +24,7 @@ import com.example.nln.nedroid.NavigationMenu.Attendance1;
 import com.example.nln.nedroid.NavigationMenu.Profile;
 import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.R;
+import com.example.nln.nedroid.Session;
 import com.example.nln.nedroid.Setting1;
 
 import java.util.ArrayList;
@@ -36,6 +37,8 @@ public class FirstNav extends AppCompatActivity
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    private Session session;
+
     private TextView headerName,headerID;
 
     private int[] tabIcons = {
@@ -45,9 +48,6 @@ public class FirstNav extends AppCompatActivity
             R.drawable.ic_graph
     };
 
-    public String Name_DB;//for all app
-    public String ID_DB;//for all app
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,9 +55,10 @@ public class FirstNav extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar__nav);
         setSupportActionBar(toolbar);
 
+        session = new Session(getApplicationContext());
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -69,13 +70,8 @@ public class FirstNav extends AppCompatActivity
         headerID = (TextView) hView.findViewById(R.id.textView_nav_id);
 
 //        (setting username data from login class)
-        Name_DB = getIntent().getStringExtra("USERNAME");
-        headerName.setText("admin");
-        ID_DB = getIntent().getStringExtra("USERID");
-        headerID.setText("CS-01");
-
-        String log1 = "Name: " + headerName + " ,ID: " + headerID;
-        Log.d("Start: ", log1);
+        headerName.setText(session.getUsername());
+        headerID.setText(session.getUserId());
 
 //        Tab Layout
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -83,9 +79,6 @@ public class FirstNav extends AppCompatActivity
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
-
-        String log = "Name: " + Name_DB + " ,ID: " + ID_DB;
-        Log.d("Start: ", log);
     }
 
     private void setupTabIcons() {
@@ -106,41 +99,39 @@ public class FirstNav extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        switch (id){
+            case R.id.nav_home:
 
-        } if (id == R.id.nav_profile) {
-            Intent i = new Intent(FirstNav.this, Profile.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+                break;
 
-        } else if (id == R.id.nav_noticeboard) {
-            Intent i = new Intent(FirstNav.this, NotificationNav.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+            case R.id.nav_profile:
+                Intent i = new Intent(FirstNav.this, Profile.class);
+                startActivity(i);
 
-        } else if (id == R.id.nav_attndance) {
-            Intent i = new Intent(FirstNav.this, Attendance1.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+                break;
 
-        } else if (id == R.id.nav_setting) {
-            Intent i = new Intent(FirstNav.this, Setting1.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+            case R.id.nav_noticeboard:
+                Intent j = new Intent(FirstNav.this, NotificationNav.class);
+                startActivity(j);
+                break;
 
-        } else if (id == R.id.nav_about) {
-            Toast.makeText(FirstNav.this, " Link to webite ", Toast.LENGTH_SHORT).show();
-            Uri webpage = Uri.parse("http://www.android.com");
-            Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-            startActivity(webIntent);
+            case R.id.nav_attndance:
+                Intent k = new Intent(FirstNav.this, Attendance1.class);
+                startActivity(k);
+                break;
+
+            case R.id.nav_setting:
+                Intent l = new Intent(FirstNav.this, Setting1.class);
+                startActivity(l);
+                break;
+
+            case R.id.nav_about:
+                Toast.makeText(FirstNav.this, " Link to webite ", Toast.LENGTH_SHORT).show();
+                Uri webpage = Uri.parse("http://www.android.com");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(webIntent);
+
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

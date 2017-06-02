@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\libs\GraphView-4.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8bd182a66f13dedad362bfbf992be96de2be5969">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\2\GraphView-4.0.1_ea16cb60605c369c880e4c53c73eee9af2220155\classes.dex" />
+    </item>
+
+</items>

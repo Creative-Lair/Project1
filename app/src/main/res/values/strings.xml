@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name">NEDroid</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_login_one">LoginOne</string>
+    <string name="title_activity_first_nav">NEDroid</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_try">Try</string>
+    <string name="name">Name</string>
+    <string name="title_activity_nand_edescription">NandEDescription</string>
+    <string name="title_of_event">TITLE OF EVENT</string>
+    <string name="title_activity_nand_ecreate">NandECreate</string>
+    <string name="title_activity_all_question">AllQuestion</string>
+    <string name="title_activity_post_question">PostQuestion</string>
+    <string name="title_activity_question_and_answer">QuestionAndAnswer</string>
+    <string name="question_">Selected Question: Selected Question: Selected Question: Selected Question: Selected Question: Selected Question: Selected Question: Selected Question: Selected Question:</string>
+    <string name="question">Question:</string>
+    <string name="title_activity_attendance">Attendance</string>
+    <string name="title_activity_attendance1">Attendance1</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="graph_title">Graph Title</string>
+    <string name="title_activity_ssecond_nav">SsecondNav</string>
+    <string name="title_activity_pdf">PDF</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_nav__attend_one">Nav_AttendOne</string>
+    <string name="title_activity_nav__attend_three">Nav_AttendThree</string>
+    <string name="title_activity_nav__attend_three_pdf">Nav_AttendThree_pdf</string>
+    <string name="title_activity_nav__attend_two">Nav_AttendTwo</string>
+
+    <string name="title_activity_single_section_graph">SingleSectionGraph</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="title_activity_notificataion">Notificataion</string>
+    <string name="title_activity_notification_detail">NotificationDetail</string>
+    <string name="title_activity_notification_nav">Notice</string>
+    <string name="title_activity_setting1">Setting</string>
+
+        <string name="spinner_title">Select Category</string>
+        <string name="creat_sheet">Creat Sheet</string>
+        <string name="practicle">Practicle</string>
+        <string name="regular">Regular</string>
+        <string name="section">Section</string>
+        <string name="select_details">Select Details</string>
+        <string name="theory">Theory</string>
+        <string name="time_slot">Time Slot</string>
+</resources>

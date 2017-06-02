@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">867998156692-bcjtnf13o7bl063gekirgaag4r6rsjc7.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://nedroid-3bcc1.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">867998156692</string>
+    <string name="google_api_key" translatable="false">AIzaSyCdzDb-c3QW-rVEGwqdvR4hhP6aQcTlMnI</string>
+    <string name="google_app_id" translatable="false">1:867998156692:android:9b66b57916d29911</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCdzDb-c3QW-rVEGwqdvR4hhP6aQcTlMnI</string>
+    <string name="google_storage_bucket" translatable="false">nedroid-3bcc1.appspot.com</string>
+    <string name="project_id" translatable="false">nedroid-3bcc1</string>
+</resources>

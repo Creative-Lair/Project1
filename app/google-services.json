@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "867998156692",
+    "firebase_url": "https://nedroid-3bcc1.firebaseio.com",
+    "project_id": "nedroid-3bcc1",
+    "storage_bucket": "nedroid-3bcc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867998156692:android:9b66b57916d29911",
+        "android_client_info": {
+          "package_name": "com.example.nln.nedroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867998156692-mj5fvta2c5qthppnifd6hbpf6qcfthuc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nln.nedroid",
+            "certificate_hash": "b75cd01ee347327373a4fe7f519b2c04af467c05"
+          }
+        },
+        {
+          "client_id": "867998156692-bcjtnf13o7bl063gekirgaag4r6rsjc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdzDb-c3QW-rVEGwqdvR4hhP6aQcTlMnI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867998156692-bcjtnf13o7bl063gekirgaag4r6rsjc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

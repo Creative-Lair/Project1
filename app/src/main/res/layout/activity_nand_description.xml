@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.nln.nedroid.NewsAndEvents.NandEDescription"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/toolbarNE"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:id="@+id/Linear1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:ignore="ExtraText">
+
+            <ImageButton
+                android:id="@+id/pic1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_smile"
+                android:contentDescription=""
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/name1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="@string/name"
+                android:textSize="14sp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                tools:ignore="RtlHardcoded" />/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title_of_event"
+            android:layout_below="@+id/Linear1"
+            android:textAllCaps="true"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            tools:ignore="SpUsage"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/album_title"/>
+        <!--android:textAppearance="@drawable/ic_action_name"-->
+
+        <LinearLayout
+            android:id="@+id/Linear2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@+id/title">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:isScrollContainer="true"
+                android:scrollbars="vertical"
+                android:fillViewport="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/textView_EventDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="10dp"
+                    tools:ignore="HardcodedText,ObsoleteLayoutParam,SpUsage"
+                    android:text="text"
+                    android:lineSpacingExtra="5sp" />
+
+            </ScrollView>
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/image1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_marginLeft="100dp"
+                android:layout_marginRight="10dp"
+                tools:ignore="ContentDescription,RtlHardcoded"
+                android:src="@drawable/fr_five"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Linear2"
+            android:orientation="horizontal"
+            android:paddingTop="0dp">
+
+            <!--<ImageButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/ic_button_left1"-->
+            <!--android:layout_marginTop="65dp"-->
+            <!--android:contentDescription=""-->
+            <!--tools:ignore="ContentDescription" />-->
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/Linear2"
+                tools:ignore="ObsoleteLayoutParam"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp">
+                <!--android:layout_centerHorizontal="true">-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="ScrollViewSize">
+
+                    <ImageView
+                        android:id="@+id/image2"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:contentDescription=""
+                        tools:ignore="ContentDescription"
+                        android:src="@drawable/fr_five"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:clickable="true"
+                        android:onClick="onClick" />
+
+                    <ImageView
+                        android:id="@+id/image3"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        tools:ignore="ContentDescription"
+                        android:src="@drawable/fr_one"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:onClick="onClick" />
+
+                    <ImageView
+                        android:id="@+id/image4"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        tools:ignore="ContentDescription"
+                        android:src="@drawable/fr_four"
+                        android:paddingLeft="2dp"
+                        android:paddingRight="2dp"
+                        android:onClick="onClick" />
+
+                    <ImageView
+                        android:id="@+id/image5"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        tools:ignore="ContentDescription"
+                        android:src="@drawable/fr_zero"
+                        android:onClick="onClick" />
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <!--<ImageButton-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:src="@drawable/ic_button_right"-->
+            <!--android:layout_marginTop="65dp"-->
+            <!--tools:ignore="ContentDescription" />-->
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

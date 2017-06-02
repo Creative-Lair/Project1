@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#3F51B5</color>-->
+    <!--<color name="colorPrimaryDark">#303F9F</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+
+    <!--<color name="colorPrimary">#0c89be</color>-->
+    <!--<color name="colorPrimaryDark">#0c1747</color>-->
+    <!--<color name="colorAccent">#009688</color>-->
+
+    <!--<color name="buttonSubject">#028275</color>-->
+
+    <!--<color name="primary">#0c89be</color>-->
+    <!--&lt;!&ndash;<color name="primary">#5D4037</color>&ndash;&gt;-->
+    <!--<color name="primary_dark">#0c1747</color>-->
+    <!--<color name="primary_light">#D7CCC8</color>-->
+    <!--<color name="nav_clr">#009688</color>-->
+    <!--<color name="primary_text">#212121</color>-->
+    <!--<color name="secondary_text">#727272</color>-->
+    <!--<color name="icons">#FFFFFF</color>-->
+    <!--<color name="accent">#FFFFFF</color>-->
+    <!--<color name="divider">#B6B6B6</color>-->
+
+
+    <color name="colorPrimary">#0D47A1</color>
+    <color name="colorPrimaryDark">#0D47A1</color>
+    <color name="colorAccent">#009688</color>
+
+    <color name="viewBg">#f1f5f8</color>
+    <color name="album_title">#4c4c4c</color>
+    <color name="buttonSubject">#028275</color>
+
+    <color name="primary">#0D47A1</color>
+    <color name="primary_dark">#0D47A1</color>
+    <color name="primary_light">#D1C4E9</color>
+    <color name="accent">#009688</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#757575</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#BDBDBD</color>
+
+    <color name="yellow">#ffbd4a</color>
+    <color name="limeyellow">#CDDC39</color>
+
+
+
+
+</resources>
+

@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/nav_five">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Text Books"
+        android:id="@+id/textView3"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="40dp"
+        android:textSize="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingLeft="5dp"/>
+
+    <FrameLayout
+        android:layout_width="2in"
+        android:layout_height="150dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3"
+        android:id="@+id/frameLayout1">
+
+
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alwaysDrawnWithCache="true"
+            android:dividerHeight="1dp"
+            android:horizontalSpacing="3dp"
+            android:scrollingCache="true"
+            android:smoothScrollbar="true"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="3dp"
+            android:layout_marginBottom="30dp">
+        </ListView>
+
+        <!--Line in between each textview = Divider Height-->
+
+
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Reference Books"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/frameLayout1"
+        android:layout_alignLeft="@+id/frameLayout1"
+        android:layout_alignStart="@+id/frameLayout1"
+        android:paddingTop="10dp"
+        android:textSize="40dp"
+        android:paddingRight="5dp"/>
+
+    <FrameLayout
+        android:layout_width="2in"
+        android:layout_height="1in"
+        android:id="@+id/frameLayout2"
+        android:layout_below="@+id/textView4"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_centerHorizontal="true">
+
+
+        <!--<ScrollView-->
+        <!--android:layout_width="2in"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/textView4"-->
+        <!--android:layout_alignLeft="@+id/textView4"-->
+        <!--android:layout_alignStart="@+id/textView4"-->
+        <!--android:fillViewport="true"-->
+        <!--android:layout_margin="10dip">-->
+
+        <!--<ListView-->
+        <!--android:layout_width="2in"-->
+        <!--android:layout_height="18in"-->
+        <!--android:id="@+id/listView2"-->
+        <!--android:layout_below="@+id/textView3"-->
+        <!--android:layout_alignLeft="@+id/textView3"-->
+        <!--android:layout_alignStart="@+id/textView3"-->
+        <!--android:layout_alignRight="@+id/textView3"-->
+        <!--android:layout_alignEnd="@+id/textView3" />-->
+
+        <!--From net-->
+        <ListView
+            android:id="@+id/listView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:alwaysDrawnWithCache="true"
+            android:dividerHeight="1dp"
+            android:horizontalSpacing="3dp"
+            android:scrollingCache="true"
+            android:smoothScrollbar="true"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="3dp"
+            android:layout_marginBottom="30dp">
+        </ListView>
+
+
+        <!--</ScrollView>-->
+
+    </FrameLayout>
+
+</RelativeLayout>

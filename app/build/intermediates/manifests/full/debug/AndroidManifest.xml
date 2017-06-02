@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.nln.nedroid"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="25" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <meta-data
+        android:name="android.support.VERSION"
+        android:value="25.3.1" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.example.nln.nedroid.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.nln.nedroid.permission.C2D_MESSAGE" />
+
+    <application
+        android:name="android.support.multidex.MultiDexApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_android1"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.nln.nedroid.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.nln.nedroid.Login"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.PageOne.LoginOne"
+            android:label="@string/title_activity_login_one"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.PageOne.FirstNav"
+            android:label="@string/title_activity_first_nav"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Try"
+            android:label="@string/title_activity_try"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.NewsAndEvents.NandEDescription"
+            android:label="@string/title_activity_nand_edescription"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.NewsAndEvents.NandECreate"
+            android:label="@string/title_activity_nand_ecreate"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Forum.AllQuestion"
+            android:label="@string/title_activity_all_question"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Forum.PostQuestion"
+            android:label="@string/title_activity_post_question"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Forum.QuestionAndAnswer"
+            android:label="@string/title_activity_question_and_answer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.NavigationMenu.Attendance1"
+            android:label="@string/title_activity_attendance1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.NavigationMenu.Profile"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.PageTwo.SsecondNav"
+            android:label="@string/title_activity_ssecond_nav"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.PDF"
+            android:label="@string/title_activity_pdf"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity
+            android:name="com.example.nln.nedroid.Notification.NotificationNav"
+            android:label="@string/title_activity_notification_nav"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Setting1"
+            android:label="@string/title_activity_setting1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.PageOne.Teacher_FirstNav"
+            android:label="@string/title_activity_first_nav"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Attendance.Attendance1"
+            android:label="@string/title_activity_attendance1"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Nav_AttendOne"
+            android:label="@string/title_activity_nav__attend_one"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Nav_AttendThree"
+            android:label="@string/title_activity_nav__attend_three"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Nav_AttendTwo"
+            android:label="@string/title_activity_nav__attend_two"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Graph.SingleSectionGraph"
+            android:label="@string/title_activity_single_section_graph"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Profile"
+            android:label="@string/title_activity_profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.example.nln.nedroid.Nav_AttendThree_pdf"
+            android:label="Lecture Detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true"
+            android:exported="false" >
+        </receiver>
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+            android:enabled="true"
+            android:permission="android.permission.INSTALL_PACKAGES" >
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.example.nln.nedroid" />
+            </intent-filter>
+        </receiver>
+        <!--
+ Internal (not exported) receiver used by the app to start its own exported services
+             without risk of being spoofed.
+        -->
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver"
+            android:exported="false" />
+        <!--
+ FirebaseInstanceIdService performs security checks at runtime,
+             no need for explicit permissions despite exported="true"
+        -->
+        <service
+            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+            android:exported="true" >
+            <intent-filter android:priority="-500" >
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name="com.google.firebase.provider.FirebaseInitProvider"
+            android:authorities="com.example.nln.nedroid.firebaseinitprovider"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    </application>
+
+</manifest>

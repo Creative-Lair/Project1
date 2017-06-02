@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.nln.nedroidteacher.Attendance.Attendance1"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/textView_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Course Name: "
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"
+            android:textStyle="normal"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/album_title"/>
+
+        <TextView
+            android:id="@+id/textView_coursen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject One "
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="3"
+            android:textColor="@color/album_title"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="25dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="5dp">
+
+        <TextView
+            android:id="@+id/textView_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Year: "
+            android:textSize="25dp"
+            android:textStyle="normal"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/album_title"/>
+        <TextView
+            android:textColor="@color/album_title"
+            android:id="@+id/textView_yearn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01 "
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="2"/>
+        <TextView
+            android:id="@+id/textView_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Section: "
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"
+            android:textStyle="normal"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/album_title"/>
+        <TextView
+            android:textColor="@color/album_title"
+            android:id="@+id/textView_sectionn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A "
+            android:layout_centerHorizontal="true"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="3"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black"
+        android:layout_marginTop="25dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="Present"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"/>
+
+        <TextView
+            android:text="Absent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/black" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="15dp"/>
+
+    <Button
+        android:id="@+id/button_UploadAttendance"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="100dp"
+        android:text="Upload"
+        android:background="@color/colorAccent"
+        android:textColor="#FFFF"
+        tools:ignore="RtlHardcoded"
+        android:onClick="onClickButton" />
+
+</LinearLayout>

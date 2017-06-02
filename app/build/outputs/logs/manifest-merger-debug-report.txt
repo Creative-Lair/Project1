@@ -1,0 +1,434 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:2:1-126:12
+	package
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:3:5-38
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:5:5-80
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:5:22-77
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:6:5-67
+MERGED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\.android\build-cache\83080b9224c85f85b0c28412d6562ec20f374cea\output\AndroidManifest.xml:20:5-66
+MERGED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:6:22-64
+application
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:8:5-124:19
+MERGED from [com.android.support:design:25.3.1] C:\Users\AHSAN\.android\build-cache\2a5d29a073be063d3f784a0c24e4efcb3e138644\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\7a9423174cab790f3d02c3ad0f9b56c926a4c945\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\AHSAN\.android\build-cache\1660ed741ed43899bc1478b2b2df85c3e1cbed85\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\AHSAN\.android\build-cache\5c7545edcd45cb571abb31f40cffb4d1acf7344c\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\f3e1838980ea53879144d6ba426fa8d8e0d4bd57\output\AndroidManifest.xml:26:5-20
+MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\AHSAN\.android\build-cache\8642af0a3bdeba78845a19bc47278bae0ff5df30\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\AHSAN\.android\build-cache\d8e4e2e10755a15cb88154b76fd276d6599b61fc\output\AndroidManifest.xml:26:5-20
+MERGED from [com.google.firebase:firebase-core:10.2.6] C:\Users\AHSAN\.android\build-cache\8534d1e089f9aee9ea8ac000113ad75c54996591\output\AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:24:5-33:19
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\.android\build-cache\83080b9224c85f85b0c28412d6562ec20f374cea\output\AndroidManifest.xml:24:5-28:19
+MERGED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:28:5-49:19
+MERGED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:4:5-7:19
+MERGED from [com.google.android.gms:play-services-tasks:10.2.6] C:\Users\AHSAN\.android\build-cache\98032a134935d122394c1c9766fae227e4ef8461\output\AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.2.6] C:\Users\AHSAN\.android\build-cache\bd5f89a1f9eca0ae4765aa6a8e7cce15517df331\output\AndroidManifest.xml:19:5-21:19
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\AHSAN\.android\build-cache\9f8c5fcb05ab2e8f23717338ed358e67f5226a93\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\AHSAN\.android\build-cache\aeed2afba5b64b13f43b1fbe83d1914d43d24a82\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\AHSAN\.android\build-cache\8edfe70fa9ae136fc808343fb6fa620d2eac2347\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\AHSAN\.android\build-cache\b870c5d5a3d39758a8245aff836f05f1d8dae396\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\AHSAN\.android\build-cache\ed93a8bfd4ebd9f00366c2d01250c2503c2bc425\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\AHSAN\.android\build-cache\8e2e4a0555cd1bfaaf5eaf342595f2f9c2b16bfb\output\AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:12:9-41
+	android:supportsRtl
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:13:9-35
+	android:allowBackup
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:10:9-35
+	android:icon
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:11:9-45
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:14:9-40
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:9:9-68
+activity#com.example.nln.nedroid.MainActivity
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:15:9-24:20
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:17:13-45
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:18:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:16:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:19:13-23:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:22:27-74
+activity#com.example.nln.nedroid.Login
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:25:9-28:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:27:13-57
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:28:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:26:13-34
+activity#com.example.nln.nedroid.PageOne.LoginOne
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:29:9-32:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:31:13-61
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:32:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:30:13-45
+activity#com.example.nln.nedroid.PageOne.FirstNav
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:33:9-36:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:35:13-61
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:36:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:34:13-45
+activity#com.example.nln.nedroid.Try
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:37:9-40:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:39:13-55
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:40:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:38:13-32
+activity#com.example.nln.nedroid.NewsAndEvents.NandEDescription
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:41:9-44:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:43:13-69
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:44:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:42:13-59
+activity#com.example.nln.nedroid.NewsAndEvents.NandECreate
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:45:9-48:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:47:13-64
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:48:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:46:13-54
+activity#com.example.nln.nedroid.Forum.AllQuestion
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:49:9-52:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:51:13-64
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:52:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:50:13-46
+activity#com.example.nln.nedroid.Forum.PostQuestion
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:53:9-56:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:55:13-65
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:56:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:54:13-47
+activity#com.example.nln.nedroid.Forum.QuestionAndAnswer
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:57:9-60:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:59:13-71
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:60:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:58:13-52
+activity#com.example.nln.nedroid.NavigationMenu.Attendance1
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:61:9-64:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:63:13-63
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:64:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:62:13-55
+activity#com.example.nln.nedroid.NavigationMenu.Profile
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:65:9-68:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:67:13-59
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:68:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:66:13-51
+activity#com.example.nln.nedroid.PageTwo.SsecondNav
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:69:9-72:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:71:13-63
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:72:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:70:13-47
+activity#com.example.nln.nedroid.PDF
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:73:9-76:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:75:13-55
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:76:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:74:13-32
+activity#com.example.nln.nedroid.SettingsActivity
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:77:9-79:63
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:79:13-60
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:78:13-45
+activity#com.example.nln.nedroid.Notification.NotificationNav
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:80:9-83:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:82:13-68
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:83:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:81:13-57
+activity#com.example.nln.nedroid.Setting1
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:84:9-87:68
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:86:13-60
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:87:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:85:13-37
+activity#com.example.nln.nedroid.PageOne.Teacher_FirstNav
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:88:9-91:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:90:13-61
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:91:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:89:13-53
+activity#com.example.nln.nedroid.Attendance.Attendance1
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:92:9-95:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:94:13-63
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:95:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:93:13-51
+activity#com.example.nln.nedroid.Nav_AttendOne
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:96:9-99:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:98:13-67
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:99:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:97:13-42
+activity#com.example.nln.nedroid.Nav_AttendThree
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:100:9-103:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:102:13-69
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:103:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:101:13-44
+activity#com.example.nln.nedroid.Nav_AttendTwo
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:104:9-107:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:106:13-67
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:107:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:105:13-42
+activity#com.example.nln.nedroid.Graph.SingleSectionGraph
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:108:9-111:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:110:13-72
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:111:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:109:13-53
+activity#com.example.nln.nedroid.Profile
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:113:9-116:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:115:13-59
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:116:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:114:13-36
+activity#com.example.nln.nedroid.Nav_AttendThree_pdf
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:118:9-121:59
+	android:label
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:120:13-43
+	android:theme
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:121:13-56
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:119:13-48
+uses-sdk
+INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:multidex:1.0.1] C:\Users\AHSAN\.android\build-cache\3e2589ec00ee28e0607a6d1d5a94a50524134db8\output\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:design:25.3.1] C:\Users\AHSAN\.android\build-cache\2a5d29a073be063d3f784a0c24e4efcb3e138644\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\7a9423174cab790f3d02c3ad0f9b56c926a4c945\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\AHSAN\.android\build-cache\1660ed741ed43899bc1478b2b2df85c3e1cbed85\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\32998b105e751ff91ea3062bae456567f8b1f5c0\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\AHSAN\.android\build-cache\5c7545edcd45cb571abb31f40cffb4d1acf7344c\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\f3e1838980ea53879144d6ba426fa8d8e0d4bd57\output\AndroidManifest.xml:20:5-43
+MERGED from [de.hdodenhof:circleimageview:1.3.0] C:\Users\AHSAN\.android\build-cache\8642af0a3bdeba78845a19bc47278bae0ff5df30\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.barteksc:android-pdf-viewer:2.3.0] C:\Users\AHSAN\.android\build-cache\24884141dfe9ed726a32677d6bd132dbd6abb00f\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.barteksc:pdfium-android:1.5.0] C:\Users\AHSAN\.android\build-cache\a092cb60f343ceef8b8be01f86e7348288bc6ae3\output\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\AHSAN\.android\build-cache\d8e4e2e10755a15cb88154b76fd276d6599b61fc\output\AndroidManifest.xml:20:5-43
+MERGED from [com.google.firebase:firebase-core:10.2.6] C:\Users\AHSAN\.android\build-cache\8534d1e089f9aee9ea8ac000113ad75c54996591\output\AndroidManifest.xml:4:5-43
+MERGED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\.android\build-cache\83080b9224c85f85b0c28412d6562ec20f374cea\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:17:5-43
+MERGED from [com.google.firebase:firebase-database:10.2.6] C:\Users\AHSAN\.android\build-cache\ec4a3a523cdf00533a50b04ebad3e967a19577c0\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-database-connection:10.2.6] C:\Users\AHSAN\.android\build-cache\f4a4662c71651015ef91ccca1cdd917c9812c5ab\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-tasks:10.2.6] C:\Users\AHSAN\.android\build-cache\98032a134935d122394c1c9766fae227e4ef8461\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:10.2.6] C:\Users\AHSAN\.android\build-cache\bd5f89a1f9eca0ae4765aa6a8e7cce15517df331\output\AndroidManifest.xml:17:5-43
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\AHSAN\.android\build-cache\9f8c5fcb05ab2e8f23717338ed358e67f5226a93\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\AHSAN\.android\build-cache\aeed2afba5b64b13f43b1fbe83d1914d43d24a82\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\AHSAN\.android\build-cache\8edfe70fa9ae136fc808343fb6fa620d2eac2347\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\AHSAN\.android\build-cache\b870c5d5a3d39758a8245aff836f05f1d8dae396\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\AHSAN\.android\build-cache\ed93a8bfd4ebd9f00366c2d01250c2503c2bc425\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\AHSAN\.android\build-cache\8e2e4a0555cd1bfaaf5eaf342595f2f9c2b16bfb\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] C:\Users\AHSAN\.android\build-cache\2a5d29a073be063d3f784a0c24e4efcb3e138644\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\AHSAN\.android\build-cache\2a5d29a073be063d3f784a0c24e4efcb3e138644\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\7a9423174cab790f3d02c3ad0f9b56c926a4c945\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\AHSAN\.android\build-cache\1660ed741ed43899bc1478b2b2df85c3e1cbed85\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\32998b105e751ff91ea3062bae456567f8b1f5c0\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\AHSAN\.android\build-cache\5c7545edcd45cb571abb31f40cffb4d1acf7344c\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\f3e1838980ea53879144d6ba426fa8d8e0d4bd57\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\AHSAN\.android\build-cache\d8e4e2e10755a15cb88154b76fd276d6599b61fc\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\AHSAN\.android\build-cache\9f8c5fcb05ab2e8f23717338ed358e67f5226a93\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\AHSAN\.android\build-cache\aeed2afba5b64b13f43b1fbe83d1914d43d24a82\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\AHSAN\.android\build-cache\8edfe70fa9ae136fc808343fb6fa620d2eac2347\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\AHSAN\.android\build-cache\b870c5d5a3d39758a8245aff836f05f1d8dae396\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\AHSAN\.android\build-cache\ed93a8bfd4ebd9f00366c2d01250c2503c2bc425\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\AHSAN\.android\build-cache\8e2e4a0555cd1bfaaf5eaf342595f2f9c2b16bfb\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] C:\Users\AHSAN\.android\build-cache\2a5d29a073be063d3f784a0c24e4efcb3e138644\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] C:\Users\AHSAN\.android\build-cache\2a5d29a073be063d3f784a0c24e4efcb3e138644\output\AndroidManifest.xml:26:9-47
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\.android\build-cache\83080b9224c85f85b0c28412d6562ec20f374cea\output\AndroidManifest.xml:21:5-78
+MERGED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:21:22-76
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\.android\build-cache\83080b9224c85f85b0c28412d6562ec20f374cea\output\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:21:5-67
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:22:22-65
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:25:7-26:18
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\.android\build-cache\83080b9224c85f85b0c28412d6562ec20f374cea\output\AndroidManifest.xml:25:7-26:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:25:90-112
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:25:113-137
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:25:17-89
+receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
+ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:27:7-31:18
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:27:162-184
+	android:permission
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:27:105-161
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:27:17-104
+intent-filter#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:28:11-30:27
+action#com.android.vending.INSTALL_REFERRER
+ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:29:15-76
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:29:23-74
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:32:7-137
+MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\.android\build-cache\83080b9224c85f85b0c28412d6562ec20f374cea\output\AndroidManifest.xml:27:7-137
+	android:enabled
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:32:88-110
+	android:exported
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:32:111-135
+	android:name
+		ADDED from [com.google.firebase:firebase-analytics:10.2.6] C:\Users\AHSAN\.android\build-cache\7b586357e7994d7130b703c63f19f407254138e5\output\AndroidManifest.xml:32:16-87
+uses-permission#com.google.android.c2dm.permission.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:22:5-81
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:22:22-79
+permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:24:5-109
+	android:protectionLevel
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:24:72-107
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:24:17-71
+uses-permission#${applicationId}.permission.C2D_MESSAGE
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:26:5-78
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:26:22-76
+receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:30:9-35:20
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:30:85-108
+	android:permission
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:30:109-169
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:30:19-84
+intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:31:13-34:29
+action#com.google.android.c2dm.intent.RECEIVE
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:32:17-80
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:32:25-78
+category#${applicationId}
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:33:17-60
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:33:27-58
+receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:39:9-119
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:39:93-117
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:39:19-92
+service#com.google.firebase.iid.FirebaseInstanceIdService
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:43:9-47:19
+	android:exported
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:43:83-106
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:43:18-82
+intent-filter#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:44:13-46:29
+	android:priority
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:44:28-51
+action#com.google.firebase.INSTANCE_ID_EVENT
+ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:45:17-79
+	android:name
+		ADDED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:45:25-77
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:6:9-194
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:6:19-78
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:6:144-168
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:6:169-192
+	android:name
+		ADDED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:6:79-143
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.2.6] C:\Users\AHSAN\.android\build-cache\bd5f89a1f9eca0ae4765aa6a8e7cce15517df331\output\AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.2.6] C:\Users\AHSAN\.android\build-cache\bd5f89a1f9eca0ae4765aa6a8e7cce15517df331\output\AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.2.6] C:\Users\AHSAN\.android\build-cache\bd5f89a1f9eca0ae4765aa6a8e7cce15517df331\output\AndroidManifest.xml:20:20-65

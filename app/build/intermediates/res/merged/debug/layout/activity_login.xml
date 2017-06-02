@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.nln.nedroid.Login"
+    android:background="@drawable/login1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="WELCOME"-->
+            <!--android:textSize="50dp"-->
+            <!--android:textStyle="bold"-->
+            <!--android:layout_marginTop="88dp"-->
+            <!--android:textColor="#FFFF"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerHorizontal="true" />-->
+
+
+        <!--android:focusable="false"/>-->
+        <!--android:onClick="clearpass"-->
+        <!--android:background="@android:drawable/edit_text"-->
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign In"
+            android:id="@+id/button_login"
+            android:background="@color/buttonSubject"
+            android:textColor="#FFFFFF"
+            android:onClick="onButtonClickLogin"
+            android:backgroundTintMode="src_over"
+            android:layout_below="@+id/checkBox"
+            android:layout_alignLeft="@+id/checkBox"
+            android:layout_alignStart="@+id/checkBox"
+            android:layout_alignRight="@+id/checkBox"
+            android:layout_alignEnd="@+id/checkBox"
+            android:layout_marginTop="20dp" />
+        <!--android:background="#0c89be"-->
+
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:paddingTop="10dp"
+            android:paddingStart="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Keep me Signed In"
+            android:id="@+id/checkBox"
+            app:buttonTint="@color/buttonSubject"
+            android:textColor="#FFFF"
+            android:checked="true"
+            android:layout_below="@+id/editText_pass_login"
+            android:layout_alignRight="@+id/editText_pass_login"
+            android:layout_alignEnd="@+id/editText_pass_login"
+            android:layout_alignLeft="@+id/editText_pass_login"
+            android:layout_alignStart="@+id/editText_pass_login"
+            />
+
+        <EditText
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:id="@+id/editText_pass_login"
+            android:textColor="#FFFF"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
+            android:hint="Password"
+            android:textColorHint="#9E9E9E"
+            android:layout_below="@+id/editText_name_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp" />
+
+        <EditText
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText_name_login"
+            android:textColor="#FFFF"
+
+            android:imeOptions="actionNext"
+            android:singleLine="true"
+            android:hint="user ID"
+            android:textColorHint="#9E9E9E"
+            android:layout_marginTop="248dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

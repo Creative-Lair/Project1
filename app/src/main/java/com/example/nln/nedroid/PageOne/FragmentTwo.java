@@ -10,29 +10,37 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nln.nedroid.PageTwo.SsecondNav;
 import com.example.nln.nedroid.R;
+import com.example.nln.nedroid.Session;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 import static com.example.nln.nedroid.R.layout.listview_pageone_f2;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentTwo extends Fragment {
+public class FragmentTwo extends Fragment implements AdapterView.OnItemClickListener{
 
-    View v;
-    ListView listView;
-    ArrayAdapter adapter;
-    String[] Subject = {
-            "[CODE: xxxx]   Subject 1",
-            "[CODE: xxxx]   Subject 2",
-            "[CODE: xxxx]   Subject 3",
-            "[CODE: xxxx]   Subject 4",
-            "[CODE: xxxx]   Subject 5",
-            "[CODE: xxxx]   Subject 6"
-    };
+    private View v;
+    private ListView listView;
+    private ArrayAdapter adapter;
+    private Session session;
+    private ArrayList<String> Subject;
+    private TextView tv;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference subjectRef;
 
     public FragmentTwo() {
         // Required empty public constructor
@@ -44,31 +52,61 @@ public class FragmentTwo extends Fragment {
 
         v = inflater.inflate(R.layout.fragment_fragment_two2, container, false);
 
-        adapter = new ArrayAdapter<String>(getActivity(), listview_pageone_f2, Subject);
+        session = new Session(getContext());
+        Subject = new ArrayList<>();
+
+        tv = (TextView) v.findViewById(R.id.textView_sem);
+
+        tv.setText("Semester " + session.getSemester());
+
+        adapter = new ArrayAdapter<>(getActivity(), listview_pageone_f2, Subject);
         final ListView listView = (ListView) v.findViewById(R.id.ListView_FragTwoSubject);
         listView.setAdapter(adapter);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        subjectRef = firebaseDatabase.getReference().child("Subjects");
+
+        subjectRef.child("Semester" + session.getSemester()).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-                // TODO Auto-generated method stub
-//                String value = (String)arg0.getItemAtPosition(arg2);
-                int position = arg2;
-                String selectedFromList = (String) listView.getItemAtPosition(position);
-                Toast.makeText(getActivity(), "Clicked on \"" + selectedFromList + "\"", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity(), SsecondNav.class);
-                startActivity(i);
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Toast.makeText(getContext(),"" + dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
+
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                for (DataSnapshot child: children) {
+                    System.out.println(child.getKey() + " " + child.getValue());
+                    String n = child.getKey() + " " + child.getValue();
+                    Subject.add(n);
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
+
+
+        listView.setOnItemClickListener(this);
 
         return v;
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if(isRemoving()){
-            // onBackPressed()
-        }
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String n = Subject.get(position);
+
+        String[] words = n.split(" ");
+
+        session.setSubjectCode(words[0]);
+        session.setSubjectName(words[1]);
+
+        Intent i = new Intent(getContext(), SsecondNav.class);
+        startActivity(i);
+
+
     }
 }
+
+

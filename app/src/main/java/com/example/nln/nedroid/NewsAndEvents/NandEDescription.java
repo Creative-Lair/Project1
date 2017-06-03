@@ -2,10 +2,13 @@ package com.example.nln.nedroid.NewsAndEvents;
 
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -37,6 +40,7 @@ public class NandEDescription extends AppCompatActivity {
 
     private LinearLayout layout;
     private LinearLayout.LayoutParams layoutParams;
+    private ActionBar actionbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,11 @@ public class NandEDescription extends AppCompatActivity {
         setContentView(R.layout.activity_nand_description);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        actionbar = getSupportActionBar();
+        actionbar.setHomeButtonEnabled(true);
+        actionbar.setDisplayHomeAsUpEnabled(true);
+
 
 
         EventDescription = (TextView) findViewById(R.id.textView_EventDescription);
@@ -94,17 +103,33 @@ public class NandEDescription extends AppCompatActivity {
 
     public void loadImages(ArrayList<String> photos){
         for (int i = 1; i < photos.size(); i++) {
-           // layoutParams.setMargins(20, 20, 20, 20);
-           // layoutParams.gravity = Gravity.CENTER;
+            layoutParams.setMargins(10, 10, 10, 10);
             ImageView imageView = new ImageView(this);
             Glide.with(imageView.getContext())
                     .load(photos.get(i))
                     .into(imageView);
             imageView.setLayoutParams(layoutParams);
+            imageView.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
+            imageView.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
             layout.addView(imageView);
 
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id){
+            case android.R.id.home:
+                finish();
+                break;
+        }
+
+
+
+        return true;
+    }
 }

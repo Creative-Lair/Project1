@@ -6,13 +6,14 @@ package com.example.nln.nedroid.Assigment;
 public class Assg {
 
     private String name;
-    private int thumbnail;
+    private String url;
 
     public Assg() {
     }
 
-    public Assg(String name) {
+    public Assg(String name, String url) {
         this.name = name;
+        this.url = url;
     }
 
     public String getName() {
@@ -23,8 +24,11 @@ public class Assg {
         this.name = name;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public String getUrl() {
+        return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

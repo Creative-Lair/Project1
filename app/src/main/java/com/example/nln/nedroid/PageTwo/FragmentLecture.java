@@ -2,6 +2,7 @@ package com.example.nln.nedroid.PageTwo;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,6 +19,12 @@ import com.example.nln.nedroid.Lecture.Lect;
 import com.example.nln.nedroid.Lecture.LectAdaptor;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.R;
+import com.example.nln.nedroid.Session;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +38,11 @@ public class FragmentLecture extends Fragment implements ItemClickListener {
     private LectAdaptor adapter;
     private List<Lect> LectList;
     private RecyclerView.LayoutManager lLayoutManager;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference lectureRef;
+
+    private Session session;
 
     public FragmentLecture() {
         // Required empty public constructor
@@ -49,6 +61,11 @@ public class FragmentLecture extends Fragment implements ItemClickListener {
 
         LectrecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_lect);
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        lectureRef = firebaseDatabase.getReference().child("Lectures");
+
+
+        session = new Session(getContext());
         LectList = new ArrayList<>();
         adapter = new LectAdaptor(this, LectList);
 
@@ -59,82 +76,58 @@ public class FragmentLecture extends Fragment implements ItemClickListener {
 
         adapter.setClickListener(this);
 
-        prepareAlbums();
+        lectureRef.child(session.getSubjectCode()).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Lect lect = dataSnapshot.getValue(Lect.class);
+                LectList.add(lect);
+
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         return v;
     }
 
 
-    /**
-     * Adding few albums for testing
-     */
-    private void prepareAlbums() {
-
-        Lect a = new Lect("Lecture 1");
-        LectList.add(a);
-
-        int i;
-        for (i = 2; i < 16; i++) {
-            a = new Lect(" Lecture " + i);
-            LectList.add(a);
-        }
-
-        a = new Lect(" I dont know what Im doing :D ");
-        LectList.add(a);
-
-        a = new Lect(" Okay these Blue Bulbs... Dont know what to write.. :P xD ");
-        LectList.add(a);
-
-        a = new Lect("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-        LectList.add(a);
-
-        a = new Lect("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-        LectList.add(a);
-
-        a = new Lect(" I dont know what Im doing :D ");
-        LectList.add(a);
-
-        a = new Lect(" Okay these Blue Bulbs... Dont know what to write.. :P xD ");
-        LectList.add(a);
-
-        a = new Lect("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-        LectList.add(a);
-
-        a = new Lect("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-        LectList.add(a);
-
-        a = new Lect(" I dont know what Im doing :D ");
-        LectList.add(a);
-
-        a = new Lect(" Okay these Blue Bulbs... Dont know what to write.. :P xD ");
-        LectList.add(a);
-
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if (isRemoving()) {
-            // onBackPressed()
-        }
-    }
-
     @Override
     public void onClick(View view, int position) {
 
-        final Lect city = LectList.get(position);
-//        Intent i = new Intent(this, CityviewActivity.class);
-        Log.i("hello", city.getName());
+        final Lect lect = LectList.get(position);
+
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(lect.getUrl())));
+
+
 
 //        Toast.makeText(getActivity(), " Lecture clicked item at position " + position, Toast.LENGTH_LONG).show();
-        Toast.makeText(getActivity(), city.getName() + "\nPosition is =  " + (position + 1), Toast.LENGTH_LONG).show();
+//        Toast.makeText(getActivity(), city.getName() + "\nPosition is =  " + (position + 1), Toast.LENGTH_LONG).show();
 //        startActivity(i);
 
 
 //    ----------This is to OPEN PDF FILES ONLY i.e. Interacting with other apps as well---------
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("application/pdf");
-        startActivity(intent);
+//        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+//        intent.setType("application/pdf");
+//        startActivity(intent);
 
 //    ----------This is to Drive from CHROME i.e. Interacting with other apps as well---------
 //        Uri webpage = Uri.parse("https://drive.google.com/drive/my-drive");

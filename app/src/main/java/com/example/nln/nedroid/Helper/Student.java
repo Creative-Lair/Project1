@@ -8,7 +8,15 @@ public class Student {
 
     private String password;
     private String name;
+    private long semester;
 
+    public long getSemester() {
+        return semester;
+    }
+
+    public void setSemester(long semester) {
+        this.semester = semester;
+    }
 
     public String getPassword() {
         return password;

@@ -76,6 +76,7 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
             case R.id.addimage:
 
                 Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                i.setType("image/*");
                 startActivityForResult(i, ACTIVITY_SELECT_IMAGE);
 
                 break;

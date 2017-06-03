@@ -58,63 +58,10 @@ public class FragmentResult extends Fragment implements ItemClickListener {
 
         adapter.setClickListener(this);
 
-        prepareAlbums();
         return v;
     }
 
-
-    /**
-     * Adding few albums for testing
-     */
-    private void prepareAlbums() {
-
-        Result a = new Result("Result of Test 1");
-        albumList.add(a);
-
-        int i;
-        for ( i = 2; i < 11; i++ )
-        {
-            a = new Result("Result of Test " + i);
-            albumList.add(a);
-        }
-
-
-//        a = new Result(" I dont know what Im doing :D ");
-//        albumList.add(a);
-//
-//        a = new Result(" Okay these Blue Bulbs... Dont know what to write.. :P xD ");
-//        albumList.add(a);
-//
-//        a = new Result("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-//        albumList.add(a);
-//
-//        a = new Result("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-//        albumList.add(a);
-//
-//        a = new Result(" I dont know what Im doing :D ");
-//        albumList.add(a);
-//
-//        a = new Result(" Okay these Blue Bulbs... Dont know what to write.. :P xD ");
-//        albumList.add(a);
-//
-//        a = new Result("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-//        albumList.add(a);
-//
-//        a = new Result("Okay mission accomplished :) Now have to set the size of picture and position of picture ... ");
-//        albumList.add(a);
-
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if(isRemoving()){
-            // onBackPressed()
-        }
-    }
-
-    @Override
+  @Override
     public void onClick(View view, int position) {
 
         final Result city = albumList.get(position);

@@ -10,14 +10,14 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Text Books"
         android:id="@+id/textView3"
-        android:layout_marginTop="45dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:textSize="40dp"
+        android:paddingLeft="5dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:paddingLeft="5dp"/>
+        android:layout_alignParentStart="true" />
 
     <FrameLayout
         android:layout_width="2in"

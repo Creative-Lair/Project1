@@ -6,13 +6,14 @@ package com.example.nln.nedroid.Result;
 public class Result {
 
     private String name;
-    private int thumbnail;
+    private String url;
 
     public Result() {
     }
 
-    public Result(String name) {
+    public Result(String name, String url) {
         this.name = name;
+        this.url = url;
     }
 
     public String getName() {
@@ -23,4 +24,11 @@ public class Result {
         this.name = name;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

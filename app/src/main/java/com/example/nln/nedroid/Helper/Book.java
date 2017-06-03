@@ -10,6 +10,10 @@ public class Book {
     String url;
     String type;
 
+    public Book(){
+
+    }
+
     public Book(String name, String url, String type) {
         this.name = name;
         this.url = url;

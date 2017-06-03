@@ -64,8 +64,8 @@ public class LectAdaptor extends RecyclerView.Adapter<LectAdaptor.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        Lect album = LectList.get(position);
-        holder.title.setText(album.getName());
+        Lect lecture = LectList.get(position);
+        holder.title.setText(lecture.getName());
 
         // loading album cover using Glide library
 //        Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);

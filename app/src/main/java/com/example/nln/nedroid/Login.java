@@ -58,6 +58,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setSupportActionBar(toolbar);
         setTitle("Login");
         ok.setOnClickListener(this);
+
+        if(session.getLogin()){
+            if(session.getUserId().charAt(0)=='s'){
+                Intent i = new Intent(this, FirstNav.class);
+                startActivity(i);
+                finish();
+
+            }
+        }
+
     }
 
     @Override
@@ -82,6 +92,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 session.setLogin(true);
                                 session.setUserId(username);
                                 session.setUsername(student.getName());
+                                session.setSemester(student.getSemester());
                                 Intent i = new Intent(Login.this, FirstNav.class);
                                 startActivity(i);
                                 finish();

@@ -16,6 +16,9 @@ public class Session {
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PHOTO = "user_photo";
     private static final String KEY_NEWS_ID = "newsid";
+    private static final String KEY_SEMESTER = "semester";
+    private static final String KEY_SUBJECT_CODE = "subject_code";
+    private static final String KEY_SUBJECT_NAME = "subject_name";
 
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
@@ -80,6 +83,32 @@ public class Session {
 
     public String getNewsId(){
         return pref.getString(KEY_NEWS_ID, "-1");
+    }
+
+    public void setSemester(long s){
+        editor.putLong(KEY_SEMESTER, s);
+        editor.commit();
+    }
+
+    public long getSemester(){
+        return pref.getLong(KEY_SEMESTER, -1);
+    }
+
+    public void setSubjectCode(String n){
+        editor.putString(KEY_SUBJECT_CODE, n);
+        editor.commit();
+    }
+    public String getSubjectCode(){
+        return pref.getString(KEY_SUBJECT_CODE, "0000");
+    }
+
+    public String getSubjectName(){
+        return pref.getString(KEY_SUBJECT_NAME, "subject name");
+    }
+
+    public void setSubjectName(String name){
+        editor.putString(KEY_SUBJECT_NAME, name);
+        editor.commit();
     }
 
 }

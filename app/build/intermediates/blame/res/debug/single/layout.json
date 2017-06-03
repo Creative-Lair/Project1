@@ -172,6 +172,10 @@
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
+        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\booklayout.xml",
+        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\booklayout.xml"
+    },
+    {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_nav__attend_three.xml",
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\activity_nav__attend_three.xml"
     },

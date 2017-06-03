@@ -109,14 +109,14 @@
             </ScrollView>
 
             <ImageView
+                android:id="@+id/image1"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:id="@+id/image1"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_marginLeft="100dp"
                 android:layout_marginRight="10dp"
-                tools:ignore="ContentDescription,RtlHardcoded"
-                android:src="@drawable/fr_five"/>
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/fr_five"
+                tools:ignore="ContentDescription,RtlHardcoded" />
 
         </LinearLayout>
 
@@ -147,49 +147,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/imageContainer"
                     android:orientation="horizontal"
                     android:layout_marginTop="10dp"
                     tools:ignore="ScrollViewSize">
 
-                    <ImageView
-                        android:id="@+id/image2"
-                        android:layout_width="90dp"
-                        android:layout_height="90dp"
-                        android:contentDescription=""
-                        tools:ignore="ContentDescription"
-                        android:src="@drawable/fr_five"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:clickable="true"
-                        android:onClick="onClick" />
 
-                    <ImageView
-                        android:id="@+id/image3"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        tools:ignore="ContentDescription"
-                        android:src="@drawable/fr_one"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:onClick="onClick" />
-
-                    <ImageView
-                        android:id="@+id/image4"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        tools:ignore="ContentDescription"
-                        android:src="@drawable/fr_four"
-                        android:paddingLeft="2dp"
-                        android:paddingRight="2dp"
-                        android:onClick="onClick" />
-
-                    <ImageView
-                        android:id="@+id/image5"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        tools:ignore="ContentDescription"
-                        android:src="@drawable/fr_zero"
-                        android:onClick="onClick" />
 
                 </LinearLayout>
 

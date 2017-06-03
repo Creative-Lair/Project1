@@ -4,6 +4,7 @@ package com.example.nln.nedroid.PageOne;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -22,6 +23,12 @@ import com.example.nln.nedroid.NewsAndEvents.NandEDescription;
 import com.example.nln.nedroid.NewsAndEvents.News;
 import com.example.nln.nedroid.NewsAndEvents.NewsAdapter;
 import com.example.nln.nedroid.R;
+import com.example.nln.nedroid.Session;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +36,19 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FragmentOne extends android.support.v4.app.Fragment implements ItemClickListener {
+public class FragmentOne extends android.support.v4.app.Fragment implements ItemClickListener , View.OnClickListener{
 
     private RecyclerView recyclerView;
     private NewsAdapter adapter;
-    private List<News> albumList;
+    private List<News> newsList;
     private RecyclerView.LayoutManager mLayoutManager;
+
+    //Firebase objects
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference newsref;
+
+    private Session session;
 
     public FragmentOne() {
         // Required empty public constructor
@@ -42,12 +56,48 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
-    /**
-     * Converting dp to pixel
-     */
+        super.onCreate(savedInstanceState);
+
+        //Firebase object initialization
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        newsref = firebaseDatabase.getReference().child("News");
+        session = new Session(getContext());
+
+
+        //Get all events from firebase
+        newsref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                News news = dataSnapshot.getValue(News.class);
+                news.setId(dataSnapshot.getKey());
+                newsList.add(news);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+    }
 
     private int dpToPx(int dp) {
         Resources r = getResources();
@@ -58,120 +108,50 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
 
-        // Inflate the layout for this fragment
-//        View  v=  inflater.inflate(R.layout.fragment_fragment_one, container, true);
         View v = inflater.inflate(R.layout.fragment_fragment_one2, container, false);
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast pass = Toast.makeText(getActivity(), "Clicked on Fab...", Toast.LENGTH_SHORT);
-                pass.show();
-                Intent i = new Intent(getActivity(), NandECreate.class);
-                startActivity(i);
-            }
-        });
+        fab.setOnClickListener(this);
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
 
-        albumList = new ArrayList<>();
-        adapter = new NewsAdapter(this, albumList);
+        newsList = new ArrayList<>();
+        adapter = new NewsAdapter(this, newsList);
 
         mLayoutManager = new GridLayoutManager(getActivity(), 1);
-//        mCurrentLayoutManagerType = LayoutManagerType.GRID_LAYOUT_MANAGER;
         recyclerView.setLayoutManager(mLayoutManager);
-//        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
 
         adapter.setClickListener(this);
 
-        prepareAlbums();
-
         return v;
-    }
-
-
-    /**
-     * Adding few albums for testing
-     */
-    private void prepareAlbums() {
-        int[] covers = new int[]{
-
-                // ADD PICTURES IN CARD
-                R.drawable.fr_zero,
-                R.drawable.fr_one,
-                R.drawable.fr_two,
-                R.drawable.fr_three,
-                R.drawable.fr_four,
-                R.drawable.fr_five,
-                R.drawable.fr_six,
-        };
-
-        int[] profile = new int[]{
-
-                // ADD PICTURES IN CARD
-                R.drawable.fr_zero,
-                R.drawable.fr_one,
-                R.drawable.fr_two,
-                R.drawable.fr_three,
-                R.drawable.fr_four,
-                R.drawable.fr_five,
-                R.drawable.fr_six,
-        };
-
-
-        News a = new News(profile[5], "Name ",
-                "Short Description of Event, Limited to THREE LINES Press to see further Details         ...  Short Description of Event...  Short Description of Event...  Short Description of Event...  ",
-                covers[6]);
-        albumList.add(a);
-
-        a = new News(profile[2], "Name ",
-                "Short Description of Event, Limited to THREE LINES Press to see further Details         ...  Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  ",
-                covers[0]);
-        albumList.add(a);
-
-        a = new News(profile[3], "Name ",
-                "Short Description of Event, Limited to THREE LINES Press to see further Details         ...  Short Description of Event...  Short Description of Event...  Short Description of Event...  ",
-                covers[1]);
-        albumList.add(a);
-
-        a = new News(profile[4], "Name ",
-                "Short Description of Event, Limited to THREE LINES Press to see further Details         ", covers[2]);
-        albumList.add(a);
-
-        a = new News(profile[5], "Name ",
-                "Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  " +
-                "Descrition", covers[3]);
-        albumList.add(a);
-
-
-        a = new News(profile[6], "Name ",
-                "Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  Short Description of Event...  ",
-                covers[5]);
-        albumList.add(a);
-
-        adapter.notifyDataSetChanged();
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        if(isRemoving()){
-            // onBackPressed()
-        }
     }
 
 
     @Override
     public void onClick(View view, int position) {
-//        final News city = albumList.get(position);
-//        Log.i("hello", city.getName());
-//        Toast.makeText(getActivity(), city.getName(), Toast.LENGTH_SHORT).show();// To show the text on toast
+
+        News news = newsList.get(position);
+
+        session.setNewsId(news.getId());
 
         Intent i = new Intent(getActivity(), NandEDescription.class);
         startActivity(i);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+
+        switch (id){
+            case R.id.fab:
+
+                Intent i = new Intent(getActivity(), NandECreate.class);
+                startActivity(i);
+
+                break;
+        }
     }
 }

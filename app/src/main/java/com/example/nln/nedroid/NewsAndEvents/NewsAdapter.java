@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.PageOne.FragmentOne;
 import com.example.nln.nedroid.R;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     private FragmentOne mContext;
     private List<News> albumList;
     private ItemClickListener clickListener;
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView title;
@@ -64,8 +67,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                clickListener.onClick(v, MyViewHolder.getPosition());
+            public void onClick(View v) {clickListener.onClick(v, MyViewHolder.getPosition());
 //                Toast.makeText(mContext, " Just cliked item at position " + MyViewHolder.getPosition(), Toast.LENGTH_LONG).show();
             }
         });
@@ -75,12 +77,17 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        News album = albumList.get(position);
-        holder.title.setText(album.getName());
-        holder.name1.setText(album.getName1());
-        // loading album cover using Glide library
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.pic1);
+        News news = albumList.get(position);
+
+        holder.title.setText(news.getTitle());
+        holder.name1.setText(news.getUsername());
+        Glide.with(holder.thumbnail.getContext())
+                .load(news.getCoverPhoto())
+                .into(holder.thumbnail);
+        Glide.with(holder.pic1.getContext())
+                .load(news.getPhoto_user())
+                .into(holder.pic1);
+
     }
 
     @Override

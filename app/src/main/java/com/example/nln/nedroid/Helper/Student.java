@@ -7,15 +7,8 @@ package com.example.nln.nedroid.Helper;
 public class Student {
 
     private String password;
-    private String Id;
+    private String name;
 
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
 
     public String getPassword() {
         return password;
@@ -25,9 +18,17 @@ public class Student {
         this.password = password;
     }
 
-    public Student(String password,String Id) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String username) {
+        this.name = username;
+    }
+
+    public Student(String password, String name) {
         this.password = password;
-        this.Id = Id;
+        this.name = name;
     }
 
     public Student() {}

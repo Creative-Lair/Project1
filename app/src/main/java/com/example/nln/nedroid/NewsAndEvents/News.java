@@ -1,48 +1,99 @@
 package com.example.nln.nedroid.NewsAndEvents;
 
+import java.util.ArrayList;
+
 /**
  * Created by NLN on 8/1/2016.
  */
 public class News {
 
-    private String name1;
-    private int pic1;
-    private String name;
-    private int thumbnail;
+    private String title;
+    private String description;
+    private String username;
+    private String photo_user;
+    private String coverPhoto;
+    private boolean verify;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public News(String title, String description, String username, String photo_user, String coverPhoto, boolean verify, ArrayList<String> photos) {
+        this.title = title;
+        this.description = description;
+        this.username = username;
+        this.photo_user = photo_user;
+        this.coverPhoto = coverPhoto;
+        this.verify = verify;
+        this.photos = photos;
+    }
 
     public News() {
     }
 
-    public News(int pic1, String name1, String name, int thumbnail) {
-//    public News(String name, int thumbnail) {
-        this.pic1 = pic1;
-        this.name1 = name1;
-        this.name = name;
-        this.thumbnail = thumbnail;
+
+    public String getTitle() {
+
+        return title;
     }
 
-    public String getName() {
-        return name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getDescription() {
+        return description;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getName1() {
-        return name1;
+    public boolean isVerify() {
+        return verify;
     }
 
-    public void setName1(String name1) {
-        this.name1 = name1;
+    public void setVerify(boolean verify) {
+        this.verify = verify;
     }
 
-    public int getPic1() {
-        return pic1;
+    public String getUsername() {
+        return username;
     }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhoto_user() {
+        return photo_user;
+    }
+
+    public void setPhoto_user(String photo_user) {
+        this.photo_user = photo_user;
+    }
+
+    public String getCoverPhoto() {
+        return coverPhoto;
+    }
+
+    public void setCoverPhoto(String coverPhoto) {
+        this.coverPhoto = coverPhoto;
+    }
+
+    public ArrayList<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(ArrayList<String> photos) {
+        this.photos = photos;
+    }
+
+    private ArrayList<String> photos;
 
 }

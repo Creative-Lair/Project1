@@ -9,9 +9,14 @@ import android.util.Log;
  */
 
 public class Session {
+
     private static final String PREF_NAME = "NEDroid";
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_USERID = "userid";
+    private static final String KEY_USERNAME = "username";
+    private static final String KEY_PHOTO = "user_photo";
+    private static final String KEY_NEWS_ID = "newsid";
+
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -45,6 +50,36 @@ public class Session {
 
     public String getUserId(){
         return pref.getString(KEY_USERID, null);
+    }
+
+    public void setUsername(String username){
+        editor.putString(KEY_USERNAME,username);
+        editor.commit();
+
+
+    }
+
+    public String getUsername(){
+        return pref.getString(KEY_USERNAME, "Admin");
+    }
+
+    public String getPhoto(){
+        return pref.getString(KEY_PHOTO, "");
+    }
+
+    public void setPhoto(String s){
+        editor.putString(KEY_PHOTO,s);
+        editor.commit();
+    }
+
+    public void setNewsId(String n){
+        editor.putString(KEY_NEWS_ID,n);
+        editor.commit();
+
+    }
+
+    public String getNewsId(){
+        return pref.getString(KEY_NEWS_ID, "-1");
     }
 
 }

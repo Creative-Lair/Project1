@@ -15,6 +15,7 @@ public class Session {
     private static final String KEY_USERID = "userid";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PHOTO = "user_photo";
+    private static final String KEY_NEWS_ID = "newsid";
 
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
@@ -69,6 +70,16 @@ public class Session {
     public void setPhoto(String s){
         editor.putString(KEY_PHOTO,s);
         editor.commit();
+    }
+
+    public void setNewsId(String n){
+        editor.putString(KEY_NEWS_ID,n);
+        editor.commit();
+
+    }
+
+    public String getNewsId(){
+        return pref.getString(KEY_NEWS_ID, "-1");
     }
 
 }

@@ -13,6 +13,15 @@ public class News {
     private String photo_user;
     private String coverPhoto;
     private boolean verify;
+    private String id;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public News(String title, String description, String username, String photo_user, String coverPhoto, boolean verify, ArrayList<String> photos) {
         this.title = title;

@@ -23,6 +23,7 @@ import com.example.nln.nedroid.NewsAndEvents.NandEDescription;
 import com.example.nln.nedroid.NewsAndEvents.News;
 import com.example.nln.nedroid.NewsAndEvents.NewsAdapter;
 import com.example.nln.nedroid.R;
+import com.example.nln.nedroid.Session;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,8 +45,10 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
 
     //Firebase objects
 
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference newsref;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference newsref;
+
+    private Session session;
 
     public FragmentOne() {
         // Required empty public constructor
@@ -59,6 +62,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
         //Firebase object initialization
         firebaseDatabase = FirebaseDatabase.getInstance();
         newsref = firebaseDatabase.getReference().child("News");
+        session = new Session(getContext());
 
 
         //Get all events from firebase
@@ -66,6 +70,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 News news = dataSnapshot.getValue(News.class);
+                news.setId(dataSnapshot.getKey());
                 newsList.add(news);
                 adapter.notifyDataSetChanged();
             }
@@ -126,6 +131,10 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
 
     @Override
     public void onClick(View view, int position) {
+
+        News news = newsList.get(position);
+
+        session.setNewsId(news.getId());
 
         Intent i = new Intent(getActivity(), NandEDescription.class);
         startActivity(i);

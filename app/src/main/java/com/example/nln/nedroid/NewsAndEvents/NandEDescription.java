@@ -1,19 +1,42 @@
 package com.example.nln.nedroid.NewsAndEvents;
 
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.R;
+import com.example.nln.nedroid.Session;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+
+import java.util.ArrayList;
 
 public class NandEDescription extends AppCompatActivity {
 
-    ImageView image2;
-    ImageView image1,image3,image4,image5;
-    TextView EventDescription;
+    private ImageView image1, pic1;
+    private TextView EventDescription, name1, title;
+
+
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference newsRef;
+
+    private Session session;
+
+    private LinearLayout layout;
+    private LinearLayout.LayoutParams layoutParams;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,36 +44,67 @@ public class NandEDescription extends AppCompatActivity {
         setContentView(R.layout.activity_nand_description);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("News and Events");
+
 
         EventDescription = (TextView) findViewById(R.id.textView_EventDescription);
-        EventDescription.setText(
-                "Full Description of the selected Event.. " + "Full Description of the selected Event" +
-                "Full Description of the selected Event.. " + "Full Description of the selected Event" +
-                "Full Description of the selected Event.. " + "Full Description of the selected Event" +
-                "Full Description of the selected Event.. " + "Full Description of the selected Event" +
-                "Full Description of the selected Event.. " + "Full Description of the selected Event" +
-                "Full Description of the selected Event.. " + "Full Description of the selected Event"
-        );
 
-        image2 = (ImageView)findViewById(R.id.image2);
-        image1 = (ImageView)findViewById(R.id.image1);
-        image3 = (ImageView)findViewById(R.id.image3);
-        image4 = (ImageView)findViewById(R.id.image4);
-        image5 = (ImageView)findViewById(R.id.image5);
+        layout = (LinearLayout) findViewById(R.id.imageContainer);
+        layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        image1 = (ImageView) findViewById(R.id.image1);
+        pic1 = (ImageView) findViewById(R.id.pic1);
+        name1 = (TextView) findViewById(R.id.name1);
+        title = (TextView) findViewById(R.id.title);
+
+        session = new Session(this);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        newsRef = firebaseDatabase.getReference().child("News");
+
+        String id = session.getNewsId();
+
+        newsRef.child(id).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                News n = dataSnapshot.getValue(News.class);
+                setTitle(n.getTitle());
+                title.setText(n.getTitle());
+                Glide.with(image1.getContext())
+                        .load(n.getCoverPhoto())
+                        .into(image1);
+                Glide.with(pic1.getContext())
+                        .load(n.getPhoto_user())
+                        .into(pic1);
+                name1.setText(n.getUsername());
+
+                loadImages(n.getPhotos());
+
+                EventDescription.setText(n.getDescription());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
-    public void onClick(View view) {
+    public void loadImages(ArrayList<String> photos){
+        for (int i = 1; i < photos.size(); i++) {
+           // layoutParams.setMargins(20, 20, 20, 20);
+           // layoutParams.gravity = Gravity.CENTER;
+            ImageView imageView = new ImageView(this);
+            Glide.with(imageView.getContext())
+                    .load(photos.get(i))
+                    .into(imageView);
+            imageView.setLayoutParams(layoutParams);
 
-        if( view == image2) {
-            image1.setImageResource(R.drawable.fr_five);
-        } else if( view == image3) {
-            image1.setImageResource(R.drawable.fr_one);
-        } else if( view == image4) {
-            image1.setImageResource(R.drawable.fr_four);
-        } else if( view == image5) {
-            image1.setImageResource(R.drawable.fr_zero);
+            layout.addView(imageView);
+
         }
-
     }
+
 }

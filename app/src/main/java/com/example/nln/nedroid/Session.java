@@ -9,10 +9,12 @@ import android.util.Log;
  */
 
 public class Session {
+
     private static final String PREF_NAME = "NEDroid";
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_USERID = "userid";
     private static final String KEY_USERNAME = "username";
+    private static final String KEY_PHOTO = "user_photo";
 
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
@@ -58,6 +60,15 @@ public class Session {
 
     public String getUsername(){
         return pref.getString(KEY_USERNAME, "Admin");
+    }
+
+    public String getPhoto(){
+        return pref.getString(KEY_PHOTO, "");
+    }
+
+    public void setPhoto(String s){
+        editor.putString(KEY_PHOTO,s);
+        editor.commit();
     }
 
 }

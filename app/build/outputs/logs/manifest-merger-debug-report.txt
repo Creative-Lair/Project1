@@ -285,6 +285,8 @@ MERGED from [com.google.firebase:firebase-analytics-impl:10.2.6] C:\Users\AHSAN\
 MERGED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\build-cache\6242072bfb8f4031a02af1389e1e12fd85c091eb\output\AndroidManifest.xml:17:5-43
 MERGED from [com.google.firebase:firebase-database:10.2.6] C:\Users\AHSAN\.android\build-cache\ec4a3a523cdf00533a50b04ebad3e967a19577c0\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.firebase:firebase-database-connection:10.2.6] C:\Users\AHSAN\.android\build-cache\f4a4662c71651015ef91ccca1cdd917c9812c5ab\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-storage:10.2.6] C:\Users\AHSAN\.android\build-cache\881fc2c681cfc01b909daaf863bbeed6cf150306\output\AndroidManifest.xml:3:5-43
+MERGED from [com.google.firebase:firebase-storage-common:10.2.6] C:\Users\AHSAN\.android\build-cache\24184c77f177f1fbdbd2225a4bd872a84658c41a\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.firebase:firebase-common:10.2.6] C:\Users\AHSAN\.android\build-cache\4907d84ac21177fbd79a6e93a147785ec286d94c\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-tasks:10.2.6] C:\Users\AHSAN\.android\build-cache\98032a134935d122394c1c9766fae227e4ef8461\output\AndroidManifest.xml:3:5-43
 MERGED from [com.google.android.gms:play-services-basement:10.2.6] C:\Users\AHSAN\.android\build-cache\bd5f89a1f9eca0ae4765aa6a8e7cce15517df331\output\AndroidManifest.xml:17:5-43

@@ -150,8 +150,10 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Question question = dataSnapshot.getValue(Question.class);
                 question.setQid(dataSnapshot.getKey());
-                albumList.add(0,question);
-                adapterQuestion.notifyDataSetChanged();
+                if(question.getSemester() == session.getSemester()) {
+                    albumList.add(0, question);
+                    adapterQuestion.notifyDataSetChanged();
+                }
             }
 
             @Override

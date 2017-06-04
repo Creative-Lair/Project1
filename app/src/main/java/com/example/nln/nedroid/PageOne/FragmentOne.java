@@ -177,8 +177,10 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     News news = dataSnapshot.getValue(News.class);
                     news.setId(dataSnapshot.getKey());
-                    newsList.add(news);
-                    adapter.notifyDataSetChanged();
+                    if(news.isVerify()) {
+                        newsList.add(news);
+                        adapter.notifyDataSetChanged();
+                    }
                 }
 
                 @Override

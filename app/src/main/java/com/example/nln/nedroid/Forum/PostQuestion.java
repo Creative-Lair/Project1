@@ -116,6 +116,7 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
                 newQuestion.child("uid").setValue(uid);
                 newQuestion.child("timestamp").setValue(ServerValue.TIMESTAMP);
                 newQuestion.child("subname").setValue(words[1]);
+                newQuestion.child("semester").setValue(session.getSemester());
 
                 finish();
 

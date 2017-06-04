@@ -114,7 +114,7 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
 
 
                 //TODO: pass 'verify' here
-                News news = new News(t,d,username,photoUser,photoUri,true,photosUri);
+                News news = new News(t,d,username,photoUser,photoUri,false,photosUri);
 
                 newsRef.push().setValue(news);
 

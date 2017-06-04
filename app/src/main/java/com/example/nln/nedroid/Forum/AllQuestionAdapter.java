@@ -78,7 +78,7 @@ public class AllQuestionAdapter extends RecyclerView.Adapter<AllQuestionAdapter.
         holder.name.setText(album.getName());
         holder.questionDescription.setText(album.getQuestion());
         // loading album cover using Glide library
-        Toast.makeText(mContext, album.getPhotourl(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mContext, album.getPhotourl(), Toast.LENGTH_SHORT).show();
 
 
         Glide.with(holder.profile.getContext()).load(album.getPhotourl()).into(holder.profile);

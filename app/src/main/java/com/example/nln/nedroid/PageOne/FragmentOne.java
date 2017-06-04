@@ -161,14 +161,47 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
     @Override
     public void onPause() {
         super.onPause();
-
-        newsref.removeEventListener(childEventListener);
+        newsList.clear();
+        if(childEventListener!=null) {
+            newsref.removeEventListener(childEventListener);
+            childEventListener = null;
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        newsref.addChildEventListener(childEventListener);
+        if(childEventListener==null) {
+            childEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    News news = dataSnapshot.getValue(News.class);
+                    news.setId(dataSnapshot.getKey());
+                    newsList.add(news);
+                    adapter.notifyDataSetChanged();
+                }
 
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            newsref.addChildEventListener(childEventListener);
+        }
     }
 }

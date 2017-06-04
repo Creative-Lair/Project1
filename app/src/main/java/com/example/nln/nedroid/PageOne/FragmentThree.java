@@ -122,9 +122,6 @@ public class FragmentThree extends Fragment implements ItemClickListener {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-                //  Toast.makeText(getActivity(), "Subjects", Toast.LENGTH_SHORT).show();
-               // String value = (String)arg0.getItemAtPosition(arg2);
-               // Toast.makeText(getActivity(), "Clicked on \"" + value + "\"", Toast.LENGTH_SHORT).show();
 
                 String n = courses.get(arg2);
                 String[] words = n.split(" ");
@@ -199,12 +196,49 @@ public class FragmentThree extends Fragment implements ItemClickListener {
     @Override
     public void onPause() {
         super.onPause();
-        questionRef.removeEventListener(childEventListener);
+        albumList.clear();
+        if(childEventListener != null) {
+            questionRef.removeEventListener(childEventListener);
+            childEventListener = null;
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        questionRef.addChildEventListener(childEventListener);
+        //albumList.cle()
+        if(childEventListener == null){
+            childEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Question question = dataSnapshot.getValue(Question.class);
+                    question.setQid(dataSnapshot.getKey());
+                    albumList.add(0,question);
+                    adapterQuestion.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            questionRef.addChildEventListener(childEventListener);
+        }
+
     }
 }

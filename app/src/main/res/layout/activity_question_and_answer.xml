@@ -144,12 +144,12 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:id="@+id/btn"
                 android:text="Post"
                 android:background="@color/buttonSubject"
                 android:textColor="#FFFF"
                 android:layout_marginLeft="250dp"
-                tools:ignore="HardcodedText,RtlHardcoded"
-                android:onClick="onPost" />
+                tools:ignore="HardcodedText,RtlHardcoded" />
 
         </LinearLayout>
 

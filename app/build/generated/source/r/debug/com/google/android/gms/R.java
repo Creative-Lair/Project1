@@ -14,8 +14,8 @@ public final class R {
         public static final int none = 0x7f0f0014;
         public static final int normal = 0x7f0f0010;
         public static final int radio = 0x7f0f005d;
-        public static final int text = 0x7f0f0115;
-        public static final int text2 = 0x7f0f0113;
+        public static final int text = 0x7f0f0118;
+        public static final int text2 = 0x7f0f0116;
         public static final int toolbar = 0x7f0f0074;
         public static final int wrap_content = 0x7f0f0024;
     }

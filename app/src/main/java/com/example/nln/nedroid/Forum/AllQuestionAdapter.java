@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.R;
@@ -77,7 +78,10 @@ public class AllQuestionAdapter extends RecyclerView.Adapter<AllQuestionAdapter.
         holder.name.setText(album.getName());
         holder.questionDescription.setText(album.getQuestion());
         // loading album cover using Glide library
-        Glide.with(mContext).load(album.getImageProfile()).into(holder.profile);
+        Toast.makeText(mContext, album.getPhotourl(), Toast.LENGTH_SHORT).show();
+
+
+        Glide.with(holder.profile.getContext()).load(album.getPhotourl()).into(holder.profile);
     }
 
     @Override

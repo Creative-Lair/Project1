@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
@@ -78,7 +79,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         holder.name.setText(album.getName());
         holder.questionDescription.setText(album.getQuestion());
         // loading album cover using Glide library
-        Glide.with(mContext).load(album.getImageProfile()).into(holder.profile);
+
+        System.out.println(album.getPhotourl());
+        Glide.with(holder.profile.getContext()).load(album.getPhotourl()).into(holder.profile);
     }
 
     @Override

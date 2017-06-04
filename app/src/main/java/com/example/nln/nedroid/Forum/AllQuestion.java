@@ -23,8 +23,6 @@ public class AllQuestion extends AppCompatActivity {
     private AllQuestionAdapter adapterQuestion;
     private List<Question> albumList;
     private RecyclerView.LayoutManager mLayoutManager;
-    public String Name_DB;//for all app
-    public String ID_DB;//for all app
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,46 +53,7 @@ public class AllQuestion extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapterQuestion);
         adapterQuestion.setClickListener(this);
-        prepareAlbums();
 
-    }
-
-    private void prepareAlbums() {
-
-        int[] profile = new int[]{
-
-                // ADD PICTURES IN CARD
-                R.drawable.fr_zero,
-                R.drawable.fr_one,
-                R.drawable.fr_two,
-                R.drawable.fr_three,
-                R.drawable.fr_four,
-                R.drawable.fr_five,
-                R.drawable.fr_six,
-        };
-
-
-        Question a = new Question(profile[1], "Name",
-                "All Questions of the Selected Subject.. All Questions of the Selected Subject.. All Questions of the Selected Subject.. "
-            );
-        albumList.add(a);
-
-        a = new Question(profile[2], "Name",
-                "All Questions of the Selected Subject.. All Questions of the Selected Subject.. All Questions of the Selected Subject.. "
-            );
-        albumList.add(a);
-
-        a = new Question(profile[3], "Name",
-                "All Questions of the Selected Subject.. All Questions of the Selected Subject.. All Questions of the Selected Subject.. "
-            );
-        albumList.add(a);
-
-        a = new Question(profile[4], "Name",
-                "All Questions of the Selected Subject.. All Questions of the Selected Subject.. All Questions of the Selected Subject.. "
-            );
-        albumList.add(a);
-
-        adapterQuestion.notifyDataSetChanged();
     }
 
     public void onClick(View view, int position) {

@@ -50,6 +50,8 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
 
     private Session session;
 
+    private ChildEventListener childEventListener;
+
     public FragmentOne() {
         // Required empty public constructor
     }
@@ -64,9 +66,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
         newsref = firebaseDatabase.getReference().child("News");
         session = new Session(getContext());
 
-
-        //Get all events from firebase
-        newsref.addChildEventListener(new ChildEventListener() {
+        childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 News news = dataSnapshot.getValue(News.class);
@@ -94,7 +94,10 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        //Get all events from firebase
+        newsref.addChildEventListener(childEventListener);
 
 
     }
@@ -153,5 +156,19 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
 
                 break;
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        newsref.removeEventListener(childEventListener);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        newsref.addChildEventListener(childEventListener);
+
     }
 }

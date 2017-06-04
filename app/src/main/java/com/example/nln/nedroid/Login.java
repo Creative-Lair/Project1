@@ -93,6 +93,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 session.setUserId(username);
                                 session.setUsername(student.getName());
                                 session.setSemester(student.getSemester());
+                                session.setPhoto(student.getPhotourl());
                                 Intent i = new Intent(Login.this, FirstNav.class);
                                 startActivity(i);
                                 finish();

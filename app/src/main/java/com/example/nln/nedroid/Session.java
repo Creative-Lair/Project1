@@ -19,6 +19,9 @@ public class Session {
     private static final String KEY_SEMESTER = "semester";
     private static final String KEY_SUBJECT_CODE = "subject_code";
     private static final String KEY_SUBJECT_NAME = "subject_name";
+    private static final String KEY_QSC = "question_subject_code";
+    private static final String KEY_QSN = "question_subject_name";
+    private static final String KEY_QID = "question_id";
 
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
@@ -109,6 +112,34 @@ public class Session {
     public void setSubjectName(String name){
         editor.putString(KEY_SUBJECT_NAME, name);
         editor.commit();
+    }
+
+    public void setQSC(String n){
+        editor.putString(KEY_QSC, n);
+        editor.commit();
+    }
+
+    public void setQSN(String n){
+        editor.putString(KEY_QSN, n);
+        editor.commit();
+
+    }
+
+    public String getQSC(){
+        return pref.getString(KEY_QSC, "0000");
+    }
+
+    public String getQSN(){
+        return pref.getString(KEY_QSN, "0000");
+    }
+
+    public void setQID(String n){
+        editor.putString(KEY_QID,n);
+        editor.commit();
+    }
+
+    public String getQID(){
+        return pref.getString(KEY_QID, "-1");
     }
 
 }

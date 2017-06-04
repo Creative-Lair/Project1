@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import java.util.ArrayList;
+
 /**
  * Created by AHSAN on 6/2/2017.
  */
@@ -22,6 +24,8 @@ public class Session {
     private static final String KEY_QSC = "question_subject_code";
     private static final String KEY_QSN = "question_subject_name";
     private static final String KEY_QID = "question_id";
+    private static final String KEY_COURSES = "courses";
+    private static final String KEY_COURSES_SIZE = "courses_size";
 
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
@@ -140,6 +144,27 @@ public class Session {
 
     public String getQID(){
         return pref.getString(KEY_QID, "-1");
+    }
+
+    public void setCourses(ArrayList<Long> courses){
+
+        editor.putInt(KEY_COURSES_SIZE,courses.size());
+        for(int i=0;i<courses.size();i++){
+            editor.putLong(KEY_COURSES + i, courses.get(i));
+        }
+        editor.commit();
+    }
+
+    public ArrayList<Long> getCourse(){
+        ArrayList<Long> courses = new ArrayList<>();
+
+        for(int i=0;i<pref.getInt(KEY_COURSES_SIZE,0);i++){
+            courses.add(pref.getLong(KEY_COURSES+i,-1));
+        }
+
+        return courses;
+
+
     }
 
 }

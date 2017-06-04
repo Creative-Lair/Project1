@@ -54,6 +54,8 @@ public class FragmentThree extends Fragment implements ItemClickListener {
     ArrayAdapter adapter;
     ArrayList<String> courses;
 
+    ArrayList<Long> sub;
+
     private Session session;
 
     private FirebaseDatabase firebaseDatabase;
@@ -68,12 +70,14 @@ public class FragmentThree extends Fragment implements ItemClickListener {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_fragment_three, container, false);
         courses = new ArrayList<>();
         session = new Session(getContext());
+
+        sub = session.getCourse();
 
         //        List View
         adapter = new ArrayAdapter<>(getActivity(), activity_listview_f2, courses);
@@ -94,21 +98,34 @@ public class FragmentThree extends Fragment implements ItemClickListener {
         firebaseDatabase = FirebaseDatabase.getInstance();
         subjectRef = firebaseDatabase.getReference().child("Subjects");
 
-
-        subjectRef.child("Semester" + session.getSemester()).addValueEventListener(new ValueEventListener() {
+        subjectRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-             //   Toast.makeText(getContext(),"" + dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
-
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-
                 for (DataSnapshot child: children) {
-                    System.out.println(child.getKey() + " " + child.getValue());
-                    String n = child.getKey() + " " + child.getValue();
-                    courses.add(n);
+                    for (long course: sub) {
+                        if(child.getKey().equals(""+course)){
+                            String n = child.getKey() + " " + child.getValue();
+                            courses.add(n);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
                 }
+            }
 
-                adapter.notifyDataSetChanged();
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -150,10 +167,13 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Question question = dataSnapshot.getValue(Question.class);
                 question.setQid(dataSnapshot.getKey());
-                if(question.getSemester() == session.getSemester()) {
-                    albumList.add(0, question);
-                    adapterQuestion.notifyDataSetChanged();
+                for (long course: sub) {
+                    if(question.getSub().equals("" + course)) {
+                        albumList.add(0, question);
+                        adapterQuestion.notifyDataSetChanged();
+                    }
                 }
+
             }
 
             @Override

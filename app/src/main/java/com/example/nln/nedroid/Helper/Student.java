@@ -9,6 +9,15 @@ public class Student {
     private String password;
     private String name;
     private long semester;
+    private String photourl;
+
+    public String getPhotourl() {
+        return photourl;
+    }
+
+    public void setPhotourl(String photourl) {
+        this.photourl = photourl;
+    }
 
     public long getSemester() {
         return semester;

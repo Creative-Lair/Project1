@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Result.Result;
@@ -60,6 +61,11 @@ public class FragmentResult extends Fragment implements ItemClickListener {
         recyclerView = (RecyclerView) v.findViewById(R.id.recycler_view_result);
 
         session = new Session(getContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         resultRef = firebaseDatabase.getReference().child("Results");

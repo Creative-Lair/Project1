@@ -1,5 +1,6 @@
 package com.example.nln.nedroid.NewsAndEvents;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBar;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
 import com.google.firebase.database.DataSnapshot;
@@ -66,6 +68,11 @@ public class NandEDescription extends AppCompatActivity {
         title = (TextView) findViewById(R.id.title);
 
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         newsRef = firebaseDatabase.getReference().child("News");

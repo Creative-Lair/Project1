@@ -25,7 +25,7 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         pdfView = (PDFView) findViewById(R.id.pdfView);
-        pdfView.fromAsset("Attendance1.pdf").load();//METHOD 1: PDF from Asset
+        pdfView.fromAsset("Attendance.pdf").load();//METHOD 1: PDF from Asset
     }
 
     @Override

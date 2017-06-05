@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.nln.nedroid.Assigment.Assg;
 import com.example.nln.nedroid.Assigment.AssgnAdapter;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -64,6 +65,11 @@ public class FragmentAssignment extends Fragment implements ItemClickListener {
         adapter = new AssgnAdapter(this, assignList);
 
         session = new Session(getContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         assignRef = firebaseDatabase.getReference().child("Assignments");

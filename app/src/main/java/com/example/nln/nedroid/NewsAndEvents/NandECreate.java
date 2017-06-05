@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -51,6 +52,11 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
 
         photosUri = new ArrayList<>();
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         newsRef = firebaseDatabase.getReference().child("News");
@@ -114,7 +120,7 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
 
 
                 //TODO: pass 'verify' here
-                News news = new News(t,d,username,photoUser,photoUri,true,photosUri);
+                News news = new News(t,d,username,photoUser,photoUri,false,photosUri);
 
                 newsRef.push().setValue(news);
 

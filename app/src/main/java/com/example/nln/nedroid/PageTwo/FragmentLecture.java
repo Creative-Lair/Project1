@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.nln.nedroid.Lecture.Lect;
 import com.example.nln.nedroid.Lecture.LectAdaptor;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -66,6 +67,11 @@ public class FragmentLecture extends Fragment implements ItemClickListener {
 
 
         session = new Session(getContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
         LectList = new ArrayList<>();
         adapter = new LectAdaptor(this, LectList);
 

@@ -14,15 +14,19 @@ public class Question {
     private String photourl;
     private String uid;
     private String qid;
+    private String subname;
+    private long semester;
     long timestamp;
 
-    public Question(String question, String sub, String name, String photourl, String uid, String qid, long timestamp) {
+    public Question(String question, String sub, String name, String photourl, String uid, String qid, String subname, long semester, long timestamp) {
         this.question = question;
         this.sub = sub;
         this.name = name;
         this.photourl = photourl;
         this.uid = uid;
         this.qid = qid;
+        this.subname = subname;
+        this.semester = semester;
         this.timestamp = timestamp;
     }
 
@@ -73,6 +77,22 @@ public class Question {
 
     public void setQid(String qid) {
         this.qid = qid;
+    }
+
+    public String getSubname() {
+        return subname;
+    }
+
+    public void setSubname(String subname) {
+        this.subname = subname;
+    }
+
+    public long getSemester() {
+        return semester;
+    }
+
+    public void setSemester(long semester) {
+        this.semester = semester;
     }
 
     public long getTimestamp() {

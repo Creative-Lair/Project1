@@ -24,6 +24,7 @@ import com.example.nln.nedroid.Forum.PostQuestion;
 import com.example.nln.nedroid.Forum.Question;
 import com.example.nln.nedroid.Forum.QuestionAdapter;
 import com.example.nln.nedroid.Forum.QuestionAndAnswer;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -54,6 +55,8 @@ public class FragmentThree extends Fragment implements ItemClickListener {
     ArrayAdapter adapter;
     ArrayList<String> courses;
 
+    ArrayList<Long> sub;
+
     private Session session;
 
     private FirebaseDatabase firebaseDatabase;
@@ -68,12 +71,18 @@ public class FragmentThree extends Fragment implements ItemClickListener {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_fragment_three, container, false);
         courses = new ArrayList<>();
         session = new Session(getContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
+        sub = session.getCourse();
 
         //        List View
         adapter = new ArrayAdapter<>(getActivity(), activity_listview_f2, courses);
@@ -94,21 +103,34 @@ public class FragmentThree extends Fragment implements ItemClickListener {
         firebaseDatabase = FirebaseDatabase.getInstance();
         subjectRef = firebaseDatabase.getReference().child("Subjects");
 
-
-        subjectRef.child("Semester" + session.getSemester()).addValueEventListener(new ValueEventListener() {
+        subjectRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-             //   Toast.makeText(getContext(),"" + dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
-
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-
                 for (DataSnapshot child: children) {
-                    System.out.println(child.getKey() + " " + child.getValue());
-                    String n = child.getKey() + " " + child.getValue();
-                    courses.add(n);
+                    for (long course: sub) {
+                        if(child.getKey().equals(""+course)){
+                            String n = child.getKey() + " " + child.getValue();
+                            courses.add(n);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
                 }
+            }
 
-                adapter.notifyDataSetChanged();
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -122,9 +144,6 @@ public class FragmentThree extends Fragment implements ItemClickListener {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-                //  Toast.makeText(getActivity(), "Subjects", Toast.LENGTH_SHORT).show();
-               // String value = (String)arg0.getItemAtPosition(arg2);
-               // Toast.makeText(getActivity(), "Clicked on \"" + value + "\"", Toast.LENGTH_SHORT).show();
 
                 String n = courses.get(arg2);
                 String[] words = n.split(" ");
@@ -153,8 +172,13 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Question question = dataSnapshot.getValue(Question.class);
                 question.setQid(dataSnapshot.getKey());
-                albumList.add(0,question);
-                adapterQuestion.notifyDataSetChanged();
+                for (long course: sub) {
+                    if(question.getSub().equals("" + course)) {
+                        albumList.add(0, question);
+                        adapterQuestion.notifyDataSetChanged();
+                    }
+                }
+
             }
 
             @Override
@@ -199,12 +223,49 @@ public class FragmentThree extends Fragment implements ItemClickListener {
     @Override
     public void onPause() {
         super.onPause();
-        questionRef.removeEventListener(childEventListener);
+        albumList.clear();
+        if(childEventListener != null) {
+            questionRef.removeEventListener(childEventListener);
+            childEventListener = null;
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        questionRef.addChildEventListener(childEventListener);
+        //albumList.cle()
+        if(childEventListener == null){
+            childEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Question question = dataSnapshot.getValue(Question.class);
+                    question.setQid(dataSnapshot.getKey());
+                    albumList.add(0,question);
+                    adapterQuestion.notifyDataSetChanged();
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            questionRef.addChildEventListener(childEventListener);
+        }
+
     }
 }

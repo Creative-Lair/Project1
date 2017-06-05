@@ -76,10 +76,6 @@
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_profile2.xml",
-        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\activity_profile2.xml"
-    },
-    {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_fragment_one2.xml",
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\fragment_fragment_one2.xml"
     },
@@ -356,6 +352,10 @@
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\fragment_fragment_three.xml"
     },
     {
+        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\answerlistadapter.xml",
+        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\answerlistadapter.xml"
+    },
+    {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
         "source": "C:\\Users\\AHSAN\\.android\\build-cache\\7a9423174cab790f3d02c3ad0f9b56c926a4c945\\output\\res\\layout\\notification_template_part_time.xml"
     },
@@ -394,6 +394,10 @@
     {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\fragment_fragment_two2.xml",
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\fragment_fragment_two2.xml"
+    },
+    {
+        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_student_profile.xml",
+        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\activity_student_profile.xml"
     },
     {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",

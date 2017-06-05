@@ -7,44 +7,48 @@ public class Notice {
 
     private String date;
     private String title;
-    private String desciption;
-    private int thumbnail;
+    private String description;
+    private String photo;
 
     public Notice() {
-    }
-
-    public Notice(String  date, String title, String desciption, int thumbnail) {
-//    public News(String name, int thumbnail) {
-        this.date = date;
-        this.title = title;
-        this.desciption = desciption;
-        this.thumbnail = thumbnail;
     }
 
     public String getDate() {
         return date;
     }
 
-    public void seDate(String date) {
+    public void setDate(String date) {
         this.date = date;
-    }
-
-    public int getThumbnail() {
-        return thumbnail;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void seTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
     }
-    public String getDesciption() {
-        return desciption;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void seDescription(String description) {
-        this.desciption= description;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public Notice(String date, String title, String description, String photo) {
+        this.date = date;
+        this.title = title;
+        this.description = description;
+        this.photo = photo;
     }
 }

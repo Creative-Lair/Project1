@@ -1,5 +1,6 @@
 package com.example.nln.nedroid.Forum;
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
 import com.google.firebase.database.ChildEventListener;
@@ -40,6 +42,7 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
     ArrayAdapter<String> adapter;
 
     ArrayList<String> course;
+    ArrayList<Long> sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,15 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
         setTitle("Post a Question");
 
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
         course = new ArrayList<>();
+        sub = new ArrayList<>();
+
+        sub = session.getCourse();
 
         question = (EditText) findViewById(R.id.question);
         btn = (Button) findViewById(R.id.post);
@@ -66,20 +77,34 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
         firebaseDatabase = FirebaseDatabase.getInstance();
         dataRef = firebaseDatabase.getReference().child("Subjects");
 
-        dataRef.child("Semester" + session.getSemester()).addValueEventListener(new ValueEventListener() {
+        dataRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                //   Toast.makeText(getContext(),"" + dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
-
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-
                 for (DataSnapshot child: children) {
-                    System.out.println(child.getKey() + " " + child.getValue());
-                    String n = child.getKey() + " " + child.getValue();
-                    course.add(n);
+                    for (long subject: sub) {
+                        if(child.getKey().equals(""+subject)){
+                            String n = child.getKey() + " " + child.getValue();
+                            course.add(n);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
                 }
+            }
 
-                  adapter.notifyDataSetChanged();
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
             }
 
             @Override
@@ -87,6 +112,7 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
 
             }
         });
+
 
         btn.setOnClickListener(this);
 
@@ -115,6 +141,8 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
                 newQuestion.child("photourl").setValue(photo);
                 newQuestion.child("uid").setValue(uid);
                 newQuestion.child("timestamp").setValue(ServerValue.TIMESTAMP);
+                newQuestion.child("subname").setValue(words[1]);
+                newQuestion.child("semester").setValue(session.getSemester());
 
                 finish();
 

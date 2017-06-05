@@ -110,12 +110,12 @@
     <string name="title_activity_notification_nav">Notice</string>
     <string name="title_activity_setting1">Setting</string>
 
-        <string name="spinner_title">Select Category</string>
-        <string name="creat_sheet">Creat Sheet</string>
-        <string name="practicle">Practicle</string>
-        <string name="regular">Regular</string>
-        <string name="section">Section</string>
-        <string name="select_details">Select Details</string>
-        <string name="theory">Theory</string>
-        <string name="time_slot">Time Slot</string>
+    <string name="spinner_title">Select Category</string>
+    <string name="creat_sheet">Creat Sheet</string>
+    <string name="practicle">Practicle</string>
+    <string name="regular">Regular</string>
+    <string name="section">Section</string>
+    <string name="select_details">Select Details</string>
+    <string name="theory">Theory</string>
+    <string name="time_slot">Time Slot</string>
 </resources>

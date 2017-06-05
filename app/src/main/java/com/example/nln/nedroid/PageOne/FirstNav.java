@@ -100,7 +100,18 @@ public class FirstNav extends AppCompatActivity
         tabLayout.getTabAt(2).setIcon(tabIcons[2]);
         tabLayout.getTabAt(3).setIcon(tabIcons[3]);
     }
-    
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
+
+    }
+
     @Override
     public void onBackPressed() {
         finish();

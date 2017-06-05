@@ -23,8 +23,7 @@ import org.w3c.dom.Text;
 public class Student_profile extends AppCompatActivity {
 
     private TextView name,discipline,year,rollno,paddress,peraddress,
-    contactno,email,nationality,religion,dob,pob,domicile,gender,
-    martialstatus;
+    contactno,email;
 
     private ImageView icon;
 
@@ -91,13 +90,6 @@ public class Student_profile extends AppCompatActivity {
         peraddress = (TextView) findViewById(R.id.permanentaddress);
         contactno = (TextView) findViewById(R.id.contactno);
         email = (TextView) findViewById(R.id.emailaddress);
-        nationality = (TextView) findViewById(R.id.nationality);
-        religion = (TextView) findViewById(R.id.religion);
-        dob = (TextView) findViewById(R.id.dob);
-        pob = (TextView) findViewById(R.id.pob);
-        domicile = (TextView) findViewById(R.id.domicile);
-        gender = (TextView) findViewById(R.id.gender);
-        martialstatus = (TextView) findViewById(R.id.martialstatus);
         icon = (ImageView) findViewById(R.id.icon);
     }
 
@@ -118,13 +110,6 @@ public class Student_profile extends AppCompatActivity {
         peraddress.setText(student.getPermanentaddress());
         contactno.setText(student.getContactno());
         email.setText(student.getEmailaddress());
-        nationality.setText(student.getNationality());
-        religion.setText(student.getReligion());
-        dob.setText(student.getDob());
-        pob.setText(student.getPlaceofbirth());
-        domicile.setText(student.getDomicile());
-        gender.setText(student.getGender());
-        martialstatus.setText(student.getMartialstatus());
 
         progressDialog.hide();
 

@@ -83,10 +83,6 @@
             android:label="@string/title_activity_attendance1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.nln.nedroid.NavigationMenu.Profile"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name="com.example.nln.nedroid.PageTwo.SsecondNav"
             android:label="@string/title_activity_ssecond_nav"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -137,6 +133,7 @@
             android:name="com.example.nln.nedroid.Nav_AttendThree_pdf"
             android:label="Lecture Detail"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.example.nln.nedroid.Student_profile" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"

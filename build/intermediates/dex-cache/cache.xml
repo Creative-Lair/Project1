@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\c7f34d0346e0ea9f361533ba66bef46ca1722cd4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_67e98c0d795f5b19d860bf8d092af1dd4c4ed2db\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\AHSAN\.android\build-cache\24184c77f177f1fbdbd2225a4bd872a84658c41a\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
@@ -18,6 +27,15 @@
         revision="25.0.3"
         sha1="8bd182a66f13dedad362bfbf992be96de2be5969">
         <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\2\GraphView-4.0.1_ea16cb60605c369c880e4c53c73eee9af2220155\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_846ddb13d6aff062ea6a0988cc86047023ffe2a4\classes.dex" />
     </item>
     <item
         is-multidex="true"

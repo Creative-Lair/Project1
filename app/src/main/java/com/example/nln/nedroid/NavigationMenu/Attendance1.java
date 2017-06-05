@@ -88,12 +88,12 @@ public class Attendance1 extends AppCompatActivity
             startActivity(i);
 
         } if (id == R.id.nav_profile) {
-            Intent i = new Intent(Attendance1.this, Profile.class);
+         /*   Intent i = new Intent(Attendance1.this, Student_Profile.class);
             i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
             i.putExtra("USERID", ID_DB);
             i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
-
+*/
         } else if (id == R.id.nav_noticeboard) {
             Intent i = new Intent(Attendance1.this, NotificationNav.class);
             i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile

@@ -21,7 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nln.nedroid.NavigationMenu.Attendance1;
-import com.example.nln.nedroid.NavigationMenu.Profile;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.PageOne.FirstNav;
 import com.example.nln.nedroid.R;
@@ -192,12 +191,12 @@ public class NotificationNav extends AppCompatActivity
 
 
         } if (id == R.id.nav_profile) {
-            Intent i = new Intent(NotificationNav.this, Profile.class);
+          /*  Intent i = new Intent(NotificationNav.this, Profile.class);
             i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
             i.putExtra("USERID", ID_DB);
             i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
-
+*/
         } else if (id == R.id.nav_noticeboard) {
             Intent i = new Intent(NotificationNav.this, NotificationNav.class);
             i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile

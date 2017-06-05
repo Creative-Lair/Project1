@@ -63,10 +63,6 @@
             android:label="@string/title_activity_attendance1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".NavigationMenu.Profile"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".PageTwo.SsecondNav"
             android:label="@string/title_activity_ssecond_nav"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -84,7 +80,7 @@
         <activity
             android:name=".Setting1"
             android:label="@string/title_activity_setting1"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PageOne.Teacher_FirstNav"
             android:label="@string/title_activity_first_nav"
@@ -109,18 +105,15 @@
             android:name=".Graph.SingleSectionGraph"
             android:label="@string/title_activity_single_section_graph"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Profile"
             android:label="@string/title_activity_profile"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".Nav_AttendThree_pdf"
             android:label="Lecture Detail"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
+        <activity android:name=".Student_profile"></activity>
     </application>
 
 </manifest>

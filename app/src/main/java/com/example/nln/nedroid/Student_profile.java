@@ -1,6 +1,7 @@
 package com.example.nln.nedroid;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -49,6 +50,11 @@ public class Student_profile extends AppCompatActivity {
         studentRef = firebaseDatabase.getReference().child("Students");
 
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
 
         studentRef.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
             @Override

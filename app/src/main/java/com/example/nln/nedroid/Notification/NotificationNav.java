@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NavigationMenu.Attendance;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.PageOne.FirstNav;
@@ -57,6 +58,11 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
         setSupportActionBar(toolbar);
         setTitle("Notice");
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
         firebaseDatabase = FirebaseDatabase.getInstance();
         noticeRef = firebaseDatabase.getReference().child("Notice");
 
@@ -148,12 +154,12 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
             case R.id.nav_attndance:
                 Intent k = new Intent(NotificationNav.this, Attendance.class);
                 startActivity(k);
-
+                finish();
                 break;
             case R.id.nav_setting:
                 Intent l = new Intent(NotificationNav.this, SettingsActivity.class);
                 startActivity(l);
-
+                finish();
                 break;
 
             case R.id.nav_about:
@@ -161,6 +167,26 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
                 Uri webpage = Uri.parse("http://www.android.com");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
+                finish();
+                break;
+
+            case R.id.nav_logout:
+
+                session.setPhoto("");
+                session.setLogin(false);
+                session.setUserId("");
+                session.setUsername("");
+                session.setQID("");
+                ArrayList<Long> course = new ArrayList<>();
+                session.setCourses(course);
+                session.setNewsId("");
+                session.setQSC("");
+                session.setQSN("");
+                session.setSemester(-1);
+
+                Intent m = new Intent(this, Login.class);
+                startActivity(m);
+                finish();
 
                 break;
         }

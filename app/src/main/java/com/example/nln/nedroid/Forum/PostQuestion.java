@@ -1,5 +1,6 @@
 package com.example.nln.nedroid.Forum;
 
+import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -14,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
 import com.google.firebase.database.ChildEventListener;
@@ -51,6 +53,11 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
         setTitle("Post a Question");
 
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
         course = new ArrayList<>();
         sub = new ArrayList<>();
 

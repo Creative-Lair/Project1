@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.NewsAndEvents.NandECreate;
 import com.example.nln.nedroid.NewsAndEvents.NandEDescription;
@@ -65,6 +66,11 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
         firebaseDatabase = FirebaseDatabase.getInstance();
         newsref = firebaseDatabase.getReference().child("News");
         session = new Session(getContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
 
         childEventListener = new ChildEventListener() {
             @Override

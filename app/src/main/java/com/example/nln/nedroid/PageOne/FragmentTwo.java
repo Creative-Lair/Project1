@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.PageTwo.SsecondNav;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -56,6 +57,11 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
         v = inflater.inflate(R.layout.fragment_fragment_two2, container, false);
 
         session = new Session(getContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
         Subject = new ArrayList<>();
 
         courses = new ArrayList<>();

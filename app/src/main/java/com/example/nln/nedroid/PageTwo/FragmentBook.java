@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.nln.nedroid.Helper.Book;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
 import com.google.firebase.database.ChildEventListener;
@@ -61,6 +62,11 @@ public class FragmentBook extends Fragment {
         RefBooks = new ArrayList<>();
 
         session = new Session(getContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
 
         adapter = new BookAdapter(getContext(), R.layout.booklayout ,TextBooks);
         ListView listView = (ListView) v.findViewById(R.id.listView1);

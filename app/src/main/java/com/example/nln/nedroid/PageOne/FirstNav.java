@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NavigationMenu.Attendance;
 import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.R;
@@ -58,6 +59,11 @@ public class FirstNav extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         session = new Session(getApplicationContext());
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -137,6 +143,27 @@ public class FirstNav extends AppCompatActivity
                 Uri webpage = Uri.parse("http://www.android.com");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
+
+                break;
+
+            case R.id.nav_logout:
+
+                session.setPhoto("");
+                session.setLogin(false);
+                session.setUserId("");
+                session.setUsername("");
+                session.setQID("");
+                ArrayList<Long> course = new ArrayList<>();
+                session.setCourses(course);
+                session.setNewsId("");
+                session.setQSC("");
+                session.setQSN("");
+                session.setSemester(-1);
+
+                Intent m = new Intent(this, Login.class);
+                startActivity(m);
+                finish();
+
 
                 break;
         }

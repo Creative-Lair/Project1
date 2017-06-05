@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NavigationMenu.Attendance;
 import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.R;
@@ -57,7 +58,11 @@ public class SsecondNav extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar__nav);
         setSupportActionBar(toolbar);
         session = new Session(this);
-
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
 
         setTitle(session.getSubjectName());
 
@@ -197,6 +202,25 @@ public class SsecondNav extends AppCompatActivity
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
                 finish();
+                break;
+
+            case R.id.nav_logout:
+                session.setPhoto("");
+                session.setLogin(false);
+                session.setUserId("");
+                session.setUsername("");
+                session.setQID("");
+                ArrayList<Long> course = new ArrayList<>();
+                session.setCourses(course);
+                session.setNewsId("");
+                session.setQSC("");
+                session.setQSN("");
+                session.setSemester(-1);
+
+                Intent m = new Intent(this, Login.class);
+                startActivity(m);
+                finish();
+
                 break;
 
         }

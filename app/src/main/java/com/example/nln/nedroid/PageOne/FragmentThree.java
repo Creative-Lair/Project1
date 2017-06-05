@@ -24,6 +24,7 @@ import com.example.nln.nedroid.Forum.PostQuestion;
 import com.example.nln.nedroid.Forum.Question;
 import com.example.nln.nedroid.Forum.QuestionAdapter;
 import com.example.nln.nedroid.Forum.QuestionAndAnswer;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -76,7 +77,11 @@ public class FragmentThree extends Fragment implements ItemClickListener {
         View v = inflater.inflate(R.layout.fragment_fragment_three, container, false);
         courses = new ArrayList<>();
         session = new Session(getContext());
-
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
         sub = session.getCourse();
 
         //        List View

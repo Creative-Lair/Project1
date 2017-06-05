@@ -148,7 +148,11 @@ public class FragmentThree extends Fragment implements ItemClickListener {
                 String n = courses.get(arg2);
                 String[] words = n.split(" ");
                 session.setQSC(words[0]);
-                session.setQSN(words[1]);
+                String courseName = "";
+                for (int i=1;i<words.length;i++){
+                    courseName += words[i]+" ";
+                }
+                session.setQSN(courseName);
 
                 Intent i = new Intent(getActivity(), AllQuestion.class);
                 startActivity(i);
@@ -240,8 +244,14 @@ public class FragmentThree extends Fragment implements ItemClickListener {
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Question question = dataSnapshot.getValue(Question.class);
                     question.setQid(dataSnapshot.getKey());
-                    albumList.add(0,question);
-                    adapterQuestion.notifyDataSetChanged();
+                    for (String course: sub) {
+                        if(question.getSub().equals(course)) {
+                            Toast.makeText(getContext(), question.getSub()+ " " + course, Toast.LENGTH_SHORT).show();
+                            albumList.add(0, question);
+                            adapterQuestion.notifyDataSetChanged();
+                        }
+                    }
+
                 }
 
                 @Override
@@ -264,7 +274,8 @@ public class FragmentThree extends Fragment implements ItemClickListener {
 
                 }
             };
-            questionRef.addChildEventListener(childEventListener);
+
+            questionRef.orderByChild("timestamp").addChildEventListener(childEventListener);
         }
 
     }

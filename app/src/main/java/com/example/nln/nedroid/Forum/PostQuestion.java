@@ -129,6 +129,11 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
                 String n = spin.getSelectedItem().toString();
                 String[] words = n.split(" ");
                 String sub = words[0];
+                String subname = "";
+                for(int i=1;i<words.length;i++){
+                    subname += words[i] + " ";
+                }
+                subname = subname.substring(0, subname.length()-1);
                 String photo = session.getPhoto();
                 String name = session.getUsername();
                 String uid = session.getUserId();
@@ -141,7 +146,7 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
                 newQuestion.child("photourl").setValue(photo);
                 newQuestion.child("uid").setValue(uid);
                 newQuestion.child("timestamp").setValue(ServerValue.TIMESTAMP);
-                newQuestion.child("subname").setValue(words[1]);
+                newQuestion.child("subname").setValue(subname);
                 newQuestion.child("semester").setValue(session.getSemester());
 
                 finish();

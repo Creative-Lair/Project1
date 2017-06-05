@@ -130,7 +130,13 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
         String[] words = n.split(" ");
 
         session.setSubjectCode(words[0]);
-        session.setSubjectName(words[1]);
+
+        String sub = "";
+        for(int i=1;i<words.length;i++){
+            sub += words[i] + " ";
+        }
+
+        session.setSubjectName(sub);
 
         Intent i = new Intent(getContext(), SsecondNav.class);
         startActivity(i);

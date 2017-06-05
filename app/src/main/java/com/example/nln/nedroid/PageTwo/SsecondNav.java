@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.nln.nedroid.NavigationMenu.Attendance1;
+import com.example.nln.nedroid.NavigationMenu.Attendance;
 import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -76,8 +76,8 @@ public class SsecondNav extends AppCompatActivity
         headerIcon = (ImageView) hView.findViewById(R.id.imageView_nav);
 
 //        (setting username data from login class)
-        headerName.setText(session.getUsername());
-        headerID.setText(session.getUserId());
+        headerName.setText(session.getUsername().toUpperCase());
+        headerID.setText(session.getUserId().substring(1).toUpperCase());
         Glide.with(headerIcon.getContext())
                 .load(session.getPhoto())
                 .into(headerIcon);
@@ -170,22 +170,25 @@ public class SsecondNav extends AppCompatActivity
             case R.id.nav_profile:
                 Intent i = new Intent(SsecondNav.this, Student_profile.class);
                 startActivity(i);
-
+                finish();
                 break;
 
             case R.id.nav_noticeboard:
                 Intent j = new Intent(SsecondNav.this, NotificationNav.class);
                 startActivity(j);
+                finish();
                 break;
 
             case R.id.nav_attndance:
-                Intent k = new Intent(SsecondNav.this, Attendance1.class);
+                Intent k = new Intent(SsecondNav.this, Attendance.class);
                 startActivity(k);
+                finish();
                 break;
 
             case R.id.nav_setting:
                 Intent l = new Intent(SsecondNav.this, Setting1.class);
                 startActivity(l);
+                finish();
                 break;
 
             case R.id.nav_about:
@@ -193,7 +196,7 @@ public class SsecondNav extends AppCompatActivity
                 Uri webpage = Uri.parse("http://www.android.com");
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
-
+                finish();
                 break;
 
         }

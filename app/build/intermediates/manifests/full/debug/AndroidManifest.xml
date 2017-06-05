@@ -79,7 +79,7 @@
             android:label="@string/title_activity_question_and_answer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.example.nln.nedroid.NavigationMenu.Attendance1"
+            android:name="com.example.nln.nedroid.NavigationMenu.Attendance"
             android:label="@string/title_activity_attendance1"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.nln.nedroid.NavigationMenu.Attendance1;
+import com.example.nln.nedroid.NavigationMenu.Attendance;
 import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -74,8 +74,8 @@ public class FirstNav extends AppCompatActivity
 
 
 //        (setting username data from login class)
-        headerName.setText(session.getUsername());
-        headerID.setText(session.getUserId());
+        headerName.setText(session.getUsername().toUpperCase());
+        headerID.setText(session.getUserId().substring(1).toUpperCase());
         Glide.with(headerIcon.getContext())
                 .load(session.getPhoto())
                 .into(headerIcon);
@@ -123,7 +123,7 @@ public class FirstNav extends AppCompatActivity
                 break;
 
             case R.id.nav_attndance:
-                Intent k = new Intent(FirstNav.this, Attendance1.class);
+                Intent k = new Intent(FirstNav.this, Attendance.class);
                 startActivity(k);
                 break;
 

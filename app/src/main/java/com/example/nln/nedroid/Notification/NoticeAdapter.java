@@ -78,9 +78,11 @@ public class NoticeAdapter extends RecyclerView.Adapter<NoticeAdapter.MyViewHold
         Notice album = albumList.get(position);
         holder.date.setText(album.getDate());
         holder.title.setText(album.getTitle());
-        holder.des.setText(album.getDesciption());
+        holder.des.setText(album.getDescription());
         // loading album cover using Glide library
-        Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
+        Glide.with(holder.thumbnail.getContext())
+                .load(album.getPhoto())
+                .into(holder.thumbnail);
     }
 
     @Override

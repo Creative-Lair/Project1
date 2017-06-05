@@ -164,7 +164,7 @@ public class FirstNav extends AppCompatActivity
                 session.setUserId("");
                 session.setUsername("");
                 session.setQID("");
-                ArrayList<Long> course = new ArrayList<>();
+                ArrayList<String> course = new ArrayList<>();
                 session.setCourses(course);
                 session.setNewsId("");
                 session.setQSC("");

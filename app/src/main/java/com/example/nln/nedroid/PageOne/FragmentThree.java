@@ -55,7 +55,7 @@ public class FragmentThree extends Fragment implements ItemClickListener {
     ArrayAdapter adapter;
     ArrayList<String> courses;
 
-    ArrayList<Long> sub;
+    ArrayList<String> sub;
 
     private Session session;
 
@@ -108,8 +108,8 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child: children) {
-                    for (long course: sub) {
-                        if(child.getKey().equals(""+course)){
+                    for (String course: sub) {
+                        if(child.getKey().equals(course)){
                             String n = child.getKey() + " " + child.getValue();
                             courses.add(n);
                         }
@@ -172,8 +172,8 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Question question = dataSnapshot.getValue(Question.class);
                 question.setQid(dataSnapshot.getKey());
-                for (long course: sub) {
-                    if(question.getSub().equals("" + course)) {
+                for (String course: sub) {
+                    if(question.getSub().equals(course)) {
                         albumList.add(0, question);
                         adapterQuestion.notifyDataSetChanged();
                     }

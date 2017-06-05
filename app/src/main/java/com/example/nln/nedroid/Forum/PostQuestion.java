@@ -42,7 +42,7 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
     ArrayAdapter<String> adapter;
 
     ArrayList<String> course;
-    ArrayList<Long> sub;
+    ArrayList<String> sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +82,8 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child: children) {
-                    for (long subject: sub) {
-                        if(child.getKey().equals(""+subject)){
+                    for (String subject: sub) {
+                        if(child.getKey().equals(subject)){
                             String n = child.getKey() + " " + child.getValue();
                             course.add(n);
                         }

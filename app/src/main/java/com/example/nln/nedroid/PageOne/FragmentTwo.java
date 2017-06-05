@@ -44,7 +44,7 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference subjectRef;
 
-    private ArrayList<Long> courses;
+    private ArrayList<String> courses;
 
     public FragmentTwo() {
         // Required empty public constructor
@@ -86,8 +86,8 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child: children) {
-                    for (long course: courses) {
-                        if(child.getKey().equals(""+course)){
+                    for (String course: courses) {
+                        if(child.getKey().equals(course)){
                             String n = child.getKey() + " " + child.getValue();
                             Subject.add(n);
                         }

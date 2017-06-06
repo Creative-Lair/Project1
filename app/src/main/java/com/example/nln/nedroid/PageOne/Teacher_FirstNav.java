@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Profile;
+import com.example.nln.nedroid.Session;
 import com.example.nln.nedroid.Setting1;
 
 import java.util.ArrayList;
@@ -33,11 +34,9 @@ public class Teacher_FirstNav extends AppCompatActivity
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Session session;
 
     private TextView headerName,headerID;
-
-    public String Name_DB;//for all app
-    public String ID_DB;//for all app
 
     private int[] tabIcons = {
             R.drawable.ic_attendance_white,
@@ -47,10 +46,12 @@ public class Teacher_FirstNav extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_nav);
+        setContentView(R.layout.activity_first_nav_teach);
         toolbar = (Toolbar) findViewById(R.id.toolbar__nav);
         setSupportActionBar(toolbar);
         setTitle("NEDroid");
+
+        session = new Session(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -58,22 +59,14 @@ public class Teacher_FirstNav extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-//        Navigation Name and id
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View hView =  navigationView.getHeaderView(0);
         headerName = (TextView) hView.findViewById(R.id.textView_nav_name);
         headerID = (TextView) hView.findViewById(R.id.textView_nav_id);
 
-//        (setting username data from login class)
-        Name_DB = getIntent().getStringExtra("USERNAME");
-        headerName.setText("admin");
-        ID_DB = getIntent().getStringExtra("USERID");
-        headerID.setText("CS-01");
-
-        String log1 = "Name: " + headerName + " ,ID: " + headerID;
-        Log.d("Start: ", log1);
-
+        headerName.setText(session.getUsername());
+        headerID.setText(session.getUserId());
 //        Tab Layout
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -81,8 +74,6 @@ public class Teacher_FirstNav extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
-        String log = "Name: " + Name_DB + " ,ID: " + ID_DB;
-        Log.d("Start: ", log);
     }
 
     private void setupTabIcons() {
@@ -103,27 +94,35 @@ public class Teacher_FirstNav extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
+        switch (id){
+            case R.id.nav_home:
 
-        } if (id == R.id.nav_profile) {
-            Intent i = new Intent(Teacher_FirstNav.this, Profile.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+                break;
 
-        } else if (id == R.id.nav_setting) {
-            Intent i = new Intent(Teacher_FirstNav.this, Setting1.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(i);
+            case R.id.nav_profile:
+                Intent i = new Intent(Teacher_FirstNav.this, Profile.class);
+                startActivity(i);
 
-        } else if (id == R.id.nav_about) {
-            Toast.makeText(Teacher_FirstNav.this, " Link to webite ", Toast.LENGTH_SHORT).show();
-            Uri webpage = Uri.parse("http://www.android.com");
-            Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
-            startActivity(webIntent);
+                break;
+
+            case R.id.nav_setting:
+                Intent j = new Intent(Teacher_FirstNav.this, Setting1.class);
+                startActivity(j);
+
+                break;
+
+            case R.id.nav_about:
+                Toast.makeText(Teacher_FirstNav.this, " Link to webite ", Toast.LENGTH_SHORT).show();
+                Uri webpage = Uri.parse("http://www.android.com");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
+                startActivity(webIntent);
+
+                break;
+
+            case R.id.nav_logout:
+
+                break;
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

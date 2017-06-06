@@ -9,6 +9,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.nln.nedroid.Helper.Teacher;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +24,10 @@ public class Nav_AttendTwo extends AppCompatActivity implements AdapterView.OnIt
 
     Spinner spinner_course;
     TextView tvSecA, tvSecB, tvSecC, tvSecD;
+    private FirebaseDatabase firebaseDB;
+    private DatabaseReference SubRef;
+    Teacher teacher;
+    private Session session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,24 +37,30 @@ public class Nav_AttendTwo extends AppCompatActivity implements AdapterView.OnIt
         setSupportActionBar(toolbar);
         setTitle("Lecture Count");
 
+        session = new Session(this);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        firebaseDB =  FirebaseDatabase.getInstance();
+        SubRef = firebaseDB.getReference().child("Teachers");
 
         tvSecA = (TextView) findViewById(R.id.textView_SecA);
         tvSecB = (TextView) findViewById(R.id.textView_SecB);
         tvSecC = (TextView) findViewById(R.id.textView_SecC);
         tvSecD = (TextView) findViewById(R.id.textView_SecD);
 
+
+        //    teacher = dataSnapshot.getValue(Teacher.class);
+        ArrayList<String> subj = teacher.getSubjects();
+
         spinner_course = (Spinner) findViewById(R.id.spinner_subject);
         spinner_course.setOnItemSelectedListener(this);
-        List<String> course = new ArrayList<String>();
-        course.add("Subject One");
-        course.add("Subject Two");
-        course.add("Subject Three");
-        course.add("Subject Four");
-        ArrayAdapter<String> CourseAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, course);
+        ArrayAdapter<String> CourseAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, subj);
         CourseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_course.setAdapter(CourseAdapter);
+
+
     }
 
     @Override
@@ -51,34 +69,25 @@ public class Nav_AttendTwo extends AppCompatActivity implements AdapterView.OnIt
 
         // Showing selected spinner item
 //        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_SHORT).show();
-        String str1 ="Subject One";
-        String str2 = "Subject Two";
-        String str3 = "Subject Three";
-        String str4 = "Subject Four";
+        ArrayList<String> subj = teacher.getSubjects();
 
-        if(item.equals(str1)){
+        if(item.equals(subj.get(0))){
             tvSecA.setText("10");
             tvSecB.setText("20");
             tvSecC.setText("15");
             tvSecD.setText("20");
         }
-        else if(item.equals(str2)){
+        else if(item.equals(subj.get(1))){
             tvSecA.setText("20");
             tvSecB.setText("10");
             tvSecC.setText("20");
             tvSecD.setText("15");
         }
-        else if(item.equals(str3)){
+        else if(item.equals(subj.get(2))) {
             tvSecA.setText("14");
             tvSecB.setText("20");
             tvSecC.setText("40");
             tvSecD.setText("20");
-        }
-        else if(item.equals(str4)){
-            tvSecA.setText("10");
-            tvSecB.setText("27");
-            tvSecC.setText("42");
-            tvSecD.setText("34");
         }
     }
 

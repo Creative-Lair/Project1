@@ -21,6 +21,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_first_nav"
-        app:menu="@menu/activity_first_nav_drawer" />
+        app:menu="@menu/activity_first_nav_drawer_teach" />
 
 </android.support.v4.widget.DrawerLayout>

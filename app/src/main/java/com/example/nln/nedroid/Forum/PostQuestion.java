@@ -42,7 +42,7 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
     ArrayAdapter<String> adapter;
 
     ArrayList<String> course;
-    ArrayList<Long> sub;
+    ArrayList<String> sub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +82,8 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child: children) {
-                    for (long subject: sub) {
-                        if(child.getKey().equals(""+subject)){
+                    for (String subject: sub) {
+                        if(child.getKey().equals(subject)){
                             String n = child.getKey() + " " + child.getValue();
                             course.add(n);
                         }
@@ -129,6 +129,11 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
                 String n = spin.getSelectedItem().toString();
                 String[] words = n.split(" ");
                 String sub = words[0];
+                String subname = "";
+                for(int i=1;i<words.length;i++){
+                    subname += words[i] + " ";
+                }
+                subname = subname.substring(0, subname.length()-1);
                 String photo = session.getPhoto();
                 String name = session.getUsername();
                 String uid = session.getUserId();
@@ -141,7 +146,7 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
                 newQuestion.child("photourl").setValue(photo);
                 newQuestion.child("uid").setValue(uid);
                 newQuestion.child("timestamp").setValue(ServerValue.TIMESTAMP);
-                newQuestion.child("subname").setValue(words[1]);
+                newQuestion.child("subname").setValue(subname);
                 newQuestion.child("semester").setValue(session.getSemester());
 
                 finish();

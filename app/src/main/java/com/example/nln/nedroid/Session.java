@@ -146,20 +146,20 @@ public class Session {
         return pref.getString(KEY_QID, "-1");
     }
 
-    public void setCourses(ArrayList<Long> courses){
+    public void setCourses(ArrayList<String> courses){
 
         editor.putInt(KEY_COURSES_SIZE,courses.size());
         for(int i=0;i<courses.size();i++){
-            editor.putLong(KEY_COURSES + i, courses.get(i));
+            editor.putString(KEY_COURSES + i, courses.get(i));
         }
         editor.commit();
     }
 
-    public ArrayList<Long> getCourse(){
-        ArrayList<Long> courses = new ArrayList<>();
+    public ArrayList<String> getCourse(){
+        ArrayList<String> courses = new ArrayList<>();
 
         for(int i=0;i<pref.getInt(KEY_COURSES_SIZE,0);i++){
-            courses.add(pref.getLong(KEY_COURSES+i,-1));
+            courses.add(pref.getString(KEY_COURSES+i,"-1"));
         }
 
         return courses;

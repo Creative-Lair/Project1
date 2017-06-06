@@ -12,7 +12,7 @@ public class Student {
     private String name;
     private long semester;
     private String photourl;
-    private ArrayList<Long> courses;
+    private ArrayList<String> courses;
     private String contactno;
     private String discipline;
     private String dob;
@@ -28,7 +28,7 @@ public class Student {
     private String religion;
     private String year;
 
-    public Student(String password, String name, long semester, String photourl, ArrayList<Long> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permanentaddress, String placeofbirth, String presentaddress, String religion, String year) {
+    public Student(String password, String name, long semester, String photourl, ArrayList<String> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permanentaddress, String placeofbirth, String presentaddress, String religion, String year) {
         this.password = password;
         this.name = name;
         this.semester = semester;
@@ -82,11 +82,11 @@ public class Student {
         this.photourl = photourl;
     }
 
-    public ArrayList<Long> getCourses() {
+    public ArrayList<String> getCourses() {
         return courses;
     }
 
-    public void setCourses(ArrayList<Long> courses) {
+    public void setCourses(ArrayList<String> courses) {
         this.courses = courses;
     }
 

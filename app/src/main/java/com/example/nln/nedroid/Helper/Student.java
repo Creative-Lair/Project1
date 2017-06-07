@@ -22,14 +22,38 @@ public class Student {
     private String gender;
     private String martialstatus;
     private String nationality;
-    private String permanentaddress;
+    private String permenantaddress;
     private String placeofbirth;
     private String presentaddress;
     private String religion;
     private String year;
+
+    public Student(String password, String name, String semester, String photourl, ArrayList<String> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permenantaddress, String placeofbirth, String presentaddress, String religion, String year) {
+        this.password = password;
+        this.name = name;
+        this.semester = semester;
+        this.photourl = photourl;
+        this.courses = courses;
+        this.contactno = contactno;
+        this.discipline = discipline;
+        this.dob = dob;
+        this.domicile = domicile;
+        this.emailaddress = emailaddress;
+        this.fathername = fathername;
+        this.gender = gender;
+        this.martialstatus = martialstatus;
+        this.nationality = nationality;
+        this.permenantaddress = permenantaddress;
+        this.placeofbirth = placeofbirth;
+        this.presentaddress = presentaddress;
+        this.religion = religion;
+        this.year = year;
+    }
     private String section;
 
+
     public String getPassword() {
+
         return password;
     }
 
@@ -141,12 +165,12 @@ public class Student {
         this.nationality = nationality;
     }
 
-    public String getPermanentaddress() {
-        return permanentaddress;
+    public String getPermenantaddress() {
+        return permenantaddress;
     }
 
-    public void setPermanentaddress(String permanentaddress) {
-        this.permanentaddress = permanentaddress;
+    public void setPermenantaddress(String permenantaddress) {
+        this.permenantaddress = permenantaddress;
     }
 
     public String getPlaceofbirth() {

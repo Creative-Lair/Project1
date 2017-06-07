@@ -198,6 +198,27 @@ public class Session {
 
     public String getTimeslot(){
         return pref.getString(KEY_TIMESLOT, "");
+
+    public void setTimeslot(String n){
+        editor.putString(KEY_TIMESLOT, n);
+        editor.commit();
+    }
+
+    public void setSection(String n){
+        editor.putString(KEY_SECTION , n);
+        editor.commit();
+    }
+
+    public String getSubject(){
+        return pref.getString(KEY_SUBJECT, "CS000");
+    }
+
+    public String getSection(){
+        return pref.getString(KEY_SECTION, "A");
+    }
+
+    public String getTimeslot(){
+        return pref.getString(KEY_TIMESLOT, "");
     }
 
     public void setLectureTopic(String n){
@@ -225,6 +246,7 @@ public class Session {
 
     public String getLectureImp(){
         return pref.getString(KEY_LECTURE_IMP, "");
+
     }
 
 }

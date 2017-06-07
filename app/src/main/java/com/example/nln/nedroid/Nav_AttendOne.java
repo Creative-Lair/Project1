@@ -48,6 +48,7 @@ public class Nav_AttendOne extends AppCompatActivity
     private ImageView headerIcon;
     private EditText editText;
 
+
     private Session session;
 
     private ArrayList<String> courses;
@@ -57,10 +58,12 @@ public class Nav_AttendOne extends AppCompatActivity
     private DatabaseReference subjectRef;
 
     private ArrayAdapter<String> CourseAdapter;
+    
     ArrayAdapter<String> SectionAdapter;
     ArrayAdapter<String> TimeSlotAdapter;
 
     private String lectureType, lectureImp;
+
 
 
     @Override

@@ -182,7 +182,7 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
                 session.setNewsId("");
                 session.setQSC("");
                 session.setQSN("");
-                session.setSemester(-1);
+                session.setSemester("-1");
 
                 Intent m = new Intent(this, Login.class);
                 startActivity(m);

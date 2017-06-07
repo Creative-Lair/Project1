@@ -92,6 +92,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
                             Student student = dataSnapshot.getValue(Student.class);
+                            System.out.println(student);
                             if(password.equals(student.getPassword())){
                                 session.setLogin(true);
                                 session.setUserId(username);
@@ -99,7 +100,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 session.setSemester(student.getSemester());
                                 session.setPhoto(student.getPhotourl());
                                 session.setCourses(student.getCourses());
-
+                                for (int i=0;i< student.getCourses().size();i++){
+                                    System.out.println(student.getCourses().get(i));
+                                }
                                 Intent i = new Intent(Login.this, FirstNav.class);
                                 startActivity(i);
                                 finish();

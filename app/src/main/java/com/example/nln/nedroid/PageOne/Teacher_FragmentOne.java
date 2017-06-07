@@ -23,8 +23,8 @@ import com.example.nln.nedroid.Session;
  */
 public class Teacher_FragmentOne extends android.support.v4.app.Fragment {
 
-    View inflateView;
-    CardView cv_create,cv_LectrureCount,cv_LectureDetail;
+    private View inflateView;
+    private CardView cv_create,cv_LectrureCount,cv_LectureDetail;
     private Session session;
 
     public Teacher_FragmentOne() {
@@ -40,6 +40,13 @@ public class Teacher_FragmentOne extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         inflateView=inflater.inflate(R.layout.fragment_two, container, false);
+        session = new Session(getContext());
+
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
 
         session = new Session(getContext());
 

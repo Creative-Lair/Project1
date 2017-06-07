@@ -215,7 +215,7 @@ public class SsecondNav extends AppCompatActivity
                 session.setNewsId("");
                 session.setQSC("");
                 session.setQSN("");
-                session.setSemester(-1);
+                session.setSemester("-1");
 
                 Intent m = new Intent(this, Login.class);
                 startActivity(m);

@@ -44,6 +44,8 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
     ArrayList<String> course;
     ArrayList<String> sub;
 
+    String codes = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,12 +85,16 @@ public class PostQuestion extends AppCompatActivity implements View.OnClickListe
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child: children) {
                     for (String subject: sub) {
-                        if(child.getKey().equals(subject)){
-                            String n = child.getKey() + " " + child.getValue();
-                            course.add(n);
+                        if(!subject.equals("")) {
+                            if (child.getKey().equals(subject)&& !codes.contains(child.getKey())) {
+                                String n = child.getKey() + " " + child.getValue();
+                                codes += child.getKey();
+                                course.add(n);
+                            }
+                            adapter.notifyDataSetChanged();
                         }
-                        adapter.notifyDataSetChanged();
                     }
+
                 }
             }
 

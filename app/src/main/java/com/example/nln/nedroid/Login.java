@@ -65,6 +65,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 startActivity(i);
                 finish();
 
+            } else if(session.getUserId().charAt(0)=='t'){
+                Intent i = new Intent(this, Teacher_FirstNav.class);
+                startActivity(i);
+                finish();
             }
         }
 
@@ -122,6 +126,9 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                             if(password.equals(teacher.getPassword())){
                                 session.setLogin(true);
                                 session.setUserId(username);
+                                session.setUsername(teacher.getName());
+                                session.setPhoto(teacher.getPhotourl());
+                                session.setCourses(teacher.getSubjects());
                                 Intent i = new Intent(Login.this, Teacher_FirstNav.class);
                                 startActivity(i);
                                 finish();

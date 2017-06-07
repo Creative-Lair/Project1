@@ -57,6 +57,9 @@ public class Nav_AttendOne extends AppCompatActivity
     private DatabaseReference subjectRef;
 
     private ArrayAdapter<String> CourseAdapter;
+    ArrayAdapter<String> SectionAdapter;
+    ArrayAdapter<String> TimeSlotAdapter;
+
     private String lectureType, lectureImp;
 
 
@@ -94,6 +97,8 @@ public class Nav_AttendOne extends AppCompatActivity
 
 
         btn = (Button) findViewById(R.id.button_create);
+        editText = (EditText) findViewById(R.id.lecture);
+
         btn.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -167,10 +172,10 @@ public class Nav_AttendOne extends AppCompatActivity
 
         // Spinner Drop down elements
         List<String> section = new ArrayList<String>();
-        section.add("Section A");
-        section.add("Section B");
-        section.add("Section C");
-        section.add("Section D");
+        section.add("A");
+        section.add("B");
+        section.add("C");
+        section.add("D");
 
         List<String> timetable = new ArrayList<String>();
         timetable.add("08:30-09:20 am");
@@ -185,8 +190,8 @@ public class Nav_AttendOne extends AppCompatActivity
 
         // Creating adapter for spinner
         CourseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, course);
-        ArrayAdapter<String> SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
-        ArrayAdapter<String> TimeSlotAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timetable);
+        SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
+        TimeSlotAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timetable);
 
         // Drop down layout style - list view with radio button
         CourseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -273,7 +278,10 @@ public class Nav_AttendOne extends AppCompatActivity
 
         session.setLectureImp(lectureImp);
         session.setLectureType(lectureType);
-
+        session.setLectureTopic(editText.getText().toString().trim());
+        session.setSection(spinner_section.getSelectedItem().toString());
+        session.setTimeslot(spinner_timetable.getSelectedItem().toString());
+        session.setSubject(spinner_course.getSelectedItem().toString());
 
         Intent i = new Intent(this, Attendance1.class);
         startActivity(i);

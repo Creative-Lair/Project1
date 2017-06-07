@@ -26,6 +26,14 @@ public class Session {
     private static final String KEY_QID = "question_id";
     private static final String KEY_COURSES = "courses";
     private static final String KEY_COURSES_SIZE = "courses_size";
+    private static final String KEY_TIMESLOT = "timeslot";
+    private static final String KEY_SECTION = "section";
+    private static final String KEY_SUBJECT = "subject";
+    private static final String KEY_LECTURE_TOPIC = "lecture_topic";
+    private static final String KEY_LECTURE_TYPE = "lecture_type";
+    private static final String KEY_LECTURE_IMP = "lecture_imp";
+
+
 
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
@@ -92,13 +100,13 @@ public class Session {
         return pref.getString(KEY_NEWS_ID, "-1");
     }
 
-    public void setSemester(long s){
-        editor.putLong(KEY_SEMESTER, s);
+    public void setSemester(String s){
+        editor.putString(KEY_SEMESTER, s);
         editor.commit();
     }
 
-    public long getSemester(){
-        return pref.getLong(KEY_SEMESTER, -1);
+    public String getSemester(){
+        return pref.getString(KEY_SEMESTER, "-1");
     }
 
     public void setSubjectCode(String n){
@@ -163,8 +171,60 @@ public class Session {
         }
 
         return courses;
+    }
 
+    public void setSubject(String n){
+        editor.putString(KEY_SUBJECT, n);
+        editor.commit();
+    }
 
+    public void setTimeslot(String n){
+        editor.putString(KEY_TIMESLOT, n);
+        editor.commit();
+    }
+
+    public void setSection(String n){
+        editor.putString(KEY_SECTION , n);
+        editor.commit();
+    }
+
+    public String getSubject(){
+        return pref.getString(KEY_SUBJECT, "CS000");
+    }
+
+    public String getSection(){
+        return pref.getString(KEY_SECTION, "A");
+    }
+
+    public String getTimeslot(){
+        return pref.getString(KEY_TIMESLOT, "");
+    }
+
+    public void setLectureTopic(String n){
+        editor.putString(KEY_LECTURE_TOPIC,n);
+        editor.commit();
+    }
+
+    public void setLectureType(String n){
+        editor.putString(KEY_LECTURE_TYPE,n);
+        editor.commit();
+    }
+
+    public void setLectureImp(String n){
+        editor.putString(KEY_LECTURE_IMP, n);
+        editor.commit();
+    }
+
+    public String getLectureTopic(){
+        return pref.getString(KEY_LECTURE_TOPIC, "");
+    }
+
+    public String getLectureType(){
+        return pref.getString(KEY_LECTURE_TYPE, "");
+    }
+
+    public String getLectureImp(){
+        return pref.getString(KEY_LECTURE_IMP, "");
     }
 
 }

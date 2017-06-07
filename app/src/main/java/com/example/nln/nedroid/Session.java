@@ -26,6 +26,11 @@ public class Session {
     private static final String KEY_QID = "question_id";
     private static final String KEY_COURSES = "courses";
     private static final String KEY_COURSES_SIZE = "courses_size";
+    private static final String KEY_TIMESLOT = "timeslot";
+    private static final String KEY_SECTION = "section";
+    private static final String KEY_SUBJECT = "subject";
+
+
 
     private static String TAG = Session.class.getSimpleName();
     SharedPreferences pref;
@@ -163,8 +168,33 @@ public class Session {
         }
 
         return courses;
+    }
 
+    public void setSubject(String n){
+        editor.putString(KEY_SUBJECT, n);
+        editor.commit();
+    }
 
+    public void setTimeslot(String n){
+        editor.putString(KEY_TIMESLOT, n);
+        editor.commit();
+    }
+
+    public void setSection(String n){
+        editor.putString(KEY_SECTION , n);
+        editor.commit();
+    }
+
+    public String getSubject(){
+        return pref.getString(KEY_SUBJECT, "CS000");
+    }
+
+    public String getSection(){
+        return pref.getString(KEY_SECTION, "A");
+    }
+
+    public String getTimeslot(){
+        return pref.getString(KEY_TIMESLOT, "");
     }
 
 }

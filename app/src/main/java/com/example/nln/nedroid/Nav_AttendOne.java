@@ -176,7 +176,7 @@ public class Nav_AttendOne extends AppCompatActivity
 
 
         // Creating adapter for spinner
-        CourseAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, course);
+        CourseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, course);
         ArrayAdapter<String> SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
         ArrayAdapter<String> TimeSlotAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timetable);
 
@@ -197,8 +197,8 @@ public class Nav_AttendOne extends AppCompatActivity
                 for (DataSnapshot child: children) {
                     for (String sub: courses) {
                         if(!sub.equals("")) {
-                            if (child.getKey().equals(course)) {
-                                String n = "" + child.getValue();
+                            if (child.getKey().equals(sub)) {
+                                String n = child.getKey() + " " + child.getValue();
                                 courses.add(n);
                             }
                             CourseAdapter.notifyDataSetChanged();

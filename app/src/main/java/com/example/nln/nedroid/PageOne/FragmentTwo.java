@@ -45,6 +45,7 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
     private DatabaseReference subjectRef;
 
     private ArrayList<String> courses;
+    String codes = "";
 
     public FragmentTwo() {
         // Required empty public constructor
@@ -87,11 +88,16 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child: children) {
                     for (String course: courses) {
-                        if(child.getKey().equals(course)){
-                            String n = child.getKey() + " " + child.getValue();
-                            Subject.add(n);
+                        if(!course.equals("")) {
+                            Toast.makeText(getContext(), course, Toast.LENGTH_SHORT).show();
+                            if (child.getKey().equals(course) && !course.contains(child.getKey())) {
+                                String n = child.getKey() + " " + child.getValue();
+                                course += child.getKey();
+                                Subject.add(n);
+                                Toast.makeText(getContext(), n, Toast.LENGTH_SHORT).show();
+                            }
+                            adapter.notifyDataSetChanged();
                         }
-                        adapter.notifyDataSetChanged();
                     }
                 }
             }

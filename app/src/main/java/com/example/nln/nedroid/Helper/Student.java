@@ -10,7 +10,7 @@ public class Student {
 
     private String password;
     private String name;
-    private long semester;
+    private String semester;
     private String photourl;
     private ArrayList<String> courses;
     private String contactno;
@@ -22,13 +22,13 @@ public class Student {
     private String gender;
     private String martialstatus;
     private String nationality;
-    private String permanentaddress;
+    private String permenantaddress;
     private String placeofbirth;
     private String presentaddress;
     private String religion;
     private String year;
 
-    public Student(String password, String name, long semester, String photourl, ArrayList<String> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permanentaddress, String placeofbirth, String presentaddress, String religion, String year) {
+    public Student(String password, String name, String semester, String photourl, ArrayList<String> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permenantaddress, String placeofbirth, String presentaddress, String religion, String year) {
         this.password = password;
         this.name = name;
         this.semester = semester;
@@ -43,7 +43,7 @@ public class Student {
         this.gender = gender;
         this.martialstatus = martialstatus;
         this.nationality = nationality;
-        this.permanentaddress = permanentaddress;
+        this.permenantaddress = permenantaddress;
         this.placeofbirth = placeofbirth;
         this.presentaddress = presentaddress;
         this.religion = religion;
@@ -51,6 +51,7 @@ public class Student {
     }
 
     public String getPassword() {
+
         return password;
     }
 
@@ -66,11 +67,11 @@ public class Student {
         this.name = name;
     }
 
-    public long getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(long semester) {
+    public void setSemester(String semester) {
         this.semester = semester;
     }
 
@@ -162,12 +163,12 @@ public class Student {
         this.nationality = nationality;
     }
 
-    public String getPermanentaddress() {
-        return permanentaddress;
+    public String getPermenantaddress() {
+        return permenantaddress;
     }
 
-    public void setPermanentaddress(String permanentaddress) {
-        this.permanentaddress = permanentaddress;
+    public void setPermenantaddress(String permenantaddress) {
+        this.permenantaddress = permenantaddress;
     }
 
     public String getPlaceofbirth() {

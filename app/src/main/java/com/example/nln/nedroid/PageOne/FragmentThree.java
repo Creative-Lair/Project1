@@ -58,6 +58,7 @@ public class FragmentThree extends Fragment implements ItemClickListener {
     ArrayList<String> sub;
 
     private Session session;
+    String codes = "";
 
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference subjectRef;
@@ -109,11 +110,14 @@ public class FragmentThree extends Fragment implements ItemClickListener {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
                 for (DataSnapshot child: children) {
                     for (String course: sub) {
-                        if(child.getKey().equals(course)){
-                            String n = child.getKey() + " " + child.getValue();
-                            courses.add(n);
+                        if(!course.equals("")) {
+                            if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
+                                String n = child.getKey() + " " + child.getValue();
+                                codes += child.getKey();
+                                courses.add(n);
+                            }
+                            adapter.notifyDataSetChanged();
                         }
-                        adapter.notifyDataSetChanged();
                     }
                 }
             }
@@ -177,9 +181,11 @@ public class FragmentThree extends Fragment implements ItemClickListener {
                 Question question = dataSnapshot.getValue(Question.class);
                 question.setQid(dataSnapshot.getKey());
                 for (String course: sub) {
-                    if(question.getSub().equals(course)) {
-                        albumList.add(0, question);
-                        adapterQuestion.notifyDataSetChanged();
+                    if(!course.equals("")) {
+                        if (question.getSub().equals(course)) {
+                            albumList.add(0, question);
+                            adapterQuestion.notifyDataSetChanged();
+                        }
                     }
                 }
 
@@ -245,10 +251,12 @@ public class FragmentThree extends Fragment implements ItemClickListener {
                     Question question = dataSnapshot.getValue(Question.class);
                     question.setQid(dataSnapshot.getKey());
                     for (String course: sub) {
-                        if(question.getSub().equals(course)) {
-                            Toast.makeText(getContext(), question.getSub()+ " " + course, Toast.LENGTH_SHORT).show();
-                            albumList.add(0, question);
-                            adapterQuestion.notifyDataSetChanged();
+                        if(!course.equals("")) {
+                            if (question.getSub().equals(course)) {
+                                Toast.makeText(getContext(), question.getSub() + " " + course, Toast.LENGTH_SHORT).show();
+                                albumList.add(0, question);
+                                adapterQuestion.notifyDataSetChanged();
+                            }
                         }
                     }
 

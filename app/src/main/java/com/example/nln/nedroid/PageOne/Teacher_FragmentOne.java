@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.Nav_AttendOne;
 import com.example.nln.nedroid.Nav_AttendThree;
 import com.example.nln.nedroid.Nav_AttendTwo;
 import com.example.nln.nedroid.R;
+import com.example.nln.nedroid.Session;
 
 
 /**
@@ -21,8 +23,10 @@ import com.example.nln.nedroid.R;
  */
 public class Teacher_FragmentOne extends android.support.v4.app.Fragment {
 
-    View inflateView;
-    CardView cv_create,cv_LectrureCount,cv_LectureDetail;
+    private View inflateView;
+    private CardView cv_create,cv_LectrureCount,cv_LectureDetail;
+    private Session session;
+
     public Teacher_FragmentOne() {
         // Required empty public constructor
     }
@@ -36,6 +40,13 @@ public class Teacher_FragmentOne extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         inflateView=inflater.inflate(R.layout.fragment_two, container, false);
+        session = new Session(getContext());
+
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
 
         cv_create = (CardView) inflateView.findViewById(R.id.cardView_CreateNew);
         cv_LectrureCount = (CardView) inflateView.findViewById(R.id.cardView_LectureCount);

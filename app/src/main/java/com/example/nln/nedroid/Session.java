@@ -92,13 +92,13 @@ public class Session {
         return pref.getString(KEY_NEWS_ID, "-1");
     }
 
-    public void setSemester(long s){
-        editor.putLong(KEY_SEMESTER, s);
+    public void setSemester(String s){
+        editor.putString(KEY_SEMESTER, s);
         editor.commit();
     }
 
-    public long getSemester(){
-        return pref.getLong(KEY_SEMESTER, -1);
+    public String getSemester(){
+        return pref.getString(KEY_SEMESTER, "-1");
     }
 
     public void setSubjectCode(String n){

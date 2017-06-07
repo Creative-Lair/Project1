@@ -1,6 +1,7 @@
 package com.example.nln.nedroid.PageOne;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -17,11 +18,15 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Profile;
+import com.example.nln.nedroid.Session;
 import com.example.nln.nedroid.Setting1;
 
 import java.util.ArrayList;
@@ -36,14 +41,16 @@ public class Teacher_FirstNav extends AppCompatActivity
 
     private TextView headerName,headerID;
 
-    public String Name_DB;//for all app
-    public String ID_DB;//for all app
+    private ImageView headerIcon;
+
+    private Session session;
 
     private int[] tabIcons = {
             R.drawable.ic_attendance_white,
             R.drawable.ic_gtraph_white,
             R.drawable.ic_forum_white
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +58,14 @@ public class Teacher_FirstNav extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar__nav);
         setSupportActionBar(toolbar);
         setTitle("NEDroid");
+        session = new Session(this);
+
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,15 +79,15 @@ public class Teacher_FirstNav extends AppCompatActivity
         View hView =  navigationView.getHeaderView(0);
         headerName = (TextView) hView.findViewById(R.id.textView_nav_name);
         headerID = (TextView) hView.findViewById(R.id.textView_nav_id);
+        headerIcon = (ImageView) hView.findViewById(R.id.imageView_nav);
 
 //        (setting username data from login class)
-        Name_DB = getIntent().getStringExtra("USERNAME");
-        headerName.setText("admin");
-        ID_DB = getIntent().getStringExtra("USERID");
-        headerID.setText("CS-01");
+        headerName.setText(session.getUsername());
+        headerID.setText(session.getUserId());
+        Glide.with(headerIcon.getContext())
+                .load(session.getPhoto())
+                .into(headerIcon);
 
-        String log1 = "Name: " + headerName + " ,ID: " + headerID;
-        Log.d("Start: ", log1);
 
 //        Tab Layout
         viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -81,8 +96,6 @@ public class Teacher_FirstNav extends AppCompatActivity
         tabLayout.setupWithViewPager(viewPager);
         setupTabIcons();
 
-        String log = "Name: " + Name_DB + " ,ID: " + ID_DB;
-        Log.d("Start: ", log);
     }
 
     private void setupTabIcons() {
@@ -107,16 +120,10 @@ public class Teacher_FirstNav extends AppCompatActivity
 
         } if (id == R.id.nav_profile) {
             Intent i = new Intent(Teacher_FirstNav.this, Profile.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
 
         } else if (id == R.id.nav_setting) {
             Intent i = new Intent(Teacher_FirstNav.this, Setting1.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
 
         } else if (id == R.id.nav_about) {

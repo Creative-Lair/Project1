@@ -107,7 +107,7 @@ public class Student_profile extends AppCompatActivity {
         discipline.setText(student.getDiscipline());
         year.setText(student.getYear());
         paddress.setText(student.getPresentaddress());
-        peraddress.setText(student.getPermanentaddress());
+        peraddress.setText(student.getPermenantaddress());
         contactno.setText(student.getContactno());
         email.setText(student.getEmailaddress());
 

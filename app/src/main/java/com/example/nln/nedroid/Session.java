@@ -29,6 +29,9 @@ public class Session {
     private static final String KEY_TIMESLOT = "timeslot";
     private static final String KEY_SECTION = "section";
     private static final String KEY_SUBJECT = "subject";
+    private static final String KEY_LECTURE_TOPIC = "lecture_topic";
+    private static final String KEY_LECTURE_TYPE = "lecture_type";
+    private static final String KEY_LECTURE_IMP = "lecture_imp";
 
 
 
@@ -195,6 +198,55 @@ public class Session {
 
     public String getTimeslot(){
         return pref.getString(KEY_TIMESLOT, "");
+
+    public void setTimeslot(String n){
+        editor.putString(KEY_TIMESLOT, n);
+        editor.commit();
+    }
+
+    public void setSection(String n){
+        editor.putString(KEY_SECTION , n);
+        editor.commit();
+    }
+
+    public String getSubject(){
+        return pref.getString(KEY_SUBJECT, "CS000");
+    }
+
+    public String getSection(){
+        return pref.getString(KEY_SECTION, "A");
+    }
+
+    public String getTimeslot(){
+        return pref.getString(KEY_TIMESLOT, "");
+    }
+
+    public void setLectureTopic(String n){
+        editor.putString(KEY_LECTURE_TOPIC,n);
+        editor.commit();
+    }
+
+    public void setLectureType(String n){
+        editor.putString(KEY_LECTURE_TYPE,n);
+        editor.commit();
+    }
+
+    public void setLectureImp(String n){
+        editor.putString(KEY_LECTURE_IMP, n);
+        editor.commit();
+    }
+
+    public String getLectureTopic(){
+        return pref.getString(KEY_LECTURE_TOPIC, "");
+    }
+
+    public String getLectureType(){
+        return pref.getString(KEY_LECTURE_TYPE, "");
+    }
+
+    public String getLectureImp(){
+        return pref.getString(KEY_LECTURE_IMP, "");
+
     }
 
 }

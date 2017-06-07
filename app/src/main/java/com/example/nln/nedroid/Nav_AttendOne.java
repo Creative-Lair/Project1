@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -45,6 +46,8 @@ public class Nav_AttendOne extends AppCompatActivity
     String buttonSelected, buttonSelected1;
     private TextView headerName,headerID;
     private ImageView headerIcon;
+    private EditText editText;
+
 
     private Session session;
 
@@ -55,6 +58,13 @@ public class Nav_AttendOne extends AppCompatActivity
     private DatabaseReference subjectRef;
 
     private ArrayAdapter<String> CourseAdapter;
+    
+    ArrayAdapter<String> SectionAdapter;
+    ArrayAdapter<String> TimeSlotAdapter;
+
+    private String lectureType, lectureImp;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +100,8 @@ public class Nav_AttendOne extends AppCompatActivity
 
 
         btn = (Button) findViewById(R.id.button_create);
+        editText = (EditText) findViewById(R.id.lecture);
+
         btn.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -114,10 +126,12 @@ public class Nav_AttendOne extends AppCompatActivity
                 switch(i){
                     case R.id.Regular:
                         buttonSelected = "Regular Selected";
+                        lectureImp = "Regular";
                         Compensatory.setChecked(false);
                         break;
                     case R.id.Compensatory:
                         buttonSelected = "Compensatory Selected";
+                        lectureImp = "Compensatory";
                         Regular.setChecked(false);
                         break;
                     default:
@@ -134,10 +148,12 @@ public class Nav_AttendOne extends AppCompatActivity
                 switch(i){
                     case R.id.Theory:
                         buttonSelected1 = "Theory Selected";
+                        lectureType = "Theory";
                         Practical.setChecked(false);
                         break;
                     case R.id.Practical:
                         buttonSelected1 = "Practical Selected";
+                        lectureType = "Practical";
                         Theory.setChecked(false);
                         break;
                     default:
@@ -159,10 +175,10 @@ public class Nav_AttendOne extends AppCompatActivity
 
         // Spinner Drop down elements
         List<String> section = new ArrayList<String>();
-        section.add("Section A");
-        section.add("Section B");
-        section.add("Section C");
-        section.add("Section D");
+        section.add("A");
+        section.add("B");
+        section.add("C");
+        section.add("D");
 
         List<String> timetable = new ArrayList<String>();
         timetable.add("08:30-09:20 am");
@@ -177,8 +193,8 @@ public class Nav_AttendOne extends AppCompatActivity
 
         // Creating adapter for spinner
         CourseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, course);
-        ArrayAdapter<String> SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
-        ArrayAdapter<String> TimeSlotAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timetable);
+        SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
+        TimeSlotAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timetable);
 
         // Drop down layout style - list view with radio button
         CourseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -262,6 +278,14 @@ public class Nav_AttendOne extends AppCompatActivity
     }
 
     private void onButtonCreate() {
+
+        session.setLectureImp(lectureImp);
+        session.setLectureType(lectureType);
+        session.setLectureTopic(editText.getText().toString().trim());
+        session.setSection(spinner_section.getSelectedItem().toString());
+        session.setTimeslot(spinner_timetable.getSelectedItem().toString());
+        session.setSubject(spinner_course.getSelectedItem().toString());
+
         Intent i = new Intent(this, Attendance1.class);
         startActivity(i);
     }

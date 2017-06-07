@@ -40,6 +40,7 @@ public class Teacher_FirstNav extends AppCompatActivity
     private ViewPager viewPager;
 
     private TextView headerName,headerID;
+    private ImageView headerIcon;
 
     private ImageView headerIcon;
 
@@ -59,6 +60,11 @@ public class Teacher_FirstNav extends AppCompatActivity
         setSupportActionBar(toolbar);
         setTitle("NEDroid");
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
 
         if(!session.getLogin()){
             Intent i = new Intent(this, Login.class);
@@ -80,6 +86,9 @@ public class Teacher_FirstNav extends AppCompatActivity
         headerName = (TextView) hView.findViewById(R.id.textView_nav_name);
         headerID = (TextView) hView.findViewById(R.id.textView_nav_id);
         headerIcon = (ImageView) hView.findViewById(R.id.imageView_nav);
+        Glide.with(headerIcon.getContext())
+                .load(session.getPhoto())
+                .into(headerIcon);
 
 //        (setting username data from login class)
         headerName.setText(session.getUsername());
@@ -109,6 +118,15 @@ public class Teacher_FirstNav extends AppCompatActivity
         finish();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

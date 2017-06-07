@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ABAdaptor extends RecyclerView.Adapter<ABAdaptor.MyViewHolder> {
 
-    private List<AButton> albumList;
+    private List<String> albumList;
     private ItemClickListener clickListener;
     public Context mContext;
     String buttonSelected;
@@ -70,7 +70,7 @@ public class ABAdaptor extends RecyclerView.Adapter<ABAdaptor.MyViewHolder> {
     }
 
 
-    public ABAdaptor(Attendance1 mContext, List<AButton> albumList) {
+    public ABAdaptor(Attendance1 mContext, List<String> albumList) {
         this.mContext = mContext;
         this.albumList = albumList;
     }
@@ -95,8 +95,8 @@ public class ABAdaptor extends RecyclerView.Adapter<ABAdaptor.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
-        AButton album = albumList.get(position);
-        holder.name.setText(album.getName());
+
+
     }
 
     @Override

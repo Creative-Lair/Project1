@@ -49,6 +49,8 @@ public class Student {
         this.religion = religion;
         this.year = year;
     }
+    private String section;
+
 
     public String getPassword() {
 
@@ -201,6 +203,38 @@ public class Student {
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
+    public Student(String password, String name, String semester, String photourl, ArrayList<String> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permanentaddress, String placeofbirth, String presentaddress, String religion, String year, String section) {
+
+        this.password = password;
+        this.name = name;
+        this.semester = semester;
+        this.photourl = photourl;
+        this.courses = courses;
+        this.contactno = contactno;
+        this.discipline = discipline;
+        this.dob = dob;
+        this.domicile = domicile;
+        this.emailaddress = emailaddress;
+        this.fathername = fathername;
+        this.gender = gender;
+        this.martialstatus = martialstatus;
+        this.nationality = nationality;
+        this.permanentaddress = permanentaddress;
+        this.placeofbirth = placeofbirth;
+        this.presentaddress = presentaddress;
+        this.religion = religion;
+        this.year = year;
+        this.section = section;
     }
 
     public Student() {}

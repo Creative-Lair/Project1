@@ -48,6 +48,14 @@ public class Teacher_FragmentOne extends android.support.v4.app.Fragment {
             getActivity().finish();
         }
 
+        session = new Session(getContext());
+
+        if(!session.getLogin()){
+            Intent i = new Intent(getContext(), Login.class);
+            startActivity(i);
+            getActivity().finish();
+        }
+
         cv_create = (CardView) inflateView.findViewById(R.id.cardView_CreateNew);
         cv_LectrureCount = (CardView) inflateView.findViewById(R.id.cardView_LectureCount);
         cv_LectureDetail = (CardView) inflateView.findViewById(R.id.cardView_LectureDetail);

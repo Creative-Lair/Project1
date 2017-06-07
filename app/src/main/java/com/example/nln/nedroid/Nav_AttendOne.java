@@ -3,6 +3,7 @@ package com.example.nln.nedroid;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,14 +16,22 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.Attendance.Attendance1;
 import com.example.nln.nedroid.PageOne.Teacher_FirstNav;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +45,20 @@ public class Nav_AttendOne extends AppCompatActivity
     RadioButton Regular, Compensatory, Theory, Practical;
     String buttonSelected, buttonSelected1;
     private TextView headerName,headerID;
-    public String Name_DB;//for all app
-    public String ID_DB;//for all app
+    private ImageView headerIcon;
+    private EditText editText;
+
+    private Session session;
+
+    private ArrayList<String> courses;
+    private ArrayList<String> course;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference subjectRef;
+
+    private ArrayAdapter<String> CourseAdapter;
+    private String lectureType, lectureImp;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,20 +73,25 @@ public class Nav_AttendOne extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
         setTitle("Attendance");
+        session = new Session(this);
+        firebaseDatabase  = FirebaseDatabase.getInstance();
+        subjectRef = firebaseDatabase.getReference().child("Subjects");
+        courses = session.getCourse();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View hView =  navigationView.getHeaderView(0);
         headerName = (TextView) hView.findViewById(R.id.textView_nav_name);
         headerID = (TextView) hView.findViewById(R.id.textView_nav_id);
+        headerIcon = (ImageView) hView.findViewById(R.id.imageView_nav);
         //        (setting username data from login class)
-        Name_DB = getIntent().getStringExtra("USERNAME");
-        headerName.setText("admin");
-        ID_DB = getIntent().getStringExtra("USERID");
-        headerID.setText("CS-01");
+        headerName.setText(session.getUsername());
+        headerID.setText(session.getUserId());
 
-        String log1 = "Name: " + headerName + " ,ID: " + headerID;
-        Log.d("Start: ", log1);
+        Glide.with(headerIcon.getContext())
+                .load(session.getPhoto())
+                .into(headerIcon);
+
 
         btn = (Button) findViewById(R.id.button_create);
         btn.setOnClickListener(new View.OnClickListener()
@@ -92,10 +118,12 @@ public class Nav_AttendOne extends AppCompatActivity
                 switch(i){
                     case R.id.Regular:
                         buttonSelected = "Regular Selected";
+                        lectureImp = "Regular";
                         Compensatory.setChecked(false);
                         break;
                     case R.id.Compensatory:
                         buttonSelected = "Compensatory Selected";
+                        lectureImp = "Compensatory";
                         Regular.setChecked(false);
                         break;
                     default:
@@ -112,10 +140,12 @@ public class Nav_AttendOne extends AppCompatActivity
                 switch(i){
                     case R.id.Theory:
                         buttonSelected1 = "Theory Selected";
+                        lectureType = "Theory";
                         Practical.setChecked(false);
                         break;
                     case R.id.Practical:
                         buttonSelected1 = "Practical Selected";
+                        lectureType = "Practical";
                         Theory.setChecked(false);
                         break;
                     default:
@@ -136,11 +166,6 @@ public class Nav_AttendOne extends AppCompatActivity
         spinner_timetable.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
-        List<String> course = new ArrayList<String>();
-        course.add("Subject One");
-        course.add("Subject Two");
-        course.add("Subject Two");
-
         List<String> section = new ArrayList<String>();
         section.add("Section A");
         section.add("Section B");
@@ -159,7 +184,7 @@ public class Nav_AttendOne extends AppCompatActivity
 
 
         // Creating adapter for spinner
-        ArrayAdapter<String> CourseAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, course);
+        CourseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, course);
         ArrayAdapter<String> SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
         ArrayAdapter<String> TimeSlotAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timetable);
 
@@ -172,14 +197,47 @@ public class Nav_AttendOne extends AppCompatActivity
         spinner_course.setAdapter(CourseAdapter);
         spinner_section.setAdapter(SectionAdapter);
         spinner_timetable.setAdapter(TimeSlotAdapter);
+
+        subjectRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                for (DataSnapshot child: children) {
+                    for (String sub: courses) {
+                        if(!sub.equals("")) {
+                            if (child.getKey().equals(sub)) {
+                                String n = child.getKey() + " " + child.getValue();
+                                courses.add(n);
+                            }
+                            CourseAdapter.notifyDataSetChanged();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent i = new Intent(Nav_AttendOne.this, Teacher_FirstNav.class);
-        i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -189,23 +247,14 @@ public class Nav_AttendOne extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent i = new Intent(Nav_AttendOne.this, Teacher_FirstNav.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
 
         } if (id == R.id.nav_profile) {
             Intent i = new Intent(Nav_AttendOne.this, Profile.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
 
         } else if (id == R.id.nav_setting) {
             Intent i = new Intent(Nav_AttendOne.this, Setting1.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
 
         } else if (id == R.id.nav_about) {
@@ -221,7 +270,11 @@ public class Nav_AttendOne extends AppCompatActivity
     }
 
     private void onButtonCreate() {
-        Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show();
+
+        session.setLectureImp(lectureImp);
+        session.setLectureType(lectureType);
+
+
         Intent i = new Intent(this, Attendance1.class);
         startActivity(i);
     }

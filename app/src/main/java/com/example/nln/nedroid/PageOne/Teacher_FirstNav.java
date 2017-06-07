@@ -1,6 +1,7 @@
 package com.example.nln.nedroid.PageOne;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -17,9 +18,12 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Profile;
 import com.example.nln.nedroid.Session;
@@ -37,6 +41,7 @@ public class Teacher_FirstNav extends AppCompatActivity
     private Session session;
 
     private TextView headerName,headerID;
+    private ImageView headerIcon;
 
     private int[] tabIcons = {
             R.drawable.ic_attendance_white,
@@ -52,6 +57,11 @@ public class Teacher_FirstNav extends AppCompatActivity
         setTitle("NEDroid");
 
         session = new Session(this);
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,6 +74,11 @@ public class Teacher_FirstNav extends AppCompatActivity
         View hView =  navigationView.getHeaderView(0);
         headerName = (TextView) hView.findViewById(R.id.textView_nav_name);
         headerID = (TextView) hView.findViewById(R.id.textView_nav_id);
+        headerIcon = (ImageView) hView.findViewById(R.id.imageView_nav);
+
+        Glide.with(headerIcon.getContext())
+                .load(session.getPhoto())
+                .into(headerIcon);
 
         headerName.setText(session.getUsername());
         headerID.setText(session.getUserId());
@@ -87,6 +102,15 @@ public class Teacher_FirstNav extends AppCompatActivity
         finish();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!session.getLogin()){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

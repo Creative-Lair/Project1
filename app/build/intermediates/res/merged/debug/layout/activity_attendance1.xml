@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.nln.nedroidteacher.Attendance.Attendance1"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -68,12 +69,12 @@
             android:id="@+id/textView_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Year: "
-            android:textSize="25dp"
-            android:textStyle="normal"
             android:layout_marginLeft="0dp"
             android:layout_weight="1"
-            android:textColor="@color/album_title"/>
+            android:text="Timeslot"
+            android:textColor="@color/album_title"
+            android:textSize="25dp"
+            android:textStyle="normal" />
         <TextView
             android:textColor="@color/album_title"
             android:id="@+id/textView_yearn"
@@ -139,24 +140,25 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView_buttons"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"
-        android:layout_marginTop="0dp"
+        android:layout_height="200dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="15dp"/>
+        android:layout_marginTop="0dp"
+        android:layout_weight="0.33"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
 
     <Button
         android:id="@+id/button_UploadAttendance"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="0dp"
         android:layout_marginLeft="100dp"
-        android:text="Upload"
+        android:layout_marginTop="0dp"
         android:background="@color/colorAccent"
+        android:onClick="onClickButton"
+        android:text="Upload"
         android:textColor="#FFFF"
-        tools:ignore="RtlHardcoded"
-        android:onClick="onClickButton" />
+        tools:ignore="RtlHardcoded" />
 
 </LinearLayout>

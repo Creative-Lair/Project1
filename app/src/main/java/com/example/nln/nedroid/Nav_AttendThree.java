@@ -9,17 +9,23 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.PageOne.Teacher_FirstNav;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +37,15 @@ public class Nav_AttendThree extends AppCompatActivity
     Button btn;
     private TextView headerName,headerID;
 
-    public String Name_DB;//for all app
-    public String ID_DB;//for all app
+    private ImageView headerIcon;
+    private Session session;
+    private List<String> course;
 
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference subRef;
+
+    private ArrayList<String> subjects;
+    private ArrayAdapter<String> SubjectAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +53,16 @@ public class Nav_AttendThree extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Lecture Detail");
+        session = new Session(this);
+
+        if (!session.getLogin()) {
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
+        }
+
+        subjects = session.getCourse();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -54,15 +76,14 @@ public class Nav_AttendThree extends AppCompatActivity
         View hView =  navigationView.getHeaderView(0);
         headerName = (TextView) hView.findViewById(R.id.textView_nav_name);
         headerID = (TextView) hView.findViewById(R.id.textView_nav_id);
+        headerIcon = (ImageView) hView.findViewById(R.id.imageView_nav);
 
 //        (setting username data from login class)
-        Name_DB = getIntent().getStringExtra("USERNAME");
-        headerName.setText("admin");
-        ID_DB = getIntent().getStringExtra("USERID");
-        headerID.setText("CS-01");
-
-        String log1 = "Name: " + headerName + " ,ID: " + headerID;
-        Log.d("Start: ", log1);
+        headerName.setText(session.getUsername());
+        headerID.setText(session.getUserId());
+        Glide.with(headerIcon.getContext())
+                .load(session.getPhoto())
+                .into(headerIcon);
 
 
         btn = (Button) findViewById(R.id.button_create);
@@ -84,20 +105,17 @@ public class Nav_AttendThree extends AppCompatActivity
         spinner_section.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
-        List<String> course = new ArrayList<String>();
-        course.add("Subject One");
-        course.add("Subject Two");
-        course.add("Subject Two");
+        course = new ArrayList<String>();
 
         List<String> section = new ArrayList<String>();
-        section.add("Section A");
-        section.add("Section B");
-        section.add("Section C");
-        section.add("Section D");
+        section.add("A");
+        section.add("B");
+        section.add("C");
+        section.add("D");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> SubjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, course);
-        ArrayAdapter<String> SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
+        SubjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, course);
+        final ArrayAdapter<String> SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
 
         // Drop down layout style - list view with radio button
         SubjectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -106,14 +124,49 @@ public class Nav_AttendThree extends AppCompatActivity
         // attaching data adapter to spinner
         spinner_subject.setAdapter(SubjectAdapter);
         spinner_section.setAdapter(SectionAdapter);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        subRef = firebaseDatabase.getReference().child("Subjects");
+
+        subRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                for (DataSnapshot child : children) {
+                    for (String sub : subjects) {
+                        if (!sub.equals("")) {
+                            if (child.getKey().equals(sub)) {
+                                String n = child.getKey() + " " + child.getValue();
+                                course.add(n);
+                            }
+                            SubjectAdapter.notifyDataSetChanged();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent i = new Intent(Nav_AttendThree.this, Teacher_FirstNav.class);
-        i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(i);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -138,24 +191,18 @@ public class Nav_AttendThree extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             Intent i = new Intent(Nav_AttendThree.this, Teacher_FirstNav.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
+            finish();
 
         } if (id == R.id.nav_profile) {
             Intent i = new Intent(Nav_AttendThree.this, Profile.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
+            finish();
 
         } else if (id == R.id.nav_setting) {
             Intent i = new Intent(Nav_AttendThree.this, Setting1.class);
-            i.putExtra("USERNAME", Name_DB);// Transfer name from this class to Profile
-            i.putExtra("USERID", ID_DB);
-            i.addFlags( Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(i);
+            finish();
 
         } else if (id == R.id.nav_about) {
             Toast.makeText(Nav_AttendThree.this, " Link to webite ", Toast.LENGTH_SHORT).show();
@@ -170,7 +217,15 @@ public class Nav_AttendThree extends AppCompatActivity
     }
 
     private void onButtonCreate() {
-        Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show();
+
+        String sec = spinner_section.getSelectedItem().toString();
+        String[] n = spinner_subject.getSelectedItem().toString().split(" ");
+        String code = n[0];
+
+        session.setSubject(code);
+        session.setSection(sec);
+
+        //  Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this, Nav_AttendThree_pdf.class);
         startActivity(i);
     }

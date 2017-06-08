@@ -42,7 +42,7 @@
             android:fadingEdge="horizontal"
             android:layout_weight="1"
             />
-        <DateTimeView android:id="@+id/time"
+        <DateTimeView android:id="@+id/date"
             android:textAppearance="@style/TextAppearance.AppCompat.Notification.Time.Media"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

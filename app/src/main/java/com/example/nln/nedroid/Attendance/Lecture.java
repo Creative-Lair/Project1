@@ -12,6 +12,29 @@ public class Lecture {
     private String timeslot;
     private String lectureType;
     private String lectureImp;
+    private String date;
+
+    public Lecture(String section, String subject, String lectureTopic, String timeslot, String lectureType, String lectureImp, String date) {
+        this.section = section;
+        this.subject = subject;
+        this.lectureTopic = lectureTopic;
+        this.timeslot = timeslot;
+        this.lectureType = lectureType;
+        this.lectureImp = lectureImp;
+        this.date = date;
+    }
+
+    public Lecture() {
+
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getSection() {
         return section;
@@ -59,19 +82,5 @@ public class Lecture {
 
     public void setLectureImp(String lectureImp) {
         this.lectureImp = lectureImp;
-    }
-
-    public Lecture(String section, String subject, String lectureTopic, String timeslot, String lectureType, String lectureImp) {
-
-        this.section = section;
-        this.subject = subject;
-        this.lectureTopic = lectureTopic;
-        this.timeslot = timeslot;
-        this.lectureType = lectureType;
-        this.lectureImp = lectureImp;
-    }
-
-    public Lecture(){
-
     }
 }

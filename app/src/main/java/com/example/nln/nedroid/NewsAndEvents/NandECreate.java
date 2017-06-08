@@ -3,7 +3,6 @@ package com.example.nln.nedroid.NewsAndEvents;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -18,6 +17,7 @@ import com.example.nln.nedroid.Session;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -26,21 +26,16 @@ import java.util.ArrayList;
 
 public class NandECreate extends AppCompatActivity implements View.OnClickListener{
 
-    private ImageButton imageadd;
-    private Button create;
-
-    private EditText title, description;
     final int ACTIVITY_SELECT_IMAGE = 1234;
     Session session;
-
+    ArrayList<String> photosUri;
+    private ImageButton imageadd;
+    private Button create;
+    private EditText title, description;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference newsRef;
-
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
-
-    ArrayList<String> photosUri;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +63,7 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
         title = (EditText) findViewById(R.id.title);
         description = (EditText) findViewById(R.id.description);
         create = (Button) findViewById(R.id.create);
-
+        create.setEnabled(false);
         imageadd.setOnClickListener(this);
         create.setOnClickListener(this);
 
@@ -119,10 +114,11 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
                 }
 
 
-                //TODO: pass 'verify' here
-                News news = new News(t,d,username,photoUser,photoUri,false,photosUri);
+                News news = new News(t, d, username, photoUser, photoUri, verify, photosUri);
 
-                newsRef.push().setValue(news);
+                DatabaseReference ref = newsRef.push();
+                ref.setValue(news);
+                ref.child("timestamp").setValue(ServerValue.TIMESTAMP);
 
                 finish();
 
@@ -147,6 +143,7 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
                     public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                         Uri downloadUri = taskSnapshot.getDownloadUrl();
                         photosUri.add(downloadUri.toString());
+                        create.setEnabled(true);
                     }
                 });
             }

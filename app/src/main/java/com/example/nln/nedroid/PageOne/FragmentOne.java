@@ -4,7 +4,6 @@ package com.example.nln.nedroid.PageOne;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -15,7 +14,6 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
@@ -78,7 +76,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
                 News news = dataSnapshot.getValue(News.class);
                 news.setId(dataSnapshot.getKey());
                 if(news.isVerify()) {
-                    newsList.add(news);
+                    newsList.add(0, news);
                     adapter.notifyDataSetChanged();
                 }
 
@@ -106,7 +104,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
         };
 
         //Get all events from firebase
-        newsref.addChildEventListener(childEventListener);
+        newsref.orderByChild("timestamp").addChildEventListener(childEventListener);
 
 
     }
@@ -187,7 +185,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
                     News news = dataSnapshot.getValue(News.class);
                     news.setId(dataSnapshot.getKey());
                     if(news.isVerify()) {
-                        newsList.add(news);
+                        newsList.add(0, news);
                         adapter.notifyDataSetChanged();
                     }
                 }
@@ -212,7 +210,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
 
                 }
             };
-            newsref.addChildEventListener(childEventListener);
+            newsref.orderByChild("timestamp").addChildEventListener(childEventListener);
         }
     }
 }

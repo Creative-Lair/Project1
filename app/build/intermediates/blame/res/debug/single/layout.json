@@ -436,6 +436,10 @@
         "source": "C:\\Users\\AHSAN\\.android\\build-cache\\7a9423174cab790f3d02c3ad0f9b56c926a4c945\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
+        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\lecture_detail.xml",
+        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\lecture_detail.xml"
+    },
+    {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
         "source": "C:\\Users\\AHSAN\\.android\\build-cache\\7a9423174cab790f3d02c3ad0f9b56c926a4c945\\output\\res\\layout\\notification_template_media.xml"
     },

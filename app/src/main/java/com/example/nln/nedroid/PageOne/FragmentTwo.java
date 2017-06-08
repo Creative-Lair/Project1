@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.PageTwo.SsecondNav;
@@ -22,10 +21,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import static com.example.nln.nedroid.R.layout.listview_pageone_f2;
 
@@ -34,18 +31,16 @@ import static com.example.nln.nedroid.R.layout.listview_pageone_f2;
  */
 public class FragmentTwo extends Fragment implements AdapterView.OnItemClickListener{
 
+    String codes = "";
     private View v;
     private ListView listView;
     private ArrayAdapter adapter;
     private Session session;
     private ArrayList<String> Subject;
     private TextView tv;
-
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference subjectRef;
-
     private ArrayList<String> courses;
-    String codes = "";
 
     public FragmentTwo() {
         // Required empty public constructor
@@ -89,12 +84,10 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
                 for (DataSnapshot child: children) {
                     for (String course: courses) {
                         if(!course.equals("")) {
-                            Toast.makeText(getContext(), course, Toast.LENGTH_SHORT).show();
-                            if (child.getKey().equals(course) && !course.contains(child.getKey())) {
+                            if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
                                 String n = child.getKey() + " " + child.getValue();
-                                course += child.getKey();
+                                codes += child.getKey();
                                 Subject.add(n);
-                                Toast.makeText(getContext(), n, Toast.LENGTH_SHORT).show();
                             }
                             adapter.notifyDataSetChanged();
                         }

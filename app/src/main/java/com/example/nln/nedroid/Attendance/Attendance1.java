@@ -19,7 +19,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -131,7 +133,13 @@ public class Attendance1 extends AppCompatActivity{
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseRef = database.getReference().child("Classes");
 
-        Lecture lecture = new Lecture(section,words[0],lectureTopic,timeslot,lectureType,lectureImp);
+
+        Calendar c = Calendar.getInstance();
+
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        String formattedDate = df.format(c.getTime());
+
+        Lecture lecture = new Lecture(section, words[0], lectureTopic, timeslot, lectureType, lectureImp, formattedDate);
 
         String id = databaseRef.push().getKey();
 

@@ -63,7 +63,7 @@ public class DetailAdaptor extends RecyclerView.Adapter<DetailAdaptor.MyViewHold
 
         public MyViewHolder(View view) {
             super(view);
-            time = (TextView) view.findViewById(R.id.date);
+            time = (TextView) view.findViewById(R.id.time);
             date = (TextView) view.findViewById(R.id.date);
             topic = (TextView) view.findViewById(R.id.topic);
 

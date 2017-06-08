@@ -178,6 +178,7 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
     @Override
     public void onResume() {
         super.onResume();
+        newsList.clear();
         if(childEventListener==null) {
             childEventListener = new ChildEventListener() {
                 @Override

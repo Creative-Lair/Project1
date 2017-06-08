@@ -42,6 +42,8 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
     private DatabaseReference subjectRef;
     private ArrayList<String> courses;
 
+    private ChildEventListener childEventListener;
+
     public FragmentTwo() {
         // Required empty public constructor
     }
@@ -53,7 +55,7 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
         v = inflater.inflate(R.layout.fragment_fragment_two2, container, false);
 
         session = new Session(getContext());
-        if(!session.getLogin()){
+        if (!session.getLogin()) {
             Intent i = new Intent(getContext(), Login.class);
             startActivity(i);
             getActivity().finish();
@@ -77,13 +79,13 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
         subjectRef = firebaseDatabase.getReference().child("Subjects");
 
 
-        subjectRef.addChildEventListener(new ChildEventListener() {
+        childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-                for (DataSnapshot child: children) {
-                    for (String course: courses) {
-                        if(!course.equals("")) {
+                for (DataSnapshot child : children) {
+                    for (String course : courses) {
+                        if (!course.equals("")) {
                             if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
                                 String n = child.getKey() + " " + child.getValue();
                                 codes += child.getKey();
@@ -114,12 +116,73 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        subjectRef.addChildEventListener(childEventListener);
 
 
         listView.setOnItemClickListener(this);
 
         return v;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if (childEventListener != null) {
+            subjectRef.removeEventListener(childEventListener);
+            codes = "";
+            childEventListener = null;
+        }
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Subject.clear();
+        if (childEventListener == null) {
+            childEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                    for (DataSnapshot child : children) {
+                        for (String course : courses) {
+                            if (!course.equals("")) {
+                                if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
+                                    String n = child.getKey() + " " + child.getValue();
+                                    codes += child.getKey();
+                                    Subject.add(n);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            subjectRef.addChildEventListener(childEventListener);
+        }
     }
 
     @Override

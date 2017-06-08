@@ -3,13 +3,11 @@ package com.example.nln.nedroid.PageOne;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +26,11 @@ import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,20 +42,17 @@ import static com.example.nln.nedroid.R.layout.activity_listview_f2;
  */
 public class FragmentThree extends Fragment implements ItemClickListener {
 
+    TextView text;
+    ArrayAdapter adapter;
+    ArrayList<String> courses;
+    ArrayList<String> sub;
+    String codes = "";
+    ChildEventListener childEventListener, subjectlistener;
     private RecyclerView recyclerView;
     private QuestionAdapter adapterQuestion;
     private List<Question> albumList;
     private RecyclerView.LayoutManager mLayoutManager;
-
-    TextView text;
-    ArrayAdapter adapter;
-    ArrayList<String> courses;
-
-    ArrayList<String> sub;
-
     private Session session;
-    String codes = "";
-
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference subjectRef;
     private DatabaseReference questionRef;
@@ -67,9 +60,6 @@ public class FragmentThree extends Fragment implements ItemClickListener {
     public FragmentThree() {
         // Required empty public constructor
     }
-
-    ChildEventListener childEventListener;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -104,7 +94,7 @@ public class FragmentThree extends Fragment implements ItemClickListener {
         firebaseDatabase = FirebaseDatabase.getInstance();
         subjectRef = firebaseDatabase.getReference().child("Subjects");
 
-        subjectRef.addChildEventListener(new ChildEventListener() {
+        subjectlistener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Iterable<DataSnapshot> children = dataSnapshot.getChildren();
@@ -141,7 +131,9 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        subjectRef.addChildEventListener(subjectlistener);
 
 
 
@@ -238,12 +230,19 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             questionRef.removeEventListener(childEventListener);
             childEventListener = null;
         }
+
+        if (subjectlistener != null) {
+            subjectRef.removeEventListener(subjectlistener);
+            subjectlistener = null;
+            codes = "";
+        }
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        //albumList.cle()
+        albumList.clear();
         if(childEventListener == null){
             childEventListener = new ChildEventListener() {
                 @Override
@@ -284,6 +283,50 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             };
 
             questionRef.orderByChild("timestamp").addChildEventListener(childEventListener);
+        }
+        courses.clear();
+        if (subjectlistener == null) {
+            subjectlistener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                    for (DataSnapshot child : children) {
+                        for (String course : sub) {
+                            if (!course.equals("")) {
+                                if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
+                                    String n = child.getKey() + " " + child.getValue();
+                                    codes += child.getKey();
+                                    courses.add(n);
+                                }
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+
+            subjectRef.addChildEventListener(subjectlistener);
         }
 
     }

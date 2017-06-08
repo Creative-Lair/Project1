@@ -37,6 +37,8 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
     private ArrayList<Lecture_detail> details;
     private DetailAdaptor adapter;
 
+    private ChildEventListener childEventListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,10 +69,11 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         lectureRef = firebaseDatabase.getReference().child("Classes");
 
-        lectureRef.addChildEventListener(new ChildEventListener() {
+        childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Lecture lecture = dataSnapshot.getValue(Lecture.class);
+                System.out.println(lecture.getSection() + " " + lecture.getSubject());
                 if (lecture.getSection().equals(section) && lecture.getSubject().equals(code)) {
                     Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
                     details.add(detail);
@@ -99,11 +102,67 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        };
+
+        lectureRef.addChildEventListener(childEventListener);
 
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        details.clear();
+        if (childEventListener != null) {
+            lectureRef.removeEventListener(childEventListener);
+            childEventListener = null;
+        }
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (childEventListener == null) {
+            childEventListener = new ChildEventListener() {
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    Lecture lecture = dataSnapshot.getValue(Lecture.class);
+                    System.out.println(lecture.getSection() + " " + lecture.getSubject());
+                    if (lecture.getSection().equals(section) && lecture.getSubject().equals(code)) {
+                        Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
+                        details.add(detail);
+                        adapter.notifyDataSetChanged();
+                    }
+
+                }
+
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+            lectureRef.addChildEventListener(childEventListener);
+        }
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

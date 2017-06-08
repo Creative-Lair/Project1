@@ -2,18 +2,14 @@ package com.example.nln.nedroid.NewsAndEvents;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.Login;
@@ -24,7 +20,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
@@ -109,7 +104,7 @@ public class NandEDescription extends AppCompatActivity {
     }
 
     public void loadImages(ArrayList<String> photos){
-        for (int i = 1; i < photos.size(); i++) {
+        for (int i = 0; i < photos.size(); i++) {
             layoutParams.setMargins(10, 10, 10, 10);
             ImageView imageView = new ImageView(this);
             Glide.with(imageView.getContext())

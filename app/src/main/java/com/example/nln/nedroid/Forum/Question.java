@@ -1,13 +1,11 @@
 package com.example.nln.nedroid.Forum;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by NLN on 8/1/2016.
  */
 public class Question {
 
+    long timestamp;
     private String question;
     private String sub;
     private String name;
@@ -15,10 +13,9 @@ public class Question {
     private String uid;
     private String qid;
     private String subname;
-    private long semester;
-    long timestamp;
+    private String semester;
 
-    public Question(String question, String sub, String name, String photourl, String uid, String qid, String subname, long semester, long timestamp) {
+    public Question(String question, String sub, String name, String photourl, String uid, String qid, String subname, String semester, long timestamp) {
         this.question = question;
         this.sub = sub;
         this.name = name;
@@ -30,8 +27,10 @@ public class Question {
         this.timestamp = timestamp;
     }
 
-    public String getQuestion() {
+    public Question() {
+    }
 
+    public String getQuestion() {
         return question;
     }
 
@@ -87,11 +86,11 @@ public class Question {
         this.subname = subname;
     }
 
-    public long getSemester() {
+    public String getSemester() {
         return semester;
     }
 
-    public void setSemester(long semester) {
+    public void setSemester(String semester) {
         this.semester = semester;
     }
 
@@ -101,9 +100,6 @@ public class Question {
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Question() {
     }
 
     }

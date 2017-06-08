@@ -40,7 +40,6 @@ public class Teacher_FirstNav extends AppCompatActivity
     private ViewPager viewPager;
 
     private TextView headerName,headerID;
-    private ImageView headerIcon;
 
     private ImageView headerIcon;
 
@@ -135,6 +134,7 @@ public class Teacher_FirstNav extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
+            finish();
 
         } if (id == R.id.nav_profile) {
             Intent i = new Intent(Teacher_FirstNav.this, Profile.class);

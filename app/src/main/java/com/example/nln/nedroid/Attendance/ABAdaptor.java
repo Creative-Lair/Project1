@@ -21,12 +21,12 @@ import java.util.List;
 
 public class ABAdaptor extends RecyclerView.Adapter<ABAdaptor.MyViewHolder> {
 
-    private List<String> albumList;
+    private List<AButton> albumList;
     private ItemClickListener clickListener;
     public Context mContext;
     String buttonSelected;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public RadioGroup rg_attnd;
         public RadioButton rb_present, rb_absent;
@@ -37,32 +37,8 @@ public class ABAdaptor extends RecyclerView.Adapter<ABAdaptor.MyViewHolder> {
             rg_attnd = (RadioGroup) view.findViewById(R.id.RadioGroup_Attnd);
             rb_absent = (RadioButton) view.findViewById(R.id.RadioButton_Absent);
             rb_present = (RadioButton) view.findViewById(R.id.RadioButton_Present);
-            view.setTag(view);
-            view.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-            rg_attnd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
-            {
-                @Override
-                public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                    switch(i){
-                        case R.id.RadioButton_Absent:
-                            buttonSelected = "Absent";
-                            rb_present.setChecked(false);
-                            break;
-                        case R.id.RadioButton_Present:
-                            buttonSelected = "Present";
-                            rb_absent.setChecked(false);
-                            break;
-                        default:
-
-                    }
-                    Toast.makeText(mContext, "Selected.. " + buttonSelected, Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
     }
 
     public void setClickListener(ItemClickListener itemClickListener) {
@@ -70,7 +46,7 @@ public class ABAdaptor extends RecyclerView.Adapter<ABAdaptor.MyViewHolder> {
     }
 
 
-    public ABAdaptor(Attendance1 mContext, List<String> albumList) {
+    public ABAdaptor(Attendance1 mContext, List<AButton> albumList) {
         this.mContext = mContext;
         this.albumList = albumList;
     }
@@ -82,21 +58,36 @@ public class ABAdaptor extends RecyclerView.Adapter<ABAdaptor.MyViewHolder> {
 
         final MyViewHolder MyViewHolder = new MyViewHolder(itemView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clickListener.onClick(v, MyViewHolder.getPosition());
-                Toast.makeText(mContext, " Just clicked item at position " + MyViewHolder.getPosition(), Toast.LENGTH_LONG).show();
-            }
-        });
         return new MyViewHolder(itemView);
 
     }
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
+        final AButton aButton = albumList.get(position);
 
+        holder.name.setText(aButton.getName());
+        holder.rg_attnd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch(i){
+                    case R.id.RadioButton_Absent:
+                        buttonSelected = "Absent";
+                        aButton.setPresent(false);
+                        holder.rb_present.setChecked(false);
+                        break;
+                    case R.id.RadioButton_Present:
+                        buttonSelected = "Present";
+                        aButton.setPresent(true);
+                        holder.rb_absent.setChecked(false);
+                        break;
+                    default:
 
+                }
+                Toast.makeText(mContext, "Selected.. " + buttonSelected, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

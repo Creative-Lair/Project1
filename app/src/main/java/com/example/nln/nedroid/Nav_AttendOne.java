@@ -83,6 +83,7 @@ public class Nav_AttendOne extends AppCompatActivity
         firebaseDatabase  = FirebaseDatabase.getInstance();
         subjectRef = firebaseDatabase.getReference().child("Subjects");
         courses = session.getCourse();
+        course = new ArrayList<>();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -206,6 +207,7 @@ public class Nav_AttendOne extends AppCompatActivity
         spinner_section.setAdapter(SectionAdapter);
         spinner_timetable.setAdapter(TimeSlotAdapter);
 
+
         subjectRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -215,7 +217,7 @@ public class Nav_AttendOne extends AppCompatActivity
                         if(!sub.equals("")) {
                             if (child.getKey().equals(sub)) {
                                 String n = child.getKey() + " " + child.getValue();
-                                courses.add(n);
+                                course.add(n);
                             }
                             CourseAdapter.notifyDataSetChanged();
                         }
@@ -288,6 +290,7 @@ public class Nav_AttendOne extends AppCompatActivity
 
         Intent i = new Intent(this, Attendance1.class);
         startActivity(i);
+        finish();
     }
 
     @Override

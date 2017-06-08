@@ -92,7 +92,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
                             Student student = dataSnapshot.getValue(Student.class);
-                            System.out.println(student);
                             if(password.equals(student.getPassword())){
                                 session.setLogin(true);
                                 session.setUserId(username);
@@ -100,9 +99,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                 session.setSemester(student.getSemester());
                                 session.setPhoto(student.getPhotourl());
                                 session.setCourses(student.getCourses());
-                                for (int i=0;i< student.getCourses().size();i++){
-                                    System.out.println(student.getCourses().get(i));
-                                }
+
                                 Intent i = new Intent(Login.this, FirstNav.class);
                                 startActivity(i);
                                 finish();
@@ -123,17 +120,21 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             Teacher teacher = dataSnapshot.getValue(Teacher.class);
-                            if(password.equals(teacher.getPassword())){
-                                session.setLogin(true);
-                                session.setUserId(username);
-                                session.setUsername(teacher.getName());
-                                session.setPhoto(teacher.getPhotourl());
-                                session.setCourses(teacher.getSubjects());
-                                Intent i = new Intent(Login.this, Teacher_FirstNav.class);
-                                startActivity(i);
-                                finish();
-                            } else {
-                                Toast.makeText(Login.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
+                            if(teacher == null ){
+                                Toast.makeText(Login.this, "Wrong Username!!", Toast.LENGTH_SHORT).show();
+                            }else {
+                                if (password.equals(teacher.getPassword())) {
+                                    session.setLogin(true);
+                                    session.setUserId(username);
+                                    session.setUsername(teacher.getName());
+                                    session.setPhoto(teacher.getPhotourl());
+                                    session.setCourses(teacher.getSubjects());
+                                    Intent i = new Intent(Login.this, Teacher_FirstNav.class);
+                                    startActivity(i);
+                                    finish();
+                                } else {
+                                    Toast.makeText(Login.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
 

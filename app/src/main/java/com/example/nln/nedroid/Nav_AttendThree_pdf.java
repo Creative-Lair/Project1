@@ -2,11 +2,13 @@ package com.example.nln.nedroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.example.nln.nedroid.Attendance.DetailAdaptor;
@@ -22,21 +24,16 @@ import java.util.ArrayList;
 
 public class Nav_AttendThree_pdf extends AppCompatActivity {
 
+    AppBarLayout appBarLayout;
     private ActionBar actionBar;
-
     private String section, code;
     private Session session;
-
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference lectureRef;
-
     private RecyclerView recyclerView;
-
     private RecyclerView.LayoutManager mLayoutManager;
-
     private ArrayList<Lecture_detail> details;
     private DetailAdaptor adapter;
-
     private ChildEventListener childEventListener;
 
     @Override
@@ -45,7 +42,9 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
         setContentView(R.layout.activity_nav__attend_three_pdf);
         setTitle("Lecture Detail");
         recyclerView = (RecyclerView) findViewById(R.id.list);
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        setTitle("Lecture Details");
         session = new Session(this);
         if (!session.getLogin()) {
             Intent i = new Intent(this, Login.class);
@@ -131,7 +130,6 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Lecture lecture = dataSnapshot.getValue(Lecture.class);
-                    System.out.println(lecture.getSection() + " " + lecture.getSubject());
                     if (lecture.getSection().equals(section) && lecture.getSubject().equals(code)) {
                         Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
                         details.add(detail);

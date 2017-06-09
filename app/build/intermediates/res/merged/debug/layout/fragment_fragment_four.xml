@@ -28,12 +28,12 @@
         android:layout_marginTop="50dp"
         android:layout_below="@+id/textView_sem">
 
-        <com.jjoe64.graphview.GraphView
-            android:id="@+id/graph"
-            android:layout_width="match_parent"
-            android:layout_height="200dip"
-            android:title="@string/graph_title"
-            android:focusable="true" />
+       <com.github.mikephil.charting.charts.BarChart
+           android:layout_width="match_parent"
+           android:layout_height="200dp"
+           android:id="@+id/graph">
+
+       </com.github.mikephil.charting.charts.BarChart>
     </RelativeLayout>
 
 </LinearLayout>

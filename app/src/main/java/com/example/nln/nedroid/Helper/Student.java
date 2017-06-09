@@ -28,6 +28,42 @@ public class Student {
     private String religion;
     private String year;
     private String section;
+    private ArrayList<String> GPA;
+
+    public Student(String password, String name, String semester, String photourl, ArrayList<String> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permanentaddress, String placeofbirth, String presentaddress, String religion, String year, String section) {
+
+        this.password = password;
+        this.name = name;
+        this.semester = semester;
+        this.photourl = photourl;
+        this.courses = courses;
+        this.contactno = contactno;
+        this.discipline = discipline;
+        this.dob = dob;
+        this.domicile = domicile;
+        this.emailaddress = emailaddress;
+        this.fathername = fathername;
+        this.gender = gender;
+        this.martialstatus = martialstatus;
+        this.nationality = nationality;
+        this.permenantaddress = permanentaddress;
+        this.placeofbirth = placeofbirth;
+        this.presentaddress = presentaddress;
+        this.religion = religion;
+        this.year = year;
+        this.section = section;
+    }
+
+    public Student() {
+    }
+
+    public ArrayList<String> getGpa() {
+        return GPA;
+    }
+
+    public void setGpa(ArrayList<String> gpa) {
+        this.GPA = gpa;
+    }
 
     public String getPassword() {
         return password;
@@ -188,30 +224,4 @@ public class Student {
     public void setSection(String section) {
         this.section = section;
     }
-
-    public Student(String password, String name, String semester, String photourl, ArrayList<String> courses, String contactno, String discipline, String dob, String domicile, String emailaddress, String fathername, String gender, String martialstatus, String nationality, String permanentaddress, String placeofbirth, String presentaddress, String religion, String year, String section) {
-
-        this.password = password;
-        this.name = name;
-        this.semester = semester;
-        this.photourl = photourl;
-        this.courses = courses;
-        this.contactno = contactno;
-        this.discipline = discipline;
-        this.dob = dob;
-        this.domicile = domicile;
-        this.emailaddress = emailaddress;
-        this.fathername = fathername;
-        this.gender = gender;
-        this.martialstatus = martialstatus;
-        this.nationality = nationality;
-        this.permenantaddress = permanentaddress;
-        this.placeofbirth = placeofbirth;
-        this.presentaddress = presentaddress;
-        this.religion = religion;
-        this.year = year;
-        this.section = section;
-    }
-
-    public Student() {}
 }

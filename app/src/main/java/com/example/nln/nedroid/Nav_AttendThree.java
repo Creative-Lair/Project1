@@ -209,6 +209,17 @@ public class Nav_AttendThree extends AppCompatActivity
             Uri webpage = Uri.parse("http://www.android.com");
             Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
             startActivity(webIntent);
+        } else if (id == R.id.nav_logout) {
+            session.setLogin(false);
+            session.setUserId("");
+            session.setUsername("");
+            session.setSubject("");
+            session.setSection("");
+            ArrayList<String> course = new ArrayList<>();
+            session.setCourses(course);
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

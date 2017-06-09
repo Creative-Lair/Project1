@@ -3,14 +3,12 @@ package com.example.nln.nedroid;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -44,24 +42,17 @@ public class Nav_AttendOne extends AppCompatActivity
     RadioGroup RadioGroupOne,RadioGroupTwo;
     RadioButton Regular, Compensatory, Theory, Practical;
     String buttonSelected, buttonSelected1;
+    ArrayAdapter<String> SectionAdapter;
+    ArrayAdapter<String> TimeSlotAdapter;
     private TextView headerName,headerID;
     private ImageView headerIcon;
     private EditText editText;
-
-
     private Session session;
-
     private ArrayList<String> courses;
     private ArrayList<String> course;
-
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference subjectRef;
-
     private ArrayAdapter<String> CourseAdapter;
-    
-    ArrayAdapter<String> SectionAdapter;
-    ArrayAdapter<String> TimeSlotAdapter;
-
     private String lectureType, lectureImp;
 
 
@@ -272,6 +263,17 @@ public class Nav_AttendOne extends AppCompatActivity
             Uri webpage = Uri.parse("http://www.android.com");
             Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
             startActivity(webIntent);
+        } else if (id == R.id.nav_logout) {
+            session.setLogin(false);
+            session.setUserId("");
+            session.setUsername("");
+            session.setSubject("");
+            session.setSection("");
+            ArrayList<String> course = new ArrayList<>();
+            session.setCourses(course);
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

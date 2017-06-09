@@ -9,33 +9,25 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.nln.nedroid.Attendance.Lecture;
-import com.example.nln.nedroid.Helper.Teacher;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Nav_AttendTwo extends AppCompatActivity {
 
     Spinner spinner_course;
     TextView tvSecA, tvSecB, tvSecC, tvSecD;
+    int[] counts;
+    ArrayAdapter<String> CourseAdapter;
     private FirebaseDatabase firebaseDB;
     private DatabaseReference SubRef,classRef;
     private Session session;
-
     private ArrayList<String> subj;
-
     private ArrayList<String> c;
-    int[] counts;
-
-    ArrayAdapter<String> CourseAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,34 +74,25 @@ public class Nav_AttendTwo extends AppCompatActivity {
                 String[] words = n.split(" ");
                 final String code = words[0];
 
-                counts = new int[4];
-
-                classRef=firebaseDB.getReference().child("Classes");
+                classRef = firebaseDB.getReference().child("Classes");
 
                 tvSecA.setText("" + 0);
                 tvSecB.setText("" + 0);
                 tvSecC.setText("" + 0);
                 tvSecD.setText("" + 0);
 
-                classRef.addChildEventListener(new ChildEventListener() {
+                classRef.child(code).addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        Lecture lecture = dataSnapshot.getValue(Lecture.class);
 
-                        if(lecture.getSubject().equals(code)){
-                            if(lecture.getSection().equals("A")){
-                                counts[0]++;
-                                tvSecA.setText("" +counts[0]);
-                            } else if(lecture.getSection().equals("B")){
-                                counts[1]++;
-                                tvSecB.setText("" +counts[1]);
-                            } else if(lecture.getSection().equals("C")){
-                                counts[2]++;
-                                tvSecC.setText("" +counts[2]);
-                            } else if(lecture.getSection().equals("D")){
-                                counts[3]++;
-                                tvSecD.setText("" +counts[3]);
-                            }
+                        if (dataSnapshot.getKey().equals("B")) {
+                            tvSecB.setText("" + dataSnapshot.getChildrenCount());
+                        } else if (dataSnapshot.getKey().equals("C")) {
+                            tvSecC.setText("" + dataSnapshot.getChildrenCount());
+                        } else if (dataSnapshot.getKey().equals("A")) {
+                            tvSecA.setText("" + dataSnapshot.getChildrenCount());
+                        } else if (dataSnapshot.getKey().equals("D")) {
+                            tvSecD.setText("" + dataSnapshot.getChildrenCount());
                         }
 
 

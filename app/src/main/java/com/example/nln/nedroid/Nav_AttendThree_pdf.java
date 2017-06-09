@@ -40,7 +40,6 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav__attend_three_pdf);
-        setTitle("Lecture Detail");
         recyclerView = (RecyclerView) findViewById(R.id.list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -72,13 +71,9 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Lecture lecture = dataSnapshot.getValue(Lecture.class);
-                System.out.println(lecture.getSection() + " " + lecture.getSubject());
-                if (lecture.getSection().equals(section) && lecture.getSubject().equals(code)) {
-                    Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
-                    details.add(detail);
-                    adapter.notifyDataSetChanged();
-                }
-
+                Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
+                details.add(detail);
+                adapter.notifyDataSetChanged();
 
             }
 
@@ -103,7 +98,7 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
             }
         };
 
-        lectureRef.addChildEventListener(childEventListener);
+        lectureRef.child(code).child(section).addChildEventListener(childEventListener);
 
 
     }
@@ -130,12 +125,9 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                     Lecture lecture = dataSnapshot.getValue(Lecture.class);
-                    if (lecture.getSection().equals(section) && lecture.getSubject().equals(code)) {
-                        Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
-                        details.add(detail);
-                        adapter.notifyDataSetChanged();
-                    }
-
+                    Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
+                    details.add(detail);
+                    adapter.notifyDataSetChanged();
                 }
 
                 @Override
@@ -158,7 +150,7 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
 
                 }
             };
-            lectureRef.addChildEventListener(childEventListener);
+            lectureRef.child(code).child(section).addChildEventListener(childEventListener);
         }
     }
 

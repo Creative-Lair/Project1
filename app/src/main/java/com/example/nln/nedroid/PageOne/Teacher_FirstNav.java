@@ -1,7 +1,6 @@
 package com.example.nln.nedroid.PageOne;
 
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,7 +14,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,8 +22,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.Login;
-import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Profile;
+import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
 import com.example.nln.nedroid.Setting1;
 
@@ -149,6 +147,17 @@ public class Teacher_FirstNav extends AppCompatActivity
             Uri webpage = Uri.parse("http://www.android.com");
             Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
             startActivity(webIntent);
+        } else if (id == R.id.nav_logout) {
+            session.setLogin(false);
+            session.setUserId("");
+            session.setUsername("");
+            session.setSubject("");
+            session.setSection("");
+            ArrayList<String> course = new ArrayList<>();
+            session.setCourses(course);
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

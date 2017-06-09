@@ -143,7 +143,9 @@ public class Attendance1 extends AppCompatActivity{
 
         String id = databaseRef.push().getKey();
 
-        databaseRef.child(id).setValue(lecture);
+        databaseRef = databaseRef.child(words[0]).child(section).push();
+
+        databaseRef.setValue(lecture);
 
         Map<String,Boolean> attendence = new HashMap<>();
 
@@ -155,9 +157,7 @@ public class Attendance1 extends AppCompatActivity{
         }
 
 
-        databaseRef = database.getReference().child("Attendance");
-
-        databaseRef.child(id).setValue(attendence);
+        databaseRef.child("Attendance").setValue(attendence);
 
         Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show();
 

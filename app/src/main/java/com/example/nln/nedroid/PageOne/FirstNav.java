@@ -54,7 +54,7 @@ public class FirstNav extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first_nav);
+        setContentView(R.layout.activity_first_nav_std);
         toolbar = (Toolbar) findViewById(R.id.toolbar__nav);
         setSupportActionBar(toolbar);
 

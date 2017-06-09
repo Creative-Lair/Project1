@@ -28,6 +28,7 @@ public class FragmentFour extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,7 +39,6 @@ public class FragmentFour extends Fragment {
         GraphView line_graph = (GraphView) v.findViewById(R.id.graph);
         LineGraphSeries<DataPoint> line_series =
                 new LineGraphSeries<DataPoint>(new DataPoint[]{
-                        new DataPoint(0, 1),
                         new DataPoint(1, 2),
                         new DataPoint(2, 3),
                         new DataPoint(3, 2.25),
@@ -64,8 +64,8 @@ public class FragmentFour extends Fragment {
         GraphView line_graph=LG;
         // set manual X bounds
         line_graph.getViewport().setXAxisBoundsManual(true);
-        line_graph.getViewport().setMinX(0.0);
-        line_graph.getViewport().setMaxX(6.0);
+        line_graph.getViewport().setMinX(1.0);
+        line_graph.getViewport().setMaxX(8.0);
 
         // set manual Y bounds
         line_graph.getViewport().setYAxisBoundsManual(true);

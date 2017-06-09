@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.nln.nedroid.Graph.IndividualStudent;
 import com.example.nln.nedroid.Graph.SingleSectionGraph;
 import com.example.nln.nedroid.R;
 
@@ -66,8 +67,7 @@ public class Teacher_Fragment_Two_Two extends android.support.v4.app.Fragment {
         Individual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Button Clicked", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity(), SingleSectionGraph.class);
+                Intent i = new Intent(getActivity(), IndividualStudent.class);
                 startActivity(i);
             }
         });

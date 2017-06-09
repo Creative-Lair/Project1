@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:2:1-119:12
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:2:1-120:12
 	package
 		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:3:5-38
 		INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml
@@ -25,7 +25,7 @@ MERGED from [com.google.firebase:firebase-iid:10.2.6] C:\Users\AHSAN\.android\bu
 	android:name
 		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:6:22-64
 application
-ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:8:5-117:19
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:8:5-118:19
 MERGED from [com.android.support:design:25.3.1] C:\Users\AHSAN\.android\build-cache\2a5d29a073be063d3f784a0c24e4efcb3e138644\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\AHSAN\.android\build-cache\7a9423174cab790f3d02c3ad0f9b56c926a4c945\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\AHSAN\.android\build-cache\1660ed741ed43899bc1478b2b2df85c3e1cbed85\output\AndroidManifest.xml:26:5-20
@@ -260,9 +260,13 @@ ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidMani
 	android:name
 		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:113:13-48
 activity#com.example.nln.nedroid.Student_profile
-ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:116:9-62
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:116:9-53
 	android:name
 		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:116:19-50
+activity#com.example.nln.nedroid.Graph.IndividualStudent
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:117:9-70
+	android:name
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:117:19-58
 uses-sdk
 INJECTED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:multidex:1.0.1] C:\Users\AHSAN\.android\build-cache\3e2589ec00ee28e0607a6d1d5a94a50524134db8\output\AndroidManifest.xml:18:5-42

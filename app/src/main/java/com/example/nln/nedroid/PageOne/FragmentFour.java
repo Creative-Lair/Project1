@@ -49,6 +49,7 @@ public class FragmentFour extends Fragment {
 
         session = new Session(getContext());
         line_graph = (BarChart) v.findViewById(R.id.graph);
+        line_graph.setNoDataText("Loading....");
 
         databaseReference.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
             @Override
@@ -73,6 +74,8 @@ public class FragmentFour extends Fragment {
 
                 BarData barData = new BarData(dataSet);
                 line_graph.setData(barData);
+
+                line_graph.invalidate();
 
 
             }

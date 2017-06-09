@@ -6,34 +6,34 @@
     tools:context="com.example.nln.nedroid.PageOne.FragmentFour">
 
     <TextView
+        android:id="@+id/textView_sem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Graphical Representation"
-        android:id="@+id/textView_sem"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:paddingTop="10dp"
+        android:text="Graphical Representation"
+        android:textAlignment="center"
+        android:textColor="@color/album_title"
         android:textSize="40dp"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:paddingTop="10dp"
-        android:layout_marginLeft="0dp"
-        tools:ignore="HardcodedText,ObsoleteLayoutParam,RtlHardcoded,SpUsage"
-        android:textColor="@color/album_title"/>
+        tools:ignore="HardcodedText,ObsoleteLayoutParam,RtlHardcoded,SpUsage" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_sem"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/textView_sem">
+        android:layout_marginTop="50dp">
 
-       <com.github.mikephil.charting.charts.BarChart
-           android:layout_width="match_parent"
-           android:layout_height="200dp"
-           android:id="@+id/graph">
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/graph"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
 
-       </com.github.mikephil.charting.charts.BarChart>
+        </com.github.mikephil.charting.charts.BarChart>
     </RelativeLayout>
 
 </LinearLayout>

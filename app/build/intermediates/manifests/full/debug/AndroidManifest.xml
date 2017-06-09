@@ -134,6 +134,7 @@
             android:label="Lecture Detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.nln.nedroid.Student_profile" />
+        <activity android:name="com.example.nln.nedroid.Graph.IndividualStudent" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"

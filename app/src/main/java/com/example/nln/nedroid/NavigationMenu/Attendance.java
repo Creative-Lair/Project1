@@ -82,8 +82,10 @@ public class Attendance extends AppCompatActivity {
                         for (DataSnapshot child : children) {
                             Lecture l = child.getValue(Lecture.class);
                             Map<String, Boolean> attendance = l.getAttendance();
-                            if (attendance.get(session.getUserId().substring(1).toUpperCase())) {
-                                attend++;
+                            if (attendance != null) {
+                                if (attendance.get(session.getUserId().substring(1).toUpperCase())) {
+                                    attend++;
+                                }
                             }
                         }
 

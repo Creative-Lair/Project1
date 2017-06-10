@@ -92,14 +92,16 @@ public class Attendance1 extends AppCompatActivity{
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Student student = dataSnapshot.getValue(Student.class);
-                ArrayList<String> courses = student.getCourses();
-                for (String c: courses) {
-                    if(c.equals(words[0])&&student.getSection().equals(section)){
-                        AButton ab = new AButton(dataSnapshot.getKey().substring(1).toUpperCase() + " " + student.getName(), true);
-                        albumList.add(ab);
-                        adapter.notifyDataSetChanged();
-                    }
+                if (student.getCourses() != null) {
+                    ArrayList<String> courses = student.getCourses();
+                    for (String c : courses) {
+                        if (c.equals(words[0]) && student.getSection().equals(section)) {
+                            AButton ab = new AButton(dataSnapshot.getKey().substring(1).toUpperCase() + " " + student.getName(), true);
+                            albumList.add(ab);
+                            adapter.notifyDataSetChanged();
+                        }
 
+                    }
                 }
 
 

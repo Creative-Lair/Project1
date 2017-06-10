@@ -32,6 +32,7 @@ public class Session {
     private static final String KEY_LECTURE_TOPIC = "lecture_topic";
     private static final String KEY_LECTURE_TYPE = "lecture_type";
     private static final String KEY_LECTURE_IMP = "lecture_imp";
+    private static final String KEY_USER_SEMESTER = "user_semester";
 
 
 
@@ -48,11 +49,19 @@ public class Session {
         editor = pref.edit();
     }
 
+    public boolean getLogin() {
+        return pref.getBoolean(KEY_IS_LOGGEDIN, false);
+    }
+
     public void setLogin(boolean isLoggedIn) {
         editor.putBoolean(KEY_IS_LOGGEDIN, isLoggedIn);
         editor.commit();
 
         Log.d(TAG, "User login session modified!");
+    }
+
+    public String getUserId() {
+        return pref.getString(KEY_USERID, null);
     }
 
     public void setUserId(String userId) {
@@ -62,12 +71,8 @@ public class Session {
         Log.d(TAG, "User ID set");
     }
 
-    public boolean getLogin(){
-        return pref.getBoolean(KEY_IS_LOGGEDIN,false);
-    }
-
-    public String getUserId(){
-        return pref.getString(KEY_USERID, null);
+    public String getUsername() {
+        return pref.getString(KEY_USERNAME, "Admin");
     }
 
     public void setUsername(String username){
@@ -75,10 +80,6 @@ public class Session {
         editor.commit();
 
 
-    }
-
-    public String getUsername(){
-        return pref.getString(KEY_USERNAME, "Admin");
     }
 
     public String getPhoto(){
@@ -90,14 +91,18 @@ public class Session {
         editor.commit();
     }
 
+    public String getNewsId() {
+        return pref.getString(KEY_NEWS_ID, "-1");
+    }
+
     public void setNewsId(String n){
         editor.putString(KEY_NEWS_ID,n);
         editor.commit();
 
     }
 
-    public String getNewsId(){
-        return pref.getString(KEY_NEWS_ID, "-1");
+    public String getSemester() {
+        return pref.getString(KEY_SEMESTER, "-1");
     }
 
     public void setSemester(String s){
@@ -105,16 +110,13 @@ public class Session {
         editor.commit();
     }
 
-    public String getSemester(){
-        return pref.getString(KEY_SEMESTER, "-1");
+    public String getSubjectCode() {
+        return pref.getString(KEY_SUBJECT_CODE, "0000");
     }
 
     public void setSubjectCode(String n){
         editor.putString(KEY_SUBJECT_CODE, n);
         editor.commit();
-    }
-    public String getSubjectCode(){
-        return pref.getString(KEY_SUBJECT_CODE, "0000");
     }
 
     public String getSubjectName(){
@@ -126,9 +128,17 @@ public class Session {
         editor.commit();
     }
 
+    public String getQSC() {
+        return pref.getString(KEY_QSC, "0000");
+    }
+
     public void setQSC(String n){
         editor.putString(KEY_QSC, n);
         editor.commit();
+    }
+
+    public String getQSN() {
+        return pref.getString(KEY_QSN, "0000");
     }
 
     public void setQSN(String n){
@@ -137,21 +147,13 @@ public class Session {
 
     }
 
-    public String getQSC(){
-        return pref.getString(KEY_QSC, "0000");
-    }
-
-    public String getQSN(){
-        return pref.getString(KEY_QSN, "0000");
+    public String getQID() {
+        return pref.getString(KEY_QID, "-1");
     }
 
     public void setQID(String n){
         editor.putString(KEY_QID,n);
         editor.commit();
-    }
-
-    public String getQID(){
-        return pref.getString(KEY_QID, "-1");
     }
 
     public void setCourses(ArrayList<String> courses){
@@ -173,9 +175,17 @@ public class Session {
         return courses;
     }
 
+    public String getSubject() {
+        return pref.getString(KEY_SUBJECT, "CS000");
+    }
+
     public void setSubject(String n){
         editor.putString(KEY_SUBJECT, n);
         editor.commit();
+    }
+
+    public String getTimeslot() {
+        return pref.getString(KEY_TIMESLOT, "");
     }
 
     public void setTimeslot(String n){
@@ -183,30 +193,26 @@ public class Session {
         editor.commit();
     }
 
+    public String getSection() {
+        return pref.getString(KEY_SECTION, "A");
+    }
+
     public void setSection(String n){
         editor.putString(KEY_SECTION , n);
         editor.commit();
     }
 
-    public String getSubject(){
-        return pref.getString(KEY_SUBJECT, "CS000");
+    public String getLectureTopic() {
+        return pref.getString(KEY_LECTURE_TOPIC, "");
     }
-
-
-    public String getTimeslot() {
-        return pref.getString(KEY_TIMESLOT, "");
-    }
-
-
-
-    public String getSection(){
-        return pref.getString(KEY_SECTION, "A");
-    }
-
 
     public void setLectureTopic(String n){
         editor.putString(KEY_LECTURE_TOPIC,n);
         editor.commit();
+    }
+
+    public String getLectureType() {
+        return pref.getString(KEY_LECTURE_TYPE, "");
     }
 
     public void setLectureType(String n){
@@ -214,22 +220,23 @@ public class Session {
         editor.commit();
     }
 
+    public String getLectureImp() {
+        return pref.getString(KEY_LECTURE_IMP, "");
+
+    }
+
     public void setLectureImp(String n){
         editor.putString(KEY_LECTURE_IMP, n);
         editor.commit();
     }
 
-    public String getLectureTopic(){
-        return pref.getString(KEY_LECTURE_TOPIC, "");
+    public String getUserSemester() {
+        return pref.getString(KEY_USER_SEMESTER, "-1");
     }
 
-    public String getLectureType(){
-        return pref.getString(KEY_LECTURE_TYPE, "");
-    }
-
-    public String getLectureImp(){
-        return pref.getString(KEY_LECTURE_IMP, "");
-
+    public void setUserSemester(String n) {
+        editor.putString(KEY_USER_SEMESTER, n);
+        editor.commit();
     }
 
 }

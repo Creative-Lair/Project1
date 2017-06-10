@@ -1,5 +1,7 @@
 package com.example.nln.nedroid.Attendance;
 
+import java.util.Map;
+
 /**
  * Created by AHSAN on 6/8/2017.
  */
@@ -13,6 +15,7 @@ public class Lecture {
     private String lectureType;
     private String lectureImp;
     private String date;
+    private Map<String, Boolean> Attendance;
 
     public Lecture(String section, String subject, String lectureTopic, String timeslot, String lectureType, String lectureImp, String date) {
         this.section = section;
@@ -26,6 +29,14 @@ public class Lecture {
 
     public Lecture() {
 
+    }
+
+    public Map<String, Boolean> getAttendance() {
+        return Attendance;
+    }
+
+    public void setAttendance(Map<String, Boolean> Attendance) {
+        this.Attendance = Attendance;
     }
 
     public String getDate() {

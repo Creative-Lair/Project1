@@ -1,16 +1,10 @@
 package com.example.nln.nedroid;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,15 +14,11 @@ import com.example.nln.nedroid.Helper.Student;
 import com.example.nln.nedroid.Helper.Teacher;
 import com.example.nln.nedroid.PageOne.FirstNav;
 import com.example.nln.nedroid.PageOne.Teacher_FirstNav;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.json.JSONObject;
-import org.xml.sax.helpers.LocatorImpl;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -92,19 +82,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
                             Student student = dataSnapshot.getValue(Student.class);
-                            if(password.equals(student.getPassword())){
-                                session.setLogin(true);
-                                session.setUserId(username);
-                                session.setUsername(student.getName());
-                                session.setSemester(student.getSemester());
-                                session.setPhoto(student.getPhotourl());
-                                session.setCourses(student.getCourses());
-
-                                Intent i = new Intent(Login.this, FirstNav.class);
-                                startActivity(i);
-                                finish();
+                            if (student == null) {
+                                Toast.makeText(Login.this, "Wrong username", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(Login.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
+                                if (password.equals(student.getPassword())) {
+                                    session.setLogin(true);
+                                    session.setUserId(username);
+                                    session.setUsername(student.getName());
+                                    session.setSemester(student.getSemester());
+                                    session.setPhoto(student.getPhotourl());
+                                    session.setCourses(student.getCourses());
+                                    session.setUserSemester(student.getSection());
+                                    Intent i = new Intent(Login.this, FirstNav.class);
+                                    startActivity(i);
+                                    finish();
+                                } else {
+                                    Toast.makeText(Login.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
 

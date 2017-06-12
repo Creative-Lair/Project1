@@ -28,9 +28,12 @@ public class Attendance extends AppCompatActivity {
     double percent = 0;
     String code = "";
     int i = 0;
+    long total_count = 0;
+    double total_attend = 0;
+    double total_percen = 0;
     private Toolbar toolbar;
     private Session session;
-    private TextView name, rollnumber;
+    private TextView name, rollnumber, per;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<AttendanceList> attendance;
@@ -50,6 +53,8 @@ public class Attendance extends AppCompatActivity {
         session = new Session(this);
         name = (TextView) findViewById(R.id.name);
         rollnumber = (TextView) findViewById(R.id.rollnumber);
+        per = (TextView) findViewById(R.id.percentage);
+        per.setText("0.00");
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         attendance = new ArrayList<>();
         courses = session.getCourse();
@@ -89,11 +94,22 @@ public class Attendance extends AppCompatActivity {
                             }
                         }
 
+                        total_count += count;
+                        total_attend += attend;
+
                         if (count > 0) {
                             percent = (attend / count) * 100;
                             DecimalFormat df = new DecimalFormat("#.##");
                             percent = Double.valueOf(df.format(percent));
                         }
+
+                        if (total_count > 0) {
+                            total_percen = (total_attend / total_count) * 100;
+                            DecimalFormat df = new DecimalFormat("#.##");
+                            total_percen = Double.valueOf(df.format(total_percen));
+                            per.setText("" + total_percen);
+                        }
+
                         AttendanceList list = new AttendanceList(code, (double) count, attend, percent);
                         attendance.add(list);
                         adapter.notifyDataSetChanged();

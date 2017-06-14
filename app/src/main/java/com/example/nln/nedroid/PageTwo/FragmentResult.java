@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,9 +72,14 @@ public class FragmentResult extends Fragment implements ItemClickListener {
         resultRef.child(session.getSubjectCode()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Result result = dataSnapshot.getValue(Result.class);
-                albumList.add(result);
-                adapter.notifyDataSetChanged();
+                final Result result = dataSnapshot.getValue(Result.class);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        albumList.add(result);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
 
             @Override

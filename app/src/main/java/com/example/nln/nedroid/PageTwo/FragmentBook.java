@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.nln.nedroid.Helper.Book;
 import com.example.nln.nedroid.Login;
@@ -25,8 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-
-import static com.example.nln.nedroid.R.layout.activity_listview_f3;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -103,13 +99,23 @@ public class FragmentBook extends Fragment {
         BooksRef.child(session.getSubjectCode()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Book book = dataSnapshot.getValue(Book.class);
+                final Book book = dataSnapshot.getValue(Book.class);
                 if(book.getType().equals("Reference")){
-                    RefBooks.add(book);
-                    adapter1.notifyDataSetChanged();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            RefBooks.add(book);
+                            adapter1.notifyDataSetChanged();
+                        }
+                    });
                 } else if (book.getType().equals("Text")){
-                    TextBooks.add(book);
-                    adapter.notifyDataSetChanged();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            TextBooks.add(book);
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
                 }
             }
 

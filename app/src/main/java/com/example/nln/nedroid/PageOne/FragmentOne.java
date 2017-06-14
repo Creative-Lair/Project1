@@ -73,11 +73,16 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                News news = dataSnapshot.getValue(News.class);
+                final News news = dataSnapshot.getValue(News.class);
                 news.setId(dataSnapshot.getKey());
                 if(news.isVerify()) {
-                    newsList.add(0, news);
-                    adapter.notifyDataSetChanged();
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            newsList.add(0, news);
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
                 }
 
             }
@@ -183,11 +188,16 @@ public class FragmentOne extends android.support.v4.app.Fragment implements Item
             childEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    News news = dataSnapshot.getValue(News.class);
+                    final News news = dataSnapshot.getValue(News.class);
                     news.setId(dataSnapshot.getKey());
                     if(news.isVerify()) {
-                        newsList.add(0, news);
-                        adapter.notifyDataSetChanged();
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                newsList.add(0, news);
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
                     }
                 }
 

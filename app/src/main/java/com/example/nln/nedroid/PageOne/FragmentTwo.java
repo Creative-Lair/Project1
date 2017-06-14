@@ -87,11 +87,17 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
                     for (String course : courses) {
                         if (!course.equals("")) {
                             if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
-                                String n = child.getKey() + " " + child.getValue();
+                                final String n = child.getKey() + " " + child.getValue();
                                 codes += child.getKey();
-                                Subject.add(n);
+
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Subject.add(n);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                });
                             }
-                            adapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -151,11 +157,17 @@ public class FragmentTwo extends Fragment implements AdapterView.OnItemClickList
                         for (String course : courses) {
                             if (!course.equals("")) {
                                 if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
-                                    String n = child.getKey() + " " + child.getValue();
+                                    final String n = child.getKey() + " " + child.getValue();
                                     codes += child.getKey();
-                                    Subject.add(n);
+
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Subject.add(n);
+                                            adapter.notifyDataSetChanged();
+                                        }
+                                    });
                                 }
-                                adapter.notifyDataSetChanged();
                             }
                         }
                     }

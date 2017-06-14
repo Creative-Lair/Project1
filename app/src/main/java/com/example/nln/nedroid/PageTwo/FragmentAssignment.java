@@ -9,11 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.nln.nedroid.Assigment.Assg;
 import com.example.nln.nedroid.Assigment.AssgnAdapter;
@@ -77,9 +75,14 @@ public class FragmentAssignment extends Fragment implements ItemClickListener {
         assignRef.child(session.getSubjectCode()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Assg assg = dataSnapshot.getValue(Assg.class);
-                assignList.add(assg);
-                adapter.notifyDataSetChanged();
+                final Assg assg = dataSnapshot.getValue(Assg.class);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        assignList.add(assg);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
 
             @Override

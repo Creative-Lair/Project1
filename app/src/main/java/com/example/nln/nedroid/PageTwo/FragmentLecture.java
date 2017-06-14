@@ -9,11 +9,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.nln.nedroid.Lecture.Lect;
 import com.example.nln.nedroid.Lecture.LectAdaptor;
@@ -85,10 +83,15 @@ public class FragmentLecture extends Fragment implements ItemClickListener {
         lectureRef.child(session.getSubjectCode()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Lect lect = dataSnapshot.getValue(Lect.class);
-                LectList.add(lect);
+                final Lect lect = dataSnapshot.getValue(Lect.class);
 
-                adapter.notifyDataSetChanged();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        LectList.add(lect);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
 
             @Override

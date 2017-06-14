@@ -15,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.nln.nedroid.Forum.AllQuestion;
 import com.example.nln.nedroid.Forum.PostQuestion;
@@ -102,11 +101,17 @@ public class FragmentThree extends Fragment implements ItemClickListener {
                     for (String course: sub) {
                         if(!course.equals("")) {
                             if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
-                                String n = child.getKey() + " " + child.getValue();
+                                final String n = child.getKey() + " " + child.getValue();
                                 codes += child.getKey();
-                                courses.add(n);
+
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        courses.add(n);
+                                        adapter.notifyDataSetChanged();
+                                    }
+                                });
                             }
-                            adapter.notifyDataSetChanged();
                         }
                     }
                 }
@@ -170,13 +175,18 @@ public class FragmentThree extends Fragment implements ItemClickListener {
         childEventListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Question question = dataSnapshot.getValue(Question.class);
+                final Question question = dataSnapshot.getValue(Question.class);
                 question.setQid(dataSnapshot.getKey());
                 for (String course: sub) {
                     if(!course.equals("")) {
                         if (question.getSub().equals(course)) {
-                            albumList.add(0, question);
-                            adapterQuestion.notifyDataSetChanged();
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    albumList.add(0, question);
+                                    adapterQuestion.notifyDataSetChanged();
+                                }
+                            });
                         }
                     }
                 }
@@ -247,14 +257,18 @@ public class FragmentThree extends Fragment implements ItemClickListener {
             childEventListener = new ChildEventListener() {
                 @Override
                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    Question question = dataSnapshot.getValue(Question.class);
+                    final Question question = dataSnapshot.getValue(Question.class);
                     question.setQid(dataSnapshot.getKey());
                     for (String course: sub) {
                         if(!course.equals("")) {
                             if (question.getSub().equals(course)) {
-                                Toast.makeText(getContext(), question.getSub() + " " + course, Toast.LENGTH_SHORT).show();
-                                albumList.add(0, question);
-                                adapterQuestion.notifyDataSetChanged();
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        albumList.add(0, question);
+                                        adapterQuestion.notifyDataSetChanged();
+                                    }
+                                });
                             }
                         }
                     }
@@ -294,11 +308,17 @@ public class FragmentThree extends Fragment implements ItemClickListener {
                         for (String course : sub) {
                             if (!course.equals("")) {
                                 if (child.getKey().equals(course) && !codes.contains(child.getKey())) {
-                                    String n = child.getKey() + " " + child.getValue();
+                                    final String n = child.getKey() + " " + child.getValue();
                                     codes += child.getKey();
-                                    courses.add(n);
+
+                                    getActivity().runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            courses.add(n);
+                                            adapter.notifyDataSetChanged();
+                                        }
+                                    });
                                 }
-                                adapter.notifyDataSetChanged();
                             }
                         }
                     }

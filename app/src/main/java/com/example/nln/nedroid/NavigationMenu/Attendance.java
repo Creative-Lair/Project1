@@ -110,10 +110,14 @@ public class Attendance extends AppCompatActivity {
                             per.setText("" + total_percen);
                         }
 
-                        AttendanceList list = new AttendanceList(code, (double) count, attend, percent);
-                        attendance.add(list);
-                        adapter.notifyDataSetChanged();
-
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                AttendanceList list = new AttendanceList(code, (double) count, attend, percent);
+                                attendance.add(list);
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
                     }
 
                     @Override

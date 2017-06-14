@@ -135,6 +135,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name="com.example.nln.nedroid.Student_profile" />
         <activity android:name="com.example.nln.nedroid.Graph.IndividualStudent" />
+        <activity android:name="com.example.nln.nedroid.Graph.YearGraph" />
+        <activity android:name="com.example.nln.nedroid.Graph.SingleYearGraph" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"

@@ -14,9 +14,11 @@ import android.widget.Toast;
 import com.example.nln.nedroid.Helper.Student;
 import com.example.nln.nedroid.R;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,10 +32,9 @@ public class IndividualStudent extends AppCompatActivity implements View.OnClick
 
     Spinner spinner_depart;
     BarChart line_graph;
-
+    ArrayList<String> xValue;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
-
     private EditText rollnumber;
     private Button btn;
 
@@ -77,6 +78,17 @@ public class IndividualStudent extends AppCompatActivity implements View.OnClick
         depart.add("el");
         depart.add("me");
         depart.add("mt");
+
+        xValue = new ArrayList<>();
+        xValue.add(0, "0");
+        xValue.add(1, "1");
+        xValue.add(2, "2");
+        xValue.add(3, "3");
+        xValue.add(4, "4");
+        xValue.add(5, "5");
+        xValue.add(6, "6");
+        xValue.add(7, "7");
+        xValue.add(8, "8");
         ArrayAdapter<String> SectionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, depart);
         SectionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_depart.setAdapter(SectionAdapter);
@@ -118,6 +130,14 @@ public class IndividualStudent extends AppCompatActivity implements View.OnClick
                             BarData barData = new BarData(dataSet);
                             line_graph.setData(barData);
                             line_graph.invalidate();
+                            XAxis xAxis = line_graph.getXAxis();
+                            xAxis.setGranularity(1f);
+                            xAxis.setGranularityEnabled(true);
+                            xAxis.setCenterAxisLabels(false);
+                            xAxis.setDrawGridLines(false);
+                            xAxis.setAxisMaximum(9);
+                            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+                            xAxis.setValueFormatter(new IndexAxisValueFormatter(xValue));
                         } else {
                             Toast.makeText(IndividualStudent.this, "Invalid id", Toast.LENGTH_SHORT).show();
                         }

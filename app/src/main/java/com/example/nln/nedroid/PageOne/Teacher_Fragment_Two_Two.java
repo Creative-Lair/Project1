@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.nln.nedroid.Graph.IndividualStudent;
 import com.example.nln.nedroid.Graph.SingleSectionGraph;
+import com.example.nln.nedroid.Graph.YearGraph;
 import com.example.nln.nedroid.R;
 
 
@@ -20,7 +21,7 @@ import com.example.nln.nedroid.R;
 public class Teacher_Fragment_Two_Two extends android.support.v4.app.Fragment {
 
     View v;
-    Button SingleYear, AllYear, SingleSection, Individual;
+    Button SingleYear, AllYear, Individual;
     public Teacher_Fragment_Two_Two() {
         // Required empty public constructor
     }
@@ -33,7 +34,6 @@ public class Teacher_Fragment_Two_Two extends android.support.v4.app.Fragment {
         v = inflater.inflate(R.layout.fragment_two_two, container, false);
 
         SingleYear = (Button) v.findViewById(R.id.button_SingleYear);
-        SingleSection = (Button) v.findViewById(R.id.button_SingleSection);
         AllYear = (Button) v.findViewById(R.id.button_AllYear);
         Individual = (Button) v.findViewById(R.id.button_IS);
 
@@ -46,20 +46,11 @@ public class Teacher_Fragment_Two_Two extends android.support.v4.app.Fragment {
             }
         });
 
-        SingleSection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Button Clicked", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity(), SingleSectionGraph.class);
-                startActivity(i);
-            }
-        });
-
         AllYear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Button Clicked", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity(), SingleSectionGraph.class);
+//                Toast.makeText(getActivity(), "Button Clicked", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getActivity(), YearGraph.class);
                 startActivity(i);
             }
         });

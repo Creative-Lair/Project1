@@ -114,7 +114,9 @@
             android:label="Lecture Detail"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Student_profile" />
-        <activity android:name=".Graph.IndividualStudent"></activity>
+        <activity android:name=".Graph.IndividualStudent" />
+        <activity android:name=".Graph.YearGraph" />
+        <activity android:name=".Graph.SingleYearGraph"></activity>
     </application>
 
 </manifest>

@@ -91,7 +91,7 @@ public class Create_Notice extends AppCompatActivity {
                                     imageUrl);
 
                             dataRef.push().setValue(notice);
-
+                            finish();
                         }
                     });
                 }

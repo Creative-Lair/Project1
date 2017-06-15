@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.PageOne.Teacher_FirstNav;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -203,6 +204,10 @@ public class Nav_AttendThree extends AppCompatActivity
             Intent i = new Intent(Nav_AttendThree.this, Setting1.class);
             startActivity(i);
             finish();
+
+        } else if (id == R.id.nav_notice){
+            Intent j = new Intent(this, NotificationNav.class);
+            startActivity(j);
 
         } else if (id == R.id.nav_about) {
             Toast.makeText(Nav_AttendThree.this, " Link to webite ", Toast.LENGTH_SHORT).show();

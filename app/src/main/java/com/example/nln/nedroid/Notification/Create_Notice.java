@@ -35,6 +35,8 @@ public class Create_Notice extends AppCompatActivity {
     private DatabaseReference dataRef;
     private FirebaseStorage storage;
     private StorageReference storageReference;
+    private Uri imageUri;
+    private Notice notice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,23 +71,40 @@ public class Create_Notice extends AppCompatActivity {
                 Calendar c = Calendar.getInstance();
 
                 SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                String formattedDate = df.format(c.getTime());
+                final String formattedDate = df.format(c.getTime());
 
-                Notice notice;
 
-                if (imageUrl != null) {
-                    notice = new Notice(formattedDate,
-                            title.getText().toString().trim(),
-                            description.getText().toString().trim(),
-                            imageUrl);
-                } else {
+
+                if(imageUri!=null) {
+
+                    final StorageReference photoRef = storageReference.child((imageUri.getLastPathSegment()));
+
+                    photoRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadUri = taskSnapshot.getDownloadUrl();
+                            imageUrl = downloadUri.toString();
+                            Toast.makeText(Create_Notice.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
+                            notice = new Notice(formattedDate,
+                                    title.getText().toString().trim(),
+                                    description.getText().toString().trim(),
+                                    imageUrl);
+
+                            dataRef.push().setValue(notice);
+
+                        }
+                    });
+                }
+
+                else {
                     notice = new Notice(formattedDate,
                             title.getText().toString().trim(),
                             description.getText().toString().trim(),
                             "");
+                    dataRef.push().setValue(notice);
+                    finish();
                 }
 
-                dataRef.push().setValue(notice);
             }
         });
 
@@ -107,20 +126,12 @@ public class Create_Notice extends AppCompatActivity {
 
         if (requestCode == ACTIVITY_SELECT_IMAGE) {
             if (resultCode == RESULT_OK) {
+                imageUri = data.getData();
 
-                Uri imageUri = data.getData();
-                final StorageReference photoRef = storageReference.child((imageUri.getLastPathSegment()));
+                Glide.with(img.getContext())
+                        .load(imageUri.toString())
+                        .into(img);
 
-                photoRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Uri downloadUri = taskSnapshot.getDownloadUrl();
-                        imageUrl = downloadUri.toString();
-                        Glide.with(img.getContext())
-                                .load(downloadUri.toString())
-                                .into(img);
-                    }
-                });
             }
         }
     }

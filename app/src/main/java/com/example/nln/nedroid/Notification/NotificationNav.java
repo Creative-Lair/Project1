@@ -13,6 +13,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -79,7 +80,10 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
         if (session.getUserId().charAt(0) == 't') {
-            MenuItem item = (MenuItem) navigationView.findViewById(R.id.nav_attndance);
+
+            Menu menu = navigationView.getMenu();
+
+            MenuItem item = menu.findItem(R.id.nav_attndance);
             item.setVisible(false);
 
             floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);

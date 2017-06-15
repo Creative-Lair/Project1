@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.Login;
+import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.Profile;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
@@ -141,6 +142,10 @@ public class Teacher_FirstNav extends AppCompatActivity
         } else if (id == R.id.nav_setting) {
             Intent i = new Intent(Teacher_FirstNav.this, Setting1.class);
             startActivity(i);
+
+        } else if (id == R.id.nav_notice){
+            Intent j = new Intent(this, NotificationNav.class);
+            startActivity(j);
 
         } else if (id == R.id.nav_about) {
             Toast.makeText(Teacher_FirstNav.this, " Link to webite ", Toast.LENGTH_SHORT).show();

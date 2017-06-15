@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.nln.nedroid.Graph.IndividualStudent;
-import com.example.nln.nedroid.Graph.SingleSectionGraph;
+import com.example.nln.nedroid.Graph.SingleYearGraph;
 import com.example.nln.nedroid.Graph.YearGraph;
 import com.example.nln.nedroid.R;
 
@@ -41,7 +41,7 @@ public class Teacher_Fragment_Two_Two extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), "Button Clicked", Toast.LENGTH_SHORT).show();
-                Intent i = new Intent(getActivity(), SingleSectionGraph.class);
+                Intent i = new Intent(getActivity(), SingleYearGraph.class);
                 startActivity(i);
             }
         });

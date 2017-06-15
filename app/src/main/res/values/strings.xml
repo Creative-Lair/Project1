@@ -118,4 +118,5 @@
     <string name="select_details">Select Details</string>
     <string name="theory">Theory</string>
     <string name="time_slot">Time Slot</string>
+    <string name="title_activity_notification_teacher">NotificationTeacher</string>
 </resources>

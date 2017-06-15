@@ -3,6 +3,51 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\cd851ee00321b0eef64439a97bbafa75d02999f8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="900a290779cdb4eb2e63b6f7806fd9f30ce4f60d">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_73744aea2688ebcae1c59bf19a7b675f90939644\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\912ad60d2960beb1367fa493a4b45ad3c30c92e5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="5c1f80f62ccad560edcd6609fc75f385cf7cb45a">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e3e620bf975db4123bef605184fa7d41e82d3b4f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\dcce77e49bbb745f3451042c9117c692459f09b4\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="0a534044236cf81b002604643d23e7ca56bd1ee0">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5a9ca4193f018ebd056a50b77838826867d5520f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\d3f358f676ed54d66a3d863d8828e84222226d4d\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="de24d8023e8da79f30bee46b298f606e5e758432">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ac74b0e9ff2c964977884b6449cfae145e91d8a9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\927da70859042f7692851395f9fc3fbbb5d20889\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="8f83a631abfdb790591a720e0cfb5f41329831c3">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c640fd7e8e3800f379c6d8cec96413ca65b99d47\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\libs\GraphView-4.0.1.jar"
         jumboMode="false"
         optimize="true"
@@ -12,12 +57,48 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\AHSAN\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.2\5d4eb08a326bdbd7fbbddc769666898c9936b282\MPAndroidChart-v3.0.2.jar"
+        jar="C:\Users\AHSAN\.android\build-cache\54edee7b8a2a1fe0afb90e4135510871dee29b33\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="5d4eb08a326bdbd7fbbddc769666898c9936b282">
-        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.2_39bf1452318f01c05f3aca83e1c7a6ff9f40765e\classes.dex" />
+        sha1="3dbaff65d26258306561d545f88d6712ac41dd46">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_09d26eb449d9ded6a2f7217d0f8a7821cebf70f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\95001fb1c84df9c88a1ae658dc422aa3770cde41\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_19148bd0a9b5970ea66452d7de7c703cde09749e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\948319cc337805d8146fcbfea766fa2ceada2206\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9134bf05278fbd997b564be66e88528cc5c89128\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\bb34c829249e4fc4ee0d6ea199d88cf76167cf64\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="ba4defc8cb4ed5b90b8ef71602722cdeebe507cd">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2fa6713b8f45511cd680364f6d67525627b34701\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\AHSAN\.android\build-cache\10702ec31a1e9383fb945ff22fb20fac6895fab5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ec72f9d86e30f340d97847963d185198f45cc88a\classes.dex" />
     </item>
 
 </items>

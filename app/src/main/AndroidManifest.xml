@@ -116,7 +116,8 @@
         <activity android:name=".Student_profile" />
         <activity android:name=".Graph.IndividualStudent" />
         <activity android:name=".Graph.YearGraph" />
-        <activity android:name=".Graph.SingleYearGraph"></activity>
+        <activity android:name=".Graph.SingleYearGraph" />
+        <activity android:name=".Notification.Create_Notice"></activity>
     </application>
 
 </manifest>

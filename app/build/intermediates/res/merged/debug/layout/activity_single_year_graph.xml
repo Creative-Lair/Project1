@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.nln.nedroid.Graph.SingleYearGraph">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="36sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/textView"
+        android:gravity="center"
+        android:text="Graph"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_year"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="100dp">
+    </Spinner>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_alignBottom="@id/spinner_year"
+        android:layout_toRightOf="@id/spinner_year"
+        android:layout_toEndOf="@id/spinner_year"
+        android:layout_marginTop="20dp"
+        android:text="Plot"
+        android:id="@id/btn"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="1dp"/>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/btn">
+
+    </com.github.mikephil.charting.charts.BarChart>
+
+
+</RelativeLayout>

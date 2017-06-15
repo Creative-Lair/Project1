@@ -19,18 +19,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class YearGraph extends AppCompatActivity {
-    BarChart line_graph;
+    private BarChart line_graph;
 
-    float avgCgpa;
-    long count;
-    ArrayList<BarEntry> entries;
-    int i = 0;
+    private float avgCgpa;
+    private long count;
+    private ArrayList<BarEntry> entries;
+    private int i = 0;
 
-    float barWidth;
-    float barSpace;
-    float groupSpace;
-    ArrayList<String> xValue;
-    int total;
+    private float barWidth;
+    private float barSpace;
+    private float groupSpace;
+    private ArrayList<String> xValue;
+    private int total;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
@@ -56,10 +56,11 @@ public class YearGraph extends AppCompatActivity {
 
         xValue = new ArrayList<>();
 
-        xValue.add(0, "First");
-        xValue.add(1, "Second");
-        xValue.add(2, "Third");
-        xValue.add(3, "Fourth");
+        xValue.add(0, " ");
+        xValue.add(1, "First");
+        xValue.add(2, "Second");
+        xValue.add(3, "Third");
+        xValue.add(4, "Fourth");
 
 
         line_graph.setNoDataText("Loading....");
@@ -98,16 +99,16 @@ public class YearGraph extends AppCompatActivity {
 
                 if (_count > 0) {
                     if (m.equals("First Year")) {
-                        entries.add(new BarEntry(0, avgCgpa / count));
-
-                    } else if (m.equals("Second Year")) {
                         entries.add(new BarEntry(1, avgCgpa / count));
 
-                    } else if (m.equals("Third Year")) {
+                    } else if (m.equals("Second Year")) {
                         entries.add(new BarEntry(2, avgCgpa / count));
 
-                    } else if (m.equals("Fourth Year")) {
+                    } else if (m.equals("Third Year")) {
                         entries.add(new BarEntry(3, avgCgpa / count));
+
+                    } else if (m.equals("Fourth Year")) {
+                        entries.add(new BarEntry(4, avgCgpa / count));
 
                     }
                     System.out.println(avgCgpa / count);
@@ -118,9 +119,9 @@ public class YearGraph extends AppCompatActivity {
                 }
 
                 System.out.println(i);
-                if (i == 2) {
+                //    if (i == 2) {
                     drawGraph();
-                }
+                //  }
             }
 
             @Override
@@ -152,21 +153,18 @@ public class YearGraph extends AppCompatActivity {
         System.out.println("drawing graph");
         BarData barData = new BarData(dataSet);
         line_graph.setData(barData);
-        //line_graph.invalidate();
-        //line_graph.getBarData().setBarWidth(barWidth);
+
         line_graph.getXAxis().setAxisMinimum(0);
         line_graph.getXAxis().setAxisMaximum(4);
         line_graph.getData().setHighlightEnabled(false);
 
-        //X-axis
         XAxis xAxis = line_graph.getXAxis();
         xAxis.setGranularity(1f);
         xAxis.setGranularityEnabled(true);
         xAxis.setDrawGridLines(false);
-        xAxis.setAxisMaximum(4);
+        xAxis.setAxisMaximum(5);
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setValueFormatter(new IndexAxisValueFormatter(xValue));
-//Y-axis
 
         line_graph.invalidate();
         System.out.println("Graph plot");

@@ -147,6 +147,7 @@ public class Teacher_FirstNav extends AppCompatActivity
             Uri webpage = Uri.parse("http://www.android.com");
             Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
             startActivity(webIntent);
+
         } else if (id == R.id.nav_logout) {
             session.setLogin(false);
             session.setUserId("");

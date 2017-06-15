@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="384dp"
         android:layout_height="wrap_content"
-        android:text="Select Progress Type"
-        android:id="@+id/textView1"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="40dp"
+        android:text="Select Progress Type"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/album_title"
         android:textSize="35dp"
         android:textStyle="bold"
-        android:textAlignment="center"
-        android:paddingTop="40dp"
-        android:paddingBottom="10dp"
-        android:layout_marginLeft="0dp"
-        tools:ignore="ObsoleteLayoutParam"
-        android:textColor="@color/album_title"
-        android:textAllCaps="true"/>
+        tools:ignore="ObsoleteLayoutParam" />
 
     <Button
         android:id="@+id/button_SingleYear"
+        android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Single Year"
-        android:background="#0277BD"
-        android:textColor="#FFFF"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="40dp"
+        android:background="#0277BD"
+        android:text="Single Year"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_width="300dp" />
+        android:textColor="#FFFF" />
 
     <Button
         android:id="@+id/button_AllYear"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="All Year"
-        android:background="#0277BC"
-        android:textColor="#FFFF"
+        android:layout_centerInParent="true"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
+        android:background="#0277BC"
+        android:text="All Year"
         android:textAlignment="center"
         android:textAllCaps="false"
-        android:layout_centerInParent="true"/>
+        android:textColor="#FFFF" />
 
 
     <Button
         android:id="@+id/button_IS"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:text="Individual Student"
-        android:background="#0277BA"
-        android:textColor="#FFFF"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="10dp"
+        android:background="#0277BA"
+        android:text="Individual Student"
         android:textAlignment="center"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:textColor="#FFFF" />
 
 </LinearLayout>

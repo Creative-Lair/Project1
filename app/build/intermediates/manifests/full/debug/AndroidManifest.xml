@@ -137,6 +137,7 @@
         <activity android:name="com.example.nln.nedroid.Graph.IndividualStudent" />
         <activity android:name="com.example.nln.nedroid.Graph.YearGraph" />
         <activity android:name="com.example.nln.nedroid.Graph.SingleYearGraph" />
+        <activity android:name="com.example.nln.nedroid.Notification.Create_Notice" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"

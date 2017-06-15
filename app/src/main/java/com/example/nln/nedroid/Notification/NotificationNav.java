@@ -3,6 +3,7 @@ package com.example.nln.nedroid.Notification;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -50,6 +51,8 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference noticeRef;
 
+    private FloatingActionButton floatingActionButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +77,24 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
 
         //        Navigation Name and id
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        if (session.getUserId().charAt(0) == 't') {
+            MenuItem item = (MenuItem) navigationView.findViewById(R.id.nav_attndance);
+            item.setVisible(false);
+
+            floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+            floatingActionButton.setVisibility(View.VISIBLE);
+            floatingActionButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent fahad = new Intent(NotificationNav.this, Create_Notice.class);
+                    startActivity(fahad);
+                }
+            });
+
+
+        }
+
         navigationView.setNavigationItemSelectedListener(this);
         View hView =  navigationView.getHeaderView(0);
         headerName = (TextView) hView.findViewById(R.id.textView_nav_name);

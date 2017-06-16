@@ -222,7 +222,7 @@ public class Nav_AttendThree extends AppCompatActivity
                     session.setUsername(teacher.getName());
                     session.setPhoto(teacher.getPhotourl());
                     session.setCourses(teacher.getSubjects());
-                    Toast.makeText(Nav_AttendThree.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Nav_AttendThree.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
                 }
 

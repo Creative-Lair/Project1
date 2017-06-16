@@ -10,13 +10,13 @@ public final class R {
     public static final class id {
         public static final int auto = 0x7f0f002d;
         public static final int center = 0x7f0f002f;
-        public static final int date = 0x7f0f00ae;
-        public static final int email = 0x7f0f00ba;
+        public static final int date = 0x7f0f00af;
+        public static final int email = 0x7f0f00bb;
         public static final int none = 0x7f0f0017;
         public static final int normal = 0x7f0f0019;
         public static final int radio = 0x7f0f0064;
-        public static final int text = 0x7f0f0140;
-        public static final int text2 = 0x7f0f013e;
+        public static final int text = 0x7f0f0141;
+        public static final int text2 = 0x7f0f013f;
         public static final int toolbar = 0x7f0f007b;
         public static final int wrap_content = 0x7f0f002c;
     }

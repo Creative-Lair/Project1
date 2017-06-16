@@ -57,6 +57,7 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
     private DetailAdaptor adapter;
     private ChildEventListener childEventListener;
     private Button btn;
+    private ArrayList<Lecture_detail> newList;
 
     public static boolean isExternalStorageReadOnly() {
         String extStorageState = Environment.getExternalStorageState();
@@ -83,6 +84,7 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
             finish();
         }
         btn = (Button) findViewById(R.id.btn);
+        newList = new ArrayList<>();
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +115,7 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
                 Lecture lecture = dataSnapshot.getValue(Lecture.class);
                 Lecture_detail detail = new Lecture_detail(lecture.getTimeslot(), lecture.getDate(), lecture.getLectureTopic());
                 details.add(detail);
+                newList.add(detail);
                 adapter.notifyDataSetChanged();
 
             }
@@ -239,20 +242,29 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
 
         Map<String, Object[]> data = new HashMap<>();
         int i = 1;
-        data.put("" + i, new Object[]{"Date", "Timeslot", "Topic"});
-        i++;
-        for (Lecture_detail detail : details) {
+        Row r = sheet.createRow(0);
+        Cell c = r.createCell(0);
+        c.setCellValue("Date");
+        c = r.createCell(1);
+        c.setCellValue("Timeslot");
+        c = r.createCell(2);
+        c.setCellValue("Topic");
+        System.out.println(newList.size());
+        for (Lecture_detail detail : newList) {
             data.put("" + i, new Object[]{detail.getDate(), detail.getTime(), detail.getTopic()});
             i++;
+
+            System.out.println(detail.getTopic());
         }
         Set<String> keyset = data.keySet();
-        int rownum = 0;
+        int rownum = 1;
         for (String key : keyset) {
             Row row = sheet.createRow(rownum++);
             Object[] objArr = data.get(key);
             int cellnum = 0;
             for (Object obj : objArr) {
                 Cell cell = row.createCell(cellnum++);
+                System.out.println(obj);
                 if (obj instanceof Date)
                     cell.setCellValue((Date) obj);
                 else if (obj instanceof Boolean)
@@ -264,12 +276,13 @@ public class Nav_AttendThree_pdf extends AppCompatActivity {
             }
         }
 
-        File file = new File(getExternalFilesDir(null), "Lecture_details_" + code + "_" + section + ".xls");
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Lecture_details_" + code + "_" + section + ".xls");
         FileOutputStream os = null;
 
         try {
             os = new FileOutputStream(file);
             workbook.write(os);
+            Toast.makeText(this, "File Created", Toast.LENGTH_SHORT).show();
             Log.w("FileUtils", "Writing file" + file);
         } catch (IOException e) {
             Log.w("FileUtils", "Error writing " + file, e);

@@ -49,10 +49,6 @@ public class YearGraph extends AppCompatActivity {
 
         entries = new ArrayList<>();
 
-        line_graph.setDrawBarShadow(false);
-        line_graph.setDrawGridBackground(false);
-        line_graph.setScaleEnabled(false);
-        line_graph.setPinchZoom(false);
 
         xValue = new ArrayList<>();
 

@@ -75,6 +75,7 @@ public class SsecondNav extends AppCompatActivity
             finish();
         }
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
         setTitle(session.getSubjectName());
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

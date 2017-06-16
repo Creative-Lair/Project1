@@ -114,7 +114,7 @@ public class Setting1 extends AppCompatActivity {
                                     session.setUsername(teacher.getName());
                                     session.setPhoto(teacher.getPhotourl());
                                     session.setCourses(teacher.getSubjects());
-                                    Toast.makeText(Setting1.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Setting1.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
                                 }
 

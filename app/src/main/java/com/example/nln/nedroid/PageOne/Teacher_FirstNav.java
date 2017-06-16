@@ -79,6 +79,8 @@ public class Teacher_FirstNav extends AppCompatActivity
             finish();
         }
 
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -173,7 +175,7 @@ public class Teacher_FirstNav extends AppCompatActivity
                     session.setUsername(teacher.getName());
                     session.setPhoto(teacher.getPhotourl());
                     session.setCourses(teacher.getSubjects());
-                    Toast.makeText(Teacher_FirstNav.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Teacher_FirstNav.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
                 }
 

@@ -19,6 +19,12 @@
             android:icon="@drawable/ic_attndance"
             android:title="Attendance" />
 
+        <item
+            android:id="@+id/nav_sync"
+            android:icon="@drawable/ic_smile_blue"
+            android:title="Resync Data" />
+
+
     </group>
 
     <item android:title="Others">

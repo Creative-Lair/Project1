@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.Attendance.Attendance1;
+import com.example.nln.nedroid.Helper.Student;
 import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.PageOne.Teacher_FirstNav;
 import com.google.firebase.database.ChildEventListener;
@@ -31,6 +32,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +54,7 @@ public class Nav_AttendOne extends AppCompatActivity
     private ArrayList<String> courses;
     private ArrayList<String> course;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference subjectRef;
+    private DatabaseReference subjectRef, rootRef;
     private ArrayAdapter<String> CourseAdapter;
     private String lectureType, lectureImp;
 
@@ -263,6 +265,30 @@ public class Nav_AttendOne extends AppCompatActivity
             Intent j = new Intent(this, NotificationNav.class);
             startActivity(j);
 
+        } else if (id == R.id.nav_sync) {
+            rootRef = firebaseDatabase.getReference().child("Students");
+            rootRef.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
+                    Student student = dataSnapshot.getValue(Student.class);
+                    session.setLogin(true);
+                    session.setUserId(session.getUserId());
+                    session.setUsername(student.getName());
+                    session.setSemester(student.getSemester());
+                    session.setPhoto(student.getPhotourl());
+                    session.setCourses(student.getCourses());
+                    session.setUserSemester(student.getSection());
+                    Toast.makeText(Nav_AttendOne.this, "Resync Complete", Toast.LENGTH_SHORT).show();
+
+
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
         else if (id == R.id.nav_about) {
             Toast.makeText(Nav_AttendOne.this, " Link to webite ", Toast.LENGTH_SHORT).show();

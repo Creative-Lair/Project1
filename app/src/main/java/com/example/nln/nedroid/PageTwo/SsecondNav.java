@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.nln.nedroid.Helper.Student;
 import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NavigationMenu.Attendance;
 import com.example.nln.nedroid.Notification.NotificationNav;
@@ -29,6 +30,11 @@ import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
 import com.example.nln.nedroid.Setting1;
 import com.example.nln.nedroid.Student_profile;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +57,10 @@ public class SsecondNav extends AppCompatActivity
     };
 
     private Session session;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference rootRef;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,6 +203,31 @@ public class SsecondNav extends AppCompatActivity
                 startActivity(m);
                 finish();
 
+                break;
+
+            case R.id.nav_sync:
+                rootRef = firebaseDatabase.getReference().child("Students");
+                rootRef.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
+                        Student student = dataSnapshot.getValue(Student.class);
+                        session.setLogin(true);
+                        session.setUserId(session.getUserId());
+                        session.setUsername(student.getName());
+                        session.setSemester(student.getSemester());
+                        session.setPhoto(student.getPhotourl());
+                        session.setCourses(student.getCourses());
+                        session.setUserSemester(student.getSection());
+                        Toast.makeText(SsecondNav.this, "Resync Complete", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 break;
 
         }

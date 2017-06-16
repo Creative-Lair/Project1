@@ -65,11 +65,11 @@
         android:layout_marginTop="20dp" />
 
     <Button
+        android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:id="@+id/btn"
-        android:text="Create Excel Sheet"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:layout_marginTop="20dp"/>
+        android:text="Create Excel Sheet" />
 </RelativeLayout>

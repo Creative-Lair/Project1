@@ -136,6 +136,10 @@
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\activity_create__notice.xml"
     },
     {
+        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_feedback.xml",
+        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\activity_feedback.xml"
+    },
+    {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_first_nav.xml",
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\content_first_nav.xml"
     },
@@ -326,6 +330,10 @@
     {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
         "source": "C:\\Users\\AHSAN\\.android\\build-cache\\7a9423174cab790f3d02c3ad0f9b56c926a4c945\\output\\res\\layout\\abc_action_bar_title_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\setting_layout.xml",
+        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\layout\\setting_layout.xml"
     },
     {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",

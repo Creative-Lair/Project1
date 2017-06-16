@@ -20,7 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.nln.nedroid.Helper.Student;
+import com.example.nln.nedroid.Helper.Teacher;
 import com.example.nln.nedroid.Notification.NotificationNav;
 import com.example.nln.nedroid.PageOne.Teacher_FirstNav;
 import com.google.firebase.database.ChildEventListener;
@@ -212,20 +212,17 @@ public class Nav_AttendThree extends AppCompatActivity
             startActivity(j);
 
         } else if (id == R.id.nav_sync) {
-            rootRef = firebaseDatabase.getReference().child("Students");
+            rootRef = firebaseDatabase.getReference().child("Teachers");
             rootRef.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
-                    Student student = dataSnapshot.getValue(Student.class);
+                    Teacher teacher = dataSnapshot.getValue(Teacher.class);
                     session.setLogin(true);
                     session.setUserId(session.getUserId());
-                    session.setUsername(student.getName());
-                    session.setSemester(student.getSemester());
-                    session.setPhoto(student.getPhotourl());
-                    session.setCourses(student.getCourses());
-                    session.setUserSemester(student.getSection());
-                    Toast.makeText(Nav_AttendThree.this, "Resync Complete", Toast.LENGTH_SHORT).show();
+                    session.setUsername(teacher.getName());
+                    session.setPhoto(teacher.getPhotourl());
+                    session.setCourses(teacher.getSubjects());
+                    Toast.makeText(Nav_AttendThree.this, "Wrong Id or Password!", Toast.LENGTH_SHORT).show();
 
                 }
 

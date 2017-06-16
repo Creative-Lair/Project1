@@ -15,6 +15,10 @@
             android:id="@+id/nav_notice"
             android:icon="@drawable/ic_notifications_black_24dp"
             android:title="Notice Board" />
+        <item
+            android:id="@+id/nav_sync"
+            android:icon="@drawable/ic_smile_blue"
+            android:title="Resync Data" />
 
     </group>
 

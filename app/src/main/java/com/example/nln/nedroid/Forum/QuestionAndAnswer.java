@@ -2,7 +2,6 @@ package com.example.nln.nedroid.Forum;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -17,7 +16,6 @@ import android.widget.Toast;
 import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
 import com.example.nln.nedroid.Session;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,8 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-import static com.example.nln.nedroid.R.layout.activity_listview_f2;
 
 public class QuestionAndAnswer extends AppCompatActivity implements View.OnClickListener{
 
@@ -157,7 +153,9 @@ public class QuestionAndAnswer extends AppCompatActivity implements View.OnClick
                     String photourl = session.getPhoto();
 
                     Answers answers = new Answers(qid,uid,ans,name,photourl);
-                    answersRef.push().setValue(answers);
+                    DatabaseReference ref = answersRef.push();
+                    ref.setValue(answers);
+                    ref.child("sub").setValue(session.getSubject());
 
                     Toast.makeText(this, "Your answer is posted", Toast.LENGTH_SHORT).show();
 

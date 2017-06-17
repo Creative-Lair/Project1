@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.nln.nedroid.Helper.Student;
+import com.example.nln.nedroid.Helper.Teacher;
 import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.NavigationMenu.Attendance;
 import com.example.nln.nedroid.NewsAndEvents.ItemClickListener;
@@ -36,6 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -204,6 +206,16 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
                 session.setUserId("");
                 session.setUsername("");
                 session.setQID("");
+
+                ArrayList<String> subcriptions = session.getCourse();
+                for (String str : subcriptions) {
+                    System.out.println(str);
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(str + "c");
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(str + "q");
+                }
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("News");
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("Notice");
+
                 ArrayList<String> course = new ArrayList<>();
                 session.setCourses(course);
                 session.setNewsId("");
@@ -218,28 +230,67 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
                 break;
 
             case R.id.nav_sync:
-                rootRef = firebaseDatabase.getReference().child("Students");
-                rootRef.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
-                        Student student = dataSnapshot.getValue(Student.class);
-                        session.setLogin(true);
-                        session.setUserId(session.getUserId());
-                        session.setUsername(student.getName());
-                        session.setSemester(student.getSemester());
-                        session.setPhoto(student.getPhotourl());
-                        session.setCourses(student.getCourses());
-                        session.setUserSemester(student.getSection());
-                        Toast.makeText(NotificationNav.this, "Resync Complete", Toast.LENGTH_SHORT).show();
+                if (session.getUserId().charAt(0) == 's') {
+                    rootRef = firebaseDatabase.getReference().child("Students");
+                    rootRef.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            //Toast.makeText(Login.this, dataSnapshot.getValue(), Toast.LENGTH_SHORT).show();
+                            Student student = dataSnapshot.getValue(Student.class);
+                            session.setLogin(true);
+                            session.setUserId(session.getUserId());
+                            session.setUsername(student.getName());
+                            session.setSemester(student.getSemester());
+                            session.setPhoto(student.getPhotourl());
+                            session.setCourses(student.getCourses());
+                            session.setUserSemester(student.getSection());
+                            ArrayList<String> subcriptions = student.getCourses();
+                            for (String str : subcriptions) {
+                                System.out.println(str);
+                                FirebaseMessaging.getInstance().subscribeToTopic(str + "c");
+                                FirebaseMessaging.getInstance().subscribeToTopic(str + "q");
+                            }
 
-                    }
+                            FirebaseMessaging.getInstance().subscribeToTopic("News");
+                            FirebaseMessaging.getInstance().subscribeToTopic("Notice");
+                            Toast.makeText(NotificationNav.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
+                        }
 
-                    }
-                });
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                } else {
+                    rootRef = firebaseDatabase.getReference().child("Teachers");
+                    rootRef.child(session.getUserId()).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            Teacher teacher = dataSnapshot.getValue(Teacher.class);
+                            session.setLogin(true);
+                            session.setUserId(session.getUserId());
+                            session.setUsername(teacher.getName());
+                            session.setPhoto(teacher.getPhotourl());
+                            session.setCourses(teacher.getSubjects());
+                            ArrayList<String> subcriptions = teacher.getSubjects();
+                            for (String str : subcriptions) {
+                                System.out.println(str);
+                                FirebaseMessaging.getInstance().subscribeToTopic(str + "q");
+                            }
+
+                            FirebaseMessaging.getInstance().subscribeToTopic("Notice");
+                            Toast.makeText(NotificationNav.this, "Resync Complete", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
                 break;
 
         }

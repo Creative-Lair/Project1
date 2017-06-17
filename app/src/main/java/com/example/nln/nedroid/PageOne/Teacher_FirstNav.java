@@ -33,6 +33,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -175,6 +176,13 @@ public class Teacher_FirstNav extends AppCompatActivity
                     session.setUsername(teacher.getName());
                     session.setPhoto(teacher.getPhotourl());
                     session.setCourses(teacher.getSubjects());
+                    ArrayList<String> subcriptions = teacher.getSubjects();
+                    for (String str : subcriptions) {
+                        System.out.println(str);
+                        FirebaseMessaging.getInstance().subscribeToTopic(str + "q");
+                    }
+
+                    FirebaseMessaging.getInstance().subscribeToTopic("Notice");
                     Toast.makeText(Teacher_FirstNav.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
                 }
@@ -191,6 +199,15 @@ public class Teacher_FirstNav extends AppCompatActivity
             session.setUsername("");
             session.setSubject("");
             session.setSection("");
+            ArrayList<String> subcriptions = session.getCourse();
+            for (String str : subcriptions) {
+                System.out.println(str);
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(str + "c");
+                FirebaseMessaging.getInstance().unsubscribeFromTopic(str + "q");
+            }
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("News");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("Notice");
+
             ArrayList<String> course = new ArrayList<>();
             session.setCourses(course);
             Intent i = new Intent(this, Login.class);

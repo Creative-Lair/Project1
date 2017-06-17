@@ -8,9 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.nln.nedroid.Login;
 import com.example.nln.nedroid.R;
@@ -120,6 +118,7 @@ public class AllQuestion extends AppCompatActivity {
      //   Log.i("hello", city.getName());
 
         session.setQID(city.getQid());
+        session.setSubject(city.getSub());
 
         Intent i = new Intent(AllQuestion.this, QuestionAndAnswer.class);
         startActivity(i);

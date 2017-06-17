@@ -226,6 +226,7 @@ public class FragmentThree extends Fragment implements ItemClickListener {
    //     Log.i("hello", city.getName());
    //     Toast.makeText(getActivity(), city.getName(), Toast.LENGTH_SHORT).show();// To show the text on toast
         session.setQID(city.getQid());
+        session.setSubject(city.getSub());
 
         Intent i = new Intent(getActivity(), QuestionAndAnswer.class);
         startActivity(i);

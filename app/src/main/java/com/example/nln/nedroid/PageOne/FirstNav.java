@@ -34,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -174,6 +175,15 @@ public class FirstNav extends AppCompatActivity
                 session.setUserId("");
                 session.setUsername("");
                 session.setQID("");
+                ArrayList<String> subcriptions = session.getCourse();
+                for (String str : subcriptions) {
+                    System.out.println(str);
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(str + "c");
+                    FirebaseMessaging.getInstance().unsubscribeFromTopic(str + "q");
+                }
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("News");
+                FirebaseMessaging.getInstance().unsubscribeFromTopic("Notice");
+
                 ArrayList<String> course = new ArrayList<>();
                 session.setCourses(course);
                 session.setNewsId("");
@@ -202,6 +212,15 @@ public class FirstNav extends AppCompatActivity
                         session.setPhoto(student.getPhotourl());
                         session.setCourses(student.getCourses());
                         session.setUserSemester(student.getSection());
+                        ArrayList<String> subcriptions = student.getCourses();
+                        for (String str : subcriptions) {
+                            System.out.println(str);
+                            FirebaseMessaging.getInstance().subscribeToTopic(str + "c");
+                            FirebaseMessaging.getInstance().subscribeToTopic(str + "q");
+                        }
+
+                        FirebaseMessaging.getInstance().subscribeToTopic("News");
+                        FirebaseMessaging.getInstance().subscribeToTopic("Notice");
                         Toast.makeText(FirstNav.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
                     }

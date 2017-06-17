@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
 
@@ -94,6 +95,15 @@ public class Setting1 extends AppCompatActivity {
                                     session.setPhoto(student.getPhotourl());
                                     session.setCourses(student.getCourses());
                                     session.setUserSemester(student.getSection());
+                                    ArrayList<String> subcriptions = student.getCourses();
+                                    for (String str : subcriptions) {
+                                        System.out.println(str);
+                                        FirebaseMessaging.getInstance().subscribeToTopic(str + "c");
+                                        FirebaseMessaging.getInstance().subscribeToTopic(str + "q");
+                                    }
+
+                                    FirebaseMessaging.getInstance().subscribeToTopic("News");
+                                    FirebaseMessaging.getInstance().subscribeToTopic("Notice");
                                     Toast.makeText(Setting1.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
                                 }
@@ -114,6 +124,13 @@ public class Setting1 extends AppCompatActivity {
                                     session.setUsername(teacher.getName());
                                     session.setPhoto(teacher.getPhotourl());
                                     session.setCourses(teacher.getSubjects());
+                                    ArrayList<String> subcriptions = teacher.getSubjects();
+                                    for (String str : subcriptions) {
+                                        System.out.println(str);
+                                        FirebaseMessaging.getInstance().subscribeToTopic(str + "q");
+                                    }
+
+                                    FirebaseMessaging.getInstance().subscribeToTopic("Notice");
                                     Toast.makeText(Setting1.this, "Resync Complete", Toast.LENGTH_SHORT).show();
 
                                 }

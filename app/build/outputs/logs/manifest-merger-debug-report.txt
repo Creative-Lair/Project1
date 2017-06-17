@@ -289,13 +289,13 @@ ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidMani
 	android:name
 		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:123:19-43
 service#com.example.nln.nedroid.MyFirebaseMessagingService
-ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:124:9-129:19
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:125:9-129:19
 	android:name
-		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:125:13-55
+		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:125:18-60
 intent-filter#com.google.firebase.MESSAGING_EVENT
 ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:126:13-128:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:127:17-77
+ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:127:17-78
 	android:name
 		ADDED from C:\Users\AHSAN\Downloads\Source Code\NEDroid\app\src\main\AndroidManifest.xml:127:25-75
 uses-sdk

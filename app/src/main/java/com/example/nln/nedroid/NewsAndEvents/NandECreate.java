@@ -1,5 +1,6 @@
 package com.example.nln.nedroid.NewsAndEvents;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -29,6 +30,9 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
     final int ACTIVITY_SELECT_IMAGE = 1234;
     Session session;
     ArrayList<String> photosUri;
+    int l, size;
+    String photoUri;
+    ArrayList<Uri> uri;
     private ImageButton imageadd;
     private Button create;
     private EditText title, description;
@@ -36,6 +40,7 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
     private DatabaseReference newsRef;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
+    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,11 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
             finish();
         }
 
+        pd = new ProgressDialog(this);
+        pd.setMessage("Send Event to Admin For Verification");
+        pd.setCancelable(false);
+
+        uri = new ArrayList<>();
         firebaseDatabase = FirebaseDatabase.getInstance();
         newsRef = firebaseDatabase.getReference().child("News");
         firebaseStorage = FirebaseStorage.getInstance();
@@ -84,19 +94,18 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
 
             case R.id.create:
 
-                String photoUri;
-                String t;
-                String d;
+                final String t;
+                final String d;
 
-                String username = session.getUsername();
-                String photoUser = session.getPhoto();
-                boolean verify = false;
+                final String username = session.getUsername();
+                final String photoUser = session.getPhoto();
+                final boolean verify = false;
 
-                if(photosUri.size() == 0){
+                if (uri.size() == 0) {
                     Toast.makeText(this, "Please Select Atleast one image for the event", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    photoUri = photosUri.get(0);
+                    //photoUri = uri.get(0).toString();
                 }
 
                 if(title.getText().toString().trim().equals("")){
@@ -113,14 +122,43 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
                     d = description.getText().toString().trim();
                 }
 
+                l = 0;
+                size = uri.size();
 
-                News news = new News(t, d, username, photoUser, photoUri, verify, photosUri);
+                pd.show();
 
-                DatabaseReference ref = newsRef.push();
-                ref.setValue(news);
-                ref.child("timestamp").setValue(ServerValue.TIMESTAMP);
+                for (Uri imageUri : uri) {
+                    final StorageReference photoRef = storageReference.child((imageUri.getLastPathSegment()));
 
-                finish();
+                    photoRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Uri downloadUri = taskSnapshot.getDownloadUrl();
+                            if (l == 0) {
+                                photoUri = downloadUri.toString();
+                            }
+                            photosUri.add(downloadUri.toString());
+                            l++;
+                            if (l == size) {
+                                News news = new News(t, d, username, photoUser, photoUri, verify, photosUri);
+
+                                DatabaseReference ref = newsRef.push();
+                                ref.setValue(news);
+                                ref.child("timestamp").setValue(ServerValue.TIMESTAMP);
+
+                                if (pd.isShowing()) {
+                                    pd.hide();
+                                    Toast.makeText(NandECreate.this, "Event Send to admin!", Toast.LENGTH_SHORT).show();
+                                }
+
+                                finish();
+
+                            }
+                        }
+                    });
+                }
+
+
 
                 break;
 
@@ -136,16 +174,8 @@ public class NandECreate extends AppCompatActivity implements View.OnClickListen
         if(requestCode == ACTIVITY_SELECT_IMAGE){
             if(resultCode == RESULT_OK){
                 Uri imageUri = data.getData();
-                final StorageReference photoRef = storageReference.child((imageUri.getLastPathSegment()));
-
-                photoRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        Uri downloadUri = taskSnapshot.getDownloadUrl();
-                        photosUri.add(downloadUri.toString());
-                        create.setEnabled(true);
-                    }
-                });
+                uri.add(imageUri);
+                create.setEnabled(true);
             }
         }
     }

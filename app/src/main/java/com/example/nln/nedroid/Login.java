@@ -19,6 +19,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.ArrayList;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
 
@@ -93,6 +96,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     session.setPhoto(student.getPhotourl());
                                     session.setCourses(student.getCourses());
                                     session.setUserSemester(student.getSection());
+                                    FirebaseMessaging.getInstance().subscribeToTopic("user_" + username);
+
+                                    ArrayList<String> subcriptions = student.getCourses();
+                                    for (String str : subcriptions) {
+                                        System.out.println(str);
+                                        FirebaseMessaging.getInstance().subscribeToTopic(str + "c");
+                                    }
+
+                                    FirebaseMessaging.getInstance().subscribeToTopic("News");
+                                    FirebaseMessaging.getInstance().subscribeToTopic("Notice");
+
                                     Intent i = new Intent(Login.this, FirstNav.class);
                                     startActivity(i);
                                     finish();

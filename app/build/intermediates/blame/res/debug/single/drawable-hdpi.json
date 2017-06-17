@@ -180,11 +180,11 @@
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\drawable-hdpi\\ic_forum.png"
     },
     {
-        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_result.png",
-        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\drawable-hdpi\\ic_result.png"
-    },
-    {
         "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_smile.png",
         "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\drawable-hdpi\\ic_smile.png"
+    },
+    {
+        "merged": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi\\ic_result.png",
+        "source": "C:\\Users\\AHSAN\\Downloads\\Source Code\\NEDroid\\app\\src\\main\\res\\drawable-hdpi\\ic_result.png"
     }
 ]

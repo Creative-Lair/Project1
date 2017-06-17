@@ -100,7 +100,7 @@ public class Create_Notice extends AppCompatActivity {
                     notice = new Notice(formattedDate,
                             title.getText().toString().trim(),
                             description.getText().toString().trim(),
-                            "");
+                            "https://firebasestorage.googleapis.com/v0/b/nedroid-3bcc1.appspot.com/o/19265206_1596287747062182_624483868_n.jpg?alt=media&token=176a9473-de1e-473f-a559-14efa66b5220");
                     dataRef.push().setValue(notice);
                     finish();
                 }

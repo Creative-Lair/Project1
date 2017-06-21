@@ -16,6 +16,7 @@ import com.example.nln.nedroid.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -90,7 +91,9 @@ public class Create_Notice extends AppCompatActivity {
                                     description.getText().toString().trim(),
                                     imageUrl);
 
-                            dataRef.push().setValue(notice);
+                            DatabaseReference ref = dataRef.push();
+                            ref.setValue(notice);
+                            ref.child("timestamp").setValue(ServerValue.TIMESTAMP);
                             finish();
                         }
                     });
@@ -101,7 +104,9 @@ public class Create_Notice extends AppCompatActivity {
                             title.getText().toString().trim(),
                             description.getText().toString().trim(),
                             "https://firebasestorage.googleapis.com/v0/b/nedroid-3bcc1.appspot.com/o/19265206_1596287747062182_624483868_n.jpg?alt=media&token=176a9473-de1e-473f-a559-14efa66b5220");
-                    dataRef.push().setValue(notice);
+                    DatabaseReference ref = dataRef.push();
+                    ref.setValue(notice);
+                    ref.child("timestamp").setValue(ServerValue.TIMESTAMP);
                     finish();
                 }
 

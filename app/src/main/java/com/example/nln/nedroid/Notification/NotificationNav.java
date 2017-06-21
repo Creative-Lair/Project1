@@ -58,6 +58,8 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
 
     private FloatingActionButton floatingActionButton;
 
+    private ChildEventListener childEventListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,11 +132,11 @@ public class NotificationNav extends AppCompatActivity implements NavigationView
 
         adapter.setClickListener(this);
 
-        noticeRef.addChildEventListener(new ChildEventListener() {
+        noticeRef.orderByChild("timestamp").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Notice notice = dataSnapshot.getValue(Notice.class);
-                albumList.add(notice);
+                albumList.add(0, notice);
                 adapter.notifyDataSetChanged();
             }
 

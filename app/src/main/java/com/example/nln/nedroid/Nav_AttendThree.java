@@ -118,7 +118,7 @@ public class Nav_AttendThree extends AppCompatActivity
         section.add("D");
 
         // Creating adapter for spinner
-        SubjectAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, course);
+        SubjectAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, course);
         final ArrayAdapter<String> SectionAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, section);
 
         // Drop down layout style - list view with radio button
